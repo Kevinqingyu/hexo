@@ -19,18 +19,18 @@ user 选择 nobody 然后 把这段话保存 为 shadowsocks.sh
 
 打开开机自启配置文件 `vim /etc/rc.local`
 
-将 /opt/./shadowsocks.sh 这句放在最下方 保存退出
-执行 ```source ~/etc/rc.local``` 让配置生效
+将 `/opt/./shadowsocks.sh` 这句放在最下方 保存退出
+执行 `source ~/etc/rc.local` 让配置生效
 
 crontab -l 查看当前在执行的 定时任务
 
 crontab -e 编辑定时任务
 
-在最下方加 ```0 13 * * * /sbin/reboot```
+在最下方加 `0 13 * * * /sbin/reboot`
 
 每天的13点重启vps， 因为vps 是美国服务器 有时差 所以13点应该是中国的凌晨 刚刚好
 
-然后 ```*/5 * * * * ./shadowsocks.sh```
+然后 `*/5 * * * * ./shadowsocks.sh`
 
 每5分钟就检测一次 ssserver 如果没有进程 就启动一遍，有就不执行
 
