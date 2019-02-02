@@ -1,7 +1,7 @@
 ---
 title: rails-mailer
 date: 2017-08-31 11:11:38
-tags:
+tags: [ruby, rails]
 ---
 
 >app/mailer 文件夹创建mailer.rb文件

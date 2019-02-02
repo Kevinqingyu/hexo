@@ -1,14 +1,15 @@
 <div class="site-brand-wrapper">
   <div class="site-meta {% if theme.custom_logo.enabled %}custom-logo{% endif %}">
+
     {% if theme.custom_logo.image and theme.scheme === 'Muse' %}
       <div class="site-meta-headline">
+
         <a>
           <img class="custom-logo-image" src="{{ theme.custom_logo.image }}"
                alt="{{ config.title }}"/>
         </a>
       </div>
     {% endif %}
-
     <div class="custom-logo-site-title">
       <a href="{{ config.root }}"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>

@@ -1,7 +1,7 @@
 ---
 title: shell
 date: 2017-08-31 11:35:41
-tags:
+tags: [centos, shell]
 ---
 
 vps 设置系统定时重启， ssserver 开机启动
