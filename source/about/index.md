@@ -40,4 +40,5 @@ date: 2017-08-31 12:41:15
 - Engine
 - jQuery
 - Sidekiq
-- Go
+- rabbitmq
+
