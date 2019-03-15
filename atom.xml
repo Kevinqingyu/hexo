@@ -4,16 +4,16 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://qingyu.ren/"/>
+  <link href="qingyu.ren/"/>
   <updated>2019-01-18T06:16:23.000Z</updated>
-  <id>https://qingyu.ren/</id>
+  <id>qingyu.ren/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
     <title>Rails项目搭建rabbitmq消息中间件</title>
-    <link href="https://qingyu.ren/2019/01/18/Rails%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BArabbitmq%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    <id>https://qingyu.ren/2019/01/18/Rails项目搭建rabbitmq消息中间件/</id>
+    <link href="qingyu.ren/2019/01/18/Rails%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BArabbitmq%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    <id>qingyu.ren/2019/01/18/Rails项目搭建rabbitmq消息中间件/</id>
     <published>2019-01-18T06:01:27.000Z</published>
     <updated>2019-01-18T06:16:23.000Z</updated>
     
@@ -42,22 +42,22 @@
     </summary>
     
     
-      <category term="ruby" scheme="https://qingyu.ren/tags/ruby/"/>
+      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
     
-      <category term="rails" scheme="https://qingyu.ren/tags/rails/"/>
+      <category term="rails" scheme="qingyu.ren/tags/rails/"/>
     
-      <category term="rabbitmq" scheme="https://qingyu.ren/tags/rabbitmq/"/>
+      <category term="rabbitmq" scheme="qingyu.ren/tags/rabbitmq/"/>
     
-      <category term="sneakers" scheme="https://qingyu.ren/tags/sneakers/"/>
+      <category term="sneakers" scheme="qingyu.ren/tags/sneakers/"/>
     
-      <category term="bunny" scheme="https://qingyu.ren/tags/bunny/"/>
+      <category term="bunny" scheme="qingyu.ren/tags/bunny/"/>
     
   </entry>
   
   <entry>
     <title>常用gem整理</title>
-    <link href="https://qingyu.ren/2018/12/18/%E5%B8%B8%E7%94%A8gem%E6%95%B4%E7%90%86/"/>
-    <id>https://qingyu.ren/2018/12/18/常用gem整理/</id>
+    <link href="qingyu.ren/2018/12/18/%E5%B8%B8%E7%94%A8gem%E6%95%B4%E7%90%86/"/>
+    <id>qingyu.ren/2018/12/18/常用gem整理/</id>
     <published>2018-12-18T08:23:17.000Z</published>
     <updated>2018-12-18T08:24:43.000Z</updated>
     
@@ -72,18 +72,18 @@
     </summary>
     
     
-      <category term="ruby" scheme="https://qingyu.ren/tags/ruby/"/>
+      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
     
-      <category term="rails" scheme="https://qingyu.ren/tags/rails/"/>
+      <category term="rails" scheme="qingyu.ren/tags/rails/"/>
     
-      <category term="gem" scheme="https://qingyu.ren/tags/gem/"/>
+      <category term="gem" scheme="qingyu.ren/tags/gem/"/>
     
   </entry>
   
   <entry>
     <title>git常用命令</title>
-    <link href="https://qingyu.ren/2018/12/18/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-    <id>https://qingyu.ren/2018/12/18/git常用命令/</id>
+    <link href="qingyu.ren/2018/12/18/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>qingyu.ren/2018/12/18/git常用命令/</id>
     <published>2018-12-18T06:19:30.000Z</published>
     <updated>2018-12-18T06:41:51.000Z</updated>
     
@@ -108,14 +108,14 @@
     </summary>
     
     
-      <category term="Git" scheme="https://qingyu.ren/tags/Git/"/>
+      <category term="Git" scheme="qingyu.ren/tags/Git/"/>
     
   </entry>
   
   <entry>
     <title>SQL分类统计</title>
-    <link href="https://qingyu.ren/2018/11/21/SQL%E5%88%86%E7%B1%BB%E7%BB%9F%E8%AE%A1/"/>
-    <id>https://qingyu.ren/2018/11/21/SQL分类统计/</id>
+    <link href="qingyu.ren/2018/11/21/SQL%E5%88%86%E7%B1%BB%E7%BB%9F%E8%AE%A1/"/>
+    <id>qingyu.ren/2018/11/21/SQL分类统计/</id>
     <published>2018-11-21T03:21:07.000Z</published>
     <updated>2018-11-21T03:23:10.000Z</updated>
     
@@ -140,18 +140,18 @@
     </summary>
     
     
-      <category term="ruby" scheme="https://qingyu.ren/tags/ruby/"/>
+      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
     
-      <category term="rails" scheme="https://qingyu.ren/tags/rails/"/>
+      <category term="rails" scheme="qingyu.ren/tags/rails/"/>
     
-      <category term="SQL" scheme="https://qingyu.ren/tags/SQL/"/>
+      <category term="SQL" scheme="qingyu.ren/tags/SQL/"/>
     
   </entry>
   
   <entry>
     <title>实现一个ftp连接池</title>
-    <link href="https://qingyu.ren/2018/09/29/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAftp%E8%BF%9E%E6%8E%A5%E6%B1%A0/"/>
-    <id>https://qingyu.ren/2018/09/29/实现一个ftp连接池/</id>
+    <link href="qingyu.ren/2018/09/29/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAftp%E8%BF%9E%E6%8E%A5%E6%B1%A0/"/>
+    <id>qingyu.ren/2018/09/29/实现一个ftp连接池/</id>
     <published>2018-09-29T04:14:29.000Z</published>
     <updated>2018-09-29T07:05:51.000Z</updated>
     
@@ -181,16 +181,16 @@
     </summary>
     
     
-      <category term="ruby" scheme="https://qingyu.ren/tags/ruby/"/>
+      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
     
-      <category term="FTP" scheme="https://qingyu.ren/tags/FTP/"/>
+      <category term="FTP" scheme="qingyu.ren/tags/FTP/"/>
     
   </entry>
   
   <entry>
     <title>rails在线视频播放</title>
-    <link href="https://qingyu.ren/2018/04/26/rails%E5%9C%A8%E7%BA%BF%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/"/>
-    <id>https://qingyu.ren/2018/04/26/rails在线视频播放/</id>
+    <link href="qingyu.ren/2018/04/26/rails%E5%9C%A8%E7%BA%BF%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/"/>
+    <id>qingyu.ren/2018/04/26/rails在线视频播放/</id>
     <published>2018-04-26T08:22:04.000Z</published>
     <updated>2018-04-26T08:26:31.000Z</updated>
     
@@ -216,18 +216,18 @@
     </summary>
     
     
-      <category term="ruby" scheme="https://qingyu.ren/tags/ruby/"/>
+      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
     
-      <category term="rails" scheme="https://qingyu.ren/tags/rails/"/>
+      <category term="rails" scheme="qingyu.ren/tags/rails/"/>
     
-      <category term="Dplayer" scheme="https://qingyu.ren/tags/Dplayer/"/>
+      <category term="Dplayer" scheme="qingyu.ren/tags/Dplayer/"/>
     
   </entry>
   
   <entry>
     <title>实现拖拽排序</title>
-    <link href="https://qingyu.ren/2018/04/24/%E5%AE%9E%E7%8E%B0%E6%8B%96%E6%8B%BD%E6%8E%92%E5%BA%8F/"/>
-    <id>https://qingyu.ren/2018/04/24/实现拖拽排序/</id>
+    <link href="qingyu.ren/2018/04/24/%E5%AE%9E%E7%8E%B0%E6%8B%96%E6%8B%BD%E6%8E%92%E5%BA%8F/"/>
+    <id>qingyu.ren/2018/04/24/实现拖拽排序/</id>
     <published>2018-04-24T07:16:20.000Z</published>
     <updated>2018-04-26T08:27:53.000Z</updated>
     
@@ -279,20 +279,20 @@
     </summary>
     
     
-      <category term="rails" scheme="https://qingyu.ren/tags/rails/"/>
+      <category term="rails" scheme="qingyu.ren/tags/rails/"/>
     
-      <category term="jquery" scheme="https://qingyu.ren/tags/jquery/"/>
+      <category term="jquery" scheme="qingyu.ren/tags/jquery/"/>
     
-      <category term="jquery-ui" scheme="https://qingyu.ren/tags/jquery-ui/"/>
+      <category term="jquery-ui" scheme="qingyu.ren/tags/jquery-ui/"/>
     
-      <category term="sortable" scheme="https://qingyu.ren/tags/sortable/"/>
+      <category term="sortable" scheme="qingyu.ren/tags/sortable/"/>
     
   </entry>
   
   <entry>
     <title>rails项目生成二维码</title>
-    <link href="https://qingyu.ren/2018/01/19/rails%E9%A1%B9%E7%9B%AE%E7%94%9F%E6%88%90%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
-    <id>https://qingyu.ren/2018/01/19/rails项目生成二维码/</id>
+    <link href="qingyu.ren/2018/01/19/rails%E9%A1%B9%E7%9B%AE%E7%94%9F%E6%88%90%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
+    <id>qingyu.ren/2018/01/19/rails项目生成二维码/</id>
     <published>2018-01-19T07:29:34.000Z</published>
     <updated>2018-01-19T07:40:06.000Z</updated>
     
@@ -310,18 +310,18 @@
     </summary>
     
     
-      <category term="ruby" scheme="https://qingyu.ren/tags/ruby/"/>
+      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
     
-      <category term="rails" scheme="https://qingyu.ren/tags/rails/"/>
+      <category term="rails" scheme="qingyu.ren/tags/rails/"/>
     
-      <category term="二维码" scheme="https://qingyu.ren/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
+      <category term="二维码" scheme="qingyu.ren/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
     
   </entry>
   
   <entry>
     <title>rails导出电子表格</title>
-    <link href="https://qingyu.ren/2018/01/10/rails%E5%AF%BC%E5%87%BA%E7%94%B5%E5%AD%90%E8%A1%A8%E6%A0%BC/"/>
-    <id>https://qingyu.ren/2018/01/10/rails导出电子表格/</id>
+    <link href="qingyu.ren/2018/01/10/rails%E5%AF%BC%E5%87%BA%E7%94%B5%E5%AD%90%E8%A1%A8%E6%A0%BC/"/>
+    <id>qingyu.ren/2018/01/10/rails导出电子表格/</id>
     <published>2018-01-10T07:05:24.000Z</published>
     <updated>2018-12-20T01:58:16.000Z</updated>
     
@@ -340,18 +340,18 @@
     </summary>
     
     
-      <category term="ruby" scheme="https://qingyu.ren/tags/ruby/"/>
+      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
     
-      <category term="rails" scheme="https://qingyu.ren/tags/rails/"/>
+      <category term="rails" scheme="qingyu.ren/tags/rails/"/>
     
-      <category term="excel" scheme="https://qingyu.ren/tags/excel/"/>
+      <category term="excel" scheme="qingyu.ren/tags/excel/"/>
     
   </entry>
   
   <entry>
     <title>ruby笔记（二）</title>
-    <link href="https://qingyu.ren/2017/11/20/ruby%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>https://qingyu.ren/2017/11/20/ruby笔记（二）/</id>
+    <link href="qingyu.ren/2017/11/20/ruby%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>qingyu.ren/2017/11/20/ruby笔记（二）/</id>
     <published>2017-11-20T03:20:36.000Z</published>
     <updated>2017-11-21T03:34:45.000Z</updated>
     
@@ -397,16 +397,16 @@
     </summary>
     
     
-      <category term="ruby" scheme="https://qingyu.ren/tags/ruby/"/>
+      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
     
-      <category term="rails" scheme="https://qingyu.ren/tags/rails/"/>
+      <category term="rails" scheme="qingyu.ren/tags/rails/"/>
     
   </entry>
   
   <entry>
     <title>ruby笔记（一）</title>
-    <link href="https://qingyu.ren/2017/11/14/ruby%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>https://qingyu.ren/2017/11/14/ruby笔记（一）/</id>
+    <link href="qingyu.ren/2017/11/14/ruby%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>qingyu.ren/2017/11/14/ruby笔记（一）/</id>
     <published>2017-11-14T03:48:30.000Z</published>
     <updated>2017-12-07T07:16:40.000Z</updated>
     
@@ -449,16 +449,16 @@
     </summary>
     
     
-      <category term="ruby" scheme="https://qingyu.ren/tags/ruby/"/>
+      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
     
-      <category term="rails" scheme="https://qingyu.ren/tags/rails/"/>
+      <category term="rails" scheme="qingyu.ren/tags/rails/"/>
     
   </entry>
   
   <entry>
     <title>提问的智慧</title>
-    <link href="https://qingyu.ren/2017/10/31/%E6%8F%90%E9%97%AE%E7%9A%84%E6%99%BA%E6%85%A7/"/>
-    <id>https://qingyu.ren/2017/10/31/提问的智慧/</id>
+    <link href="qingyu.ren/2017/10/31/%E6%8F%90%E9%97%AE%E7%9A%84%E6%99%BA%E6%85%A7/"/>
+    <id>qingyu.ren/2017/10/31/提问的智慧/</id>
     <published>2017-10-31T03:12:12.000Z</published>
     <updated>2018-01-10T07:06:47.000Z</updated>
     
@@ -484,14 +484,14 @@
     </summary>
     
     
-      <category term="ruby" scheme="https://qingyu.ren/tags/ruby/"/>
+      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
     
   </entry>
   
   <entry>
     <title>利用githooks让博客实现自动部署</title>
-    <link href="https://qingyu.ren/2017/10/27/%E5%88%A9%E7%94%A8githooks%E8%AE%A9%E5%8D%9A%E5%AE%A2%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/"/>
-    <id>https://qingyu.ren/2017/10/27/利用githooks让博客实现自动部署/</id>
+    <link href="qingyu.ren/2017/10/27/%E5%88%A9%E7%94%A8githooks%E8%AE%A9%E5%8D%9A%E5%AE%A2%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/"/>
+    <id>qingyu.ren/2017/10/27/利用githooks让博客实现自动部署/</id>
     <published>2017-10-27T08:00:02.000Z</published>
     <updated>2018-04-24T07:19:51.000Z</updated>
     
@@ -515,16 +515,16 @@
     </summary>
     
     
-      <category term="nginx" scheme="https://qingyu.ren/tags/nginx/"/>
+      <category term="nginx" scheme="qingyu.ren/tags/nginx/"/>
     
-      <category term="git" scheme="https://qingyu.ren/tags/git/"/>
+      <category term="git" scheme="qingyu.ren/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>为服务器安装中文字体</title>
-    <link href="https://qingyu.ren/2017/10/26/%E4%B8%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E5%AD%97%E4%BD%93/"/>
-    <id>https://qingyu.ren/2017/10/26/为服务器安装中文字体/</id>
+    <link href="qingyu.ren/2017/10/26/%E4%B8%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E5%AD%97%E4%BD%93/"/>
+    <id>qingyu.ren/2017/10/26/为服务器安装中文字体/</id>
     <published>2017-10-26T07:54:31.000Z</published>
     <updated>2017-11-20T03:35:46.000Z</updated>
     
@@ -540,14 +540,14 @@
     </summary>
     
     
-      <category term="centos" scheme="https://qingyu.ren/tags/centos/"/>
+      <category term="centos" scheme="qingyu.ren/tags/centos/"/>
     
   </entry>
   
   <entry>
     <title>为rails 项目搭建elasticsearch服务</title>
-    <link href="https://qingyu.ren/2017/09/06/%E4%B8%BArails-%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BAelasticsearch%E6%9C%8D%E5%8A%A1/"/>
-    <id>https://qingyu.ren/2017/09/06/为rails-项目搭建elasticsearch服务/</id>
+    <link href="qingyu.ren/2017/09/06/%E4%B8%BArails-%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BAelasticsearch%E6%9C%8D%E5%8A%A1/"/>
+    <id>qingyu.ren/2017/09/06/为rails-项目搭建elasticsearch服务/</id>
     <published>2017-09-06T14:11:57.000Z</published>
     <updated>2018-01-16T09:28:19.000Z</updated>
     
@@ -582,18 +582,18 @@
     </summary>
     
     
-      <category term="ruby" scheme="https://qingyu.ren/tags/ruby/"/>
+      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
     
-      <category term="rails" scheme="https://qingyu.ren/tags/rails/"/>
+      <category term="rails" scheme="qingyu.ren/tags/rails/"/>
     
-      <category term="elasticsearch" scheme="https://qingyu.ren/tags/elasticsearch/"/>
+      <category term="elasticsearch" scheme="qingyu.ren/tags/elasticsearch/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://qingyu.ren/2017/08/31/hello-world/"/>
-    <id>https://qingyu.ren/2017/08/31/hello-world/</id>
+    <link href="qingyu.ren/2017/08/31/hello-world/"/>
+    <id>qingyu.ren/2017/08/31/hello-world/</id>
     <published>2017-08-31T05:32:23.000Z</published>
     <updated>2017-08-31T05:32:23.000Z</updated>
     
@@ -620,8 +620,8 @@
   
   <entry>
     <title>shell</title>
-    <link href="https://qingyu.ren/2017/08/31/shell/"/>
-    <id>https://qingyu.ren/2017/08/31/shell/</id>
+    <link href="qingyu.ren/2017/08/31/shell/"/>
+    <id>qingyu.ren/2017/08/31/shell/</id>
     <published>2017-08-31T03:35:41.000Z</published>
     <updated>2017-11-20T03:41:31.000Z</updated>
     
@@ -652,16 +652,16 @@
     </summary>
     
     
-      <category term="centos" scheme="https://qingyu.ren/tags/centos/"/>
+      <category term="centos" scheme="qingyu.ren/tags/centos/"/>
     
-      <category term="shell" scheme="https://qingyu.ren/tags/shell/"/>
+      <category term="shell" scheme="qingyu.ren/tags/shell/"/>
     
   </entry>
   
   <entry>
     <title>rails-mailer</title>
-    <link href="https://qingyu.ren/2017/08/31/reila-mailer/"/>
-    <id>https://qingyu.ren/2017/08/31/reila-mailer/</id>
+    <link href="qingyu.ren/2017/08/31/reila-mailer/"/>
+    <id>qingyu.ren/2017/08/31/reila-mailer/</id>
     <published>2017-08-31T03:11:38.000Z</published>
     <updated>2017-11-20T03:43:51.000Z</updated>
     
@@ -694,9 +694,9 @@
     </summary>
     
     
-      <category term="ruby" scheme="https://qingyu.ren/tags/ruby/"/>
+      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
     
-      <category term="rails" scheme="https://qingyu.ren/tags/rails/"/>
+      <category term="rails" scheme="qingyu.ren/tags/rails/"/>
     
   </entry>
   
