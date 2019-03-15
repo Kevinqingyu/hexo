@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Mikasa·Ackerman</title>
   
-  <link href="/atom.xml" rel="self"/>
+  <link href="/Mikasa-Ackerman.github.i/atom.xml" rel="self"/>
   
   <link href="http://www.qingyu.ren/"/>
   <updated>2019-01-18T06:16:23.000Z</updated>
