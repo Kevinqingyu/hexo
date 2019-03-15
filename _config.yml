@@ -1,8 +1,0 @@
-language: zh-CN
-
-theme: jekyll-theme-cayman
-
-deploy:
-  type: git
-  repo: git@github.com:Kevinqingyu/Mikasa-Ackerman.github.io.git
-  branch: gh-pages
