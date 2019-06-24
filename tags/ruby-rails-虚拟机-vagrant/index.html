@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ruby,rails,rabbitmq,sneakers,bunny," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -89,20 +89,16 @@
 
 
 
-<meta name="description" content="背景">
-<meta name="keywords" content="ruby,rails,rabbitmq,sneakers,bunny">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Rails项目搭建rabbitmq消息中间件">
-<meta property="og:url" content="qingyu.ren/2019/01/18/Rails项目搭建rabbitmq消息中间件/index.html">
+<meta name="description" content="任清宇">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mikasa·Ackerman">
+<meta property="og:url" content="qingyu.ren/tags/ruby-rails-虚拟机-vagrant/index.html">
 <meta property="og:site_name" content="Mikasa·Ackerman">
-<meta property="og:description" content="背景">
+<meta property="og:description" content="任清宇">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://rails365.oss-cn-shenzhen.aliyuncs.com/uploads/photo/image/1111/2019/243dcedfb3893c477a585710f2918e86.jpg">
-<meta property="og:updated_time" content="2019-01-18T06:16:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rails项目搭建rabbitmq消息中间件">
-<meta name="twitter:description" content="背景">
-<meta name="twitter:image" content="https://rails365.oss-cn-shenzhen.aliyuncs.com/uploads/photo/image/1111/2019/243dcedfb3893c477a585710f2918e86.jpg">
+<meta name="twitter:title" content="Mikasa·Ackerman">
+<meta name="twitter:description" content="任清宇">
 
 
 
@@ -130,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="qingyu.ren/2019/01/18/Rails项目搭建rabbitmq消息中间件/"/>
+  <link rel="canonical" href="qingyu.ren/tags/ruby-rails-虚拟机-vagrant/"/>
 
 
 
 
 
-  <title> Rails项目搭建rabbitmq消息中间件 | Mikasa·Ackerman </title>
+  <title> 标签: ruby rails 虚拟机 vagrant | Mikasa·Ackerman </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -161,7 +157,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -287,177 +283,46 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="qingyu.ren/2019/01/18/Rails项目搭建rabbitmq消息中间件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://i1.hdslb.com/bfs/face/be815f37d1103e80183687542b9eb8892a430571.jpg@150w_150h.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mikasa·Ackerman">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Rails项目搭建rabbitmq消息中间件
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-18T14:01:27+08:00">
-                2019-01-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p><img src="https://rails365.oss-cn-shenzhen.aliyuncs.com/uploads/photo/image/1111/2019/243dcedfb3893c477a585710f2918e86.jpg" alt=""><br><a id="more"></a></p>
-<h3 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h3><p>首先 安装 rabbitmq 到本机<br>Mac下 执行<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install rabbitmq</div></pre></td></tr></table></figure></p>
-<p>启动<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rabbitmq-server</div></pre></td></tr></table></figure></p>
-<p>默认可以访问<a href="http://localhost:15672/#/" target="_blank" rel="external">http://localhost:15672/#/</a> web服务界面 会有默认的用户名guest和密码guest</p>
-<p>如果想要使用其他用户 可以创建和修改并赋予权限</p>
-<p>在本地项目启动 redis-server 启动 sidekiq 这里sidekiq 只是作为队列使用 有大量消息时 使用队列发送到mq</p>
-<p>在生产消息的项目中安装gem  bunny 他是一个生产者可以帮你使用mq并创建信道和发送消息</p>
-<p>在需要消费的项目中安装 sneaker 他是一个消费者 可以接收</p>
-<p>rabbitmq的消费队列和exchange对应关系需在web 上手动操作<br>也可以在创建消费队列的时候配置</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">from_queue <span class="string">'q.message.service.user_message.create'</span>,</div><div class="line">            <span class="symbol">durable:</span> <span class="literal">true</span>,</div><div class="line">            <span class="symbol">exchange:</span> <span class="string">'ex.message_service.user_message'</span>,</div><div class="line">            <span class="symbol">exchange_type:</span> <span class="string">'topic'</span>,</div><div class="line">            <span class="symbol">routing_key:</span> <span class="string">'message.create'</span></div></pre></td></tr></table></figure>
-<p>这里配置好队列于exchange的关系</p>
-<p>关于bunny和sneakers 的使用<a href="https://ruby-china.org/topics/35230" target="_blank" rel="external">这里</a>有教程</p>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attr">rabbitmq:</span></div><div class="line"><span class="attr">   amqp:</span> <span class="string">'amqp://staging:rabbitdev@localhost:5672'</span>  <span class="comment"># 用户名:密码@本地的服务地址</span></div><div class="line"><span class="attr">   vhost:</span> <span class="string">'msgbus.staging.yiqiyin.com'</span> <span class="comment">#  vhost 虚拟主机名称</span></div><div class="line"><span class="attr">   timeout_job_after:</span> <span class="number">180</span> <span class="comment"># 3.minutes 超时时间</span></div><div class="line"><span class="attr">   daemonize:</span> <span class="literal">true</span>   <span class="comment"># 守护进程</span></div></pre></td></tr></table></figure>
-<p>Sneakers worker 有修改的话每次都要重新启动一次 sneakers 服务</p>
-<p>项目下 执行<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rake sneakers:run</div></pre></td></tr></table></figure></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>首先消息队列和中间件可以将很多不需要及时同步的操作在队列中执行，降低服务器等待时间和负载，并且微服务的模块保证自己模块做更简单的事情解耦，并且可以给对应的站点添加还是不添加此功能提供了很多的可选择性，比如注册成功邮件，激活邮箱邮件，发放优惠券等操作，<br>同时又要注意不要为了微服务而做微服务，还要考虑这样的架构如果在某一步消息丢失了或者执行失败了如何处理，sneakers有对应的异常处理机制，比如说有消息一直消费失败在重试一定次数后可以选择丢入dieline，等待后续查看失败原因等等。</p>
-
-      
+  <div id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        ruby rails 虚拟机 vagrant
+        <small>标签</small>
+      </h2>
     </div>
 
-    <div>
+    
       
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-
-      
-    </div>
-
-    <div>
-      
+            <a class="post-title-link" href="/2019/06/24/mac下使用虚拟机开发/" itemprop="url">
+              
+                <span itemprop="name">mac下使用虚拟机开发</span>
+              
+            </a>
         
+      </h1>
 
-      
-    </div>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2019-06-24T16:22:55+08:00"
+              content="2019-06-24" >
+          06-24
+        </time>
+      </div>
 
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/ruby/" rel="tag"># ruby</a>
-          
-            <a href="/tags/rails/" rel="tag"># rails</a>
-          
-            <a href="/tags/rabbitmq/" rel="tag"># rabbitmq</a>
-          
-            <a href="/tags/sneakers/" rel="tag"># sneakers</a>
-          
-            <a href="/tags/bunny/" rel="tag"># bunny</a>
-          
-        </div>
-      
-
-      
-        
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/12/18/常用gem整理/" rel="next" title="常用gem整理">
-                <i class="fa fa-chevron-left"></i> 常用gem整理
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/24/2019年黑苹果开发机配置/" rel="prev" title="2019年黑苹果开发机配置">
-                2019年黑苹果开发机配置 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
+    
   </div>
+
+  
 
           
           </div>
@@ -465,10 +330,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -488,17 +349,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://i1.hdslb.com/bfs/face/be815f37d1103e80183687542b9eb8892a430571.jpg@150w_150h.jpg"
@@ -556,22 +408,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#起步"><span class="nav-number">2.</span> <span class="nav-text">起步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">3.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -684,10 +520,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
 
   
 
