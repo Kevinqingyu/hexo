@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="qingyu.ren/"/>
-  <updated>2019-06-24T10:26:28.000Z</updated>
+  <updated>2019-06-24T10:27:46.000Z</updated>
   <id>qingyu.ren/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
@@ -15,11 +15,11 @@
     <link href="qingyu.ren/2019/06/24/mac%E4%B8%8B%E4%BD%BF%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%BC%80%E5%8F%91/"/>
     <id>qingyu.ren/2019/06/24/mac下使用虚拟机开发/</id>
     <published>2019-06-24T08:22:55.000Z</published>
-    <updated>2019-06-24T10:26:28.000Z</updated>
+    <updated>2019-06-24T10:27:46.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>再过去的几年间一直使用MacBookPro(2015款13寸最低配，2013款15寸最高配)笔记本开发，使用了大概4年多的时间，非常的熟悉mac下开发。由于性能问题在换到黑苹果之后装载了最新的操作系统，电脑上可能会装有十几个ruby项目以及一部分的vue项目等等，在mac最新系统(10.14.4)下对老版本的ruby和gems的支持有些许问题给我带来了很大困扰，不同的环境交错复杂时间长了很难维护，遂产生了使用虚拟机或者docker开发 的想法。</p>
 <h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>这篇记录不讨论mac 虚拟机 和docker开发 客观的优缺点，而是带着主观来说优缺点可能某些优点在我使用就不是优点了(或者说不适合我)，所以我希望能达到几乎和mac下开发的体验保持一致，速度快隔离性好，之前考虑过docker由于docker偏向于一个项目一个docker镜像这对我来说是不可接受的，因为我项目很多镜像搞太多还单独独立于自己的容器中对我来说不方便，最后经由同事推荐使用Vagrant + VirtualBox(因为免费) + ubuntu18.04镜像。</p>
-<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>Vagrant 支撑 VirtualBox、HyperV、VMWare 等虚拟机软件，<br>我安装的是 VirtualBox(因为其他的要么新系统装不上要么收费比如VMWare)</p>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>Vagrant 支持 VirtualBox、HyperV、VMWare 等虚拟机软件，<br>我安装的是 VirtualBox(因为其他的要么新系统装不上要么收费比如VMWare)</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>下载VirtualBox 安装这个比较简单就和装普通的软件一样，下载安装包安装也无需配置甚至都不用打开。</p>
 <p>然后安装Vagrant</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install vagrant</div></pre></td></tr></table></figure>
