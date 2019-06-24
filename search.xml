@@ -41,7 +41,7 @@
 <p>虚拟机这里基本就是这些内容了，但是如果使用ruby on rails开发web项目那么还有几点稍微补充一下，我这里使用rvm + ruby 开发，其他都是比较正常的按照ruby-china 的教程你就可以搭建出开发环境这里掠过，要说的一点事首先rails console 的中文问题</p>
 <p>需要使用一条命令解决</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export LC_CTYPE=en_US.UTF-8</div></pre></td></tr></table></figure>
-<p>然后是rails开发在修改了controller代码时 rails(spring)无法获取到代码的修改事件从而导致你需要重启项目才能重新加载变更内容(view不分不会影响)</p>
+<p>然后是rails开发在修改了controller代码时 rails(spring)无法获取到代码的修改事件从而导致你需要重启项目才能重新加载变更内容(view部分不受影响)</p>
 <p>rails4 项目可以采用安装插件的方式解决<br>在vagrant共享文件夹下执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vagrant plugin install vagrant-vbguest</div><div class="line">vagrant plugin install vagrant-librarian-chef-nochef</div></pre></td></tr></table></figure>
 <p>安装好插件之后 执行</p>
