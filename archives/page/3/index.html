@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ruby,rails," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -89,18 +89,16 @@
 
 
 
-<meta name="description" content="app/mailer 文件夹创建mailer.rb文件">
-<meta name="keywords" content="ruby,rails">
-<meta property="og:type" content="article">
-<meta property="og:title" content="rails-mailer">
-<meta property="og:url" content="qingyu.ren/2017/08/31/reila-mailer/index.html">
+<meta name="description" content="任清宇">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mikasa·Ackerman">
+<meta property="og:url" content="qingyu.ren/archives/page/3/index.html">
 <meta property="og:site_name" content="Mikasa·Ackerman">
-<meta property="og:description" content="app/mailer 文件夹创建mailer.rb文件">
+<meta property="og:description" content="任清宇">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-20T03:43:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="rails-mailer">
-<meta name="twitter:description" content="app/mailer 文件夹创建mailer.rb文件">
+<meta name="twitter:title" content="Mikasa·Ackerman">
+<meta name="twitter:description" content="任清宇">
 
 
 
@@ -128,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="qingyu.ren/2017/08/31/reila-mailer/"/>
+  <link rel="canonical" href="qingyu.ren/archives/page/3/"/>
 
 
 
 
 
-  <title> rails-mailer | Mikasa·Ackerman </title>
+  <title> 归档 | Mikasa·Ackerman </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -159,7 +157,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  page-archive  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -285,169 +283,70 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  <section id="posts" class="posts-collapse">
+    <span class="archive-move-on"></span>
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="qingyu.ren/2017/08/31/reila-mailer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://i1.hdslb.com/bfs/face/be815f37d1103e80183687542b9eb8892a430571.jpg@150w_150h.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mikasa·Ackerman">
+    <span class="archive-page-counter">
+      
+      
+      
+        
+      
+      嗯..! 目前共计 21 篇日志。 继续努力。
     </span>
 
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                rails-mailer
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-31T11:11:38+08:00">
-                2017-08-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
 
       
       
-
       
-        <blockquote>
-<p>app/mailer 文件夹创建mailer.rb文件</p>
-</blockquote>
-<a id="more"></a>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserMailer</span> &lt; ActionMailer::Base</span></div><div class="line">  default <span class="symbol">:from</span> =&gt; <span class="string">"测试邮件 &lt;此处填写发件邮箱&gt;"</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">send_email</span><span class="params">(email, subject)</span></span></div><div class="line">     mail(<span class="symbol">to:</span> email, <span class="symbol">subject:</span> subject)</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>config/intializers 创建setup_mail.rb</p>
-</blockquote>
-<p>发送邮件服务器的配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"># -*- encoding : utf-8 -*-</div><div class="line"></div><div class="line">ActionMailer::Base.smtp_settings = &#123;</div><div class="line">    :address              =&gt; Settings.email.address,</div><div class="line">    :port                 =&gt; Settings.email.port,</div><div class="line">    :domain               =&gt; Settings.email.domain,</div><div class="line">    :user_name            =&gt; Settings.email.user_name,</div><div class="line">    :password             =&gt; Settings.email.password,</div><div class="line">    :authentication       =&gt; Settings.email.authentication,</div><div class="line">    :ssl =&gt; true,</div><div class="line">    :enable_starttls_auto =&gt; true</div><div class="line">&#125;</div><div class="line"></div><div class="line">ActionMailer::Base.default_url_options = &#123; host: Setting.host &#125;</div><div class="line"></div><div class="line"># development</div><div class="line"># ActionMailer::Base.default_url_options[:host] = &quot;localhost:3000&quot;</div><div class="line"># ActionMailer::Base.delivery_method = :letter_opener</div></pre></td></tr></table></figure>
-<blockquote>
-<p>settings.yml 添加配置</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">email:</div><div class="line">    address: &quot;smtp.qq.com&quot;</div><div class="line">    port: 25</div><div class="line">    domain: &quot;sinopr.org&quot;</div><div class="line">    user_name: &quot;登录名&quot;</div><div class="line">    password: &quot;密码&quot;</div><div class="line">    authentication: &quot;login&quot;</div><div class="line">    host: &apos;路径&apos;</div><div class="line">    mail_from: &apos;xxx@qq.com&apos;</div></pre></td></tr></table></figure>
-<p>如果是smtp 服务要保证 邮箱开启了此类服务，部分邮箱开启此类服务后 会给予授权码，如果有授权码，在password 后要填写此授权码 。</p>
-<blockquote>
-<p>app/user_mailer 下创建 send_email.html.erb, 里面写入想要发送的内容。</p>
-</blockquote>
 
-      
-    </div>
-
-    <div>
       
         
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/ruby/" rel="tag"># ruby</a>
-          
-            <a href="/tags/rails/" rel="tag"># rails</a>
-          
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
         </div>
       
+      
 
       
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-      
+            <a class="post-title-link" href="/2017/08/31/reila-mailer/" itemprop="url">
+              
+                <span itemprop="name">rails-mailer</span>
+              
+            </a>
+        
+      </h1>
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-08-31T11:11:38+08:00"
+              content="2017-08-31" >
+          08-31
+        </time>
+      </div>
 
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/31/shell/" rel="prev" title="shell">
-                shell <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+    
+
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/archives/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+
 
           
           </div>
@@ -455,10 +354,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -649,9 +544,11 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
 
 
   

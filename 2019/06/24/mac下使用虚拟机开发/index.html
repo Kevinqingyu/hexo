@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ruby,rails," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -89,18 +89,17 @@
 
 
 
-<meta name="description" content="app/mailer 文件夹创建mailer.rb文件">
-<meta name="keywords" content="ruby,rails">
+<meta name="description" content="背景再过去的几年间一直使用MacBookPro(2015款13寸最低配，2013款15寸最高配)笔记本开发，使用了大概4年多的时间，非常的熟悉mac下开发。在换到黑苹果之后装载了最新的操作系统，电脑上可能会装有10几个ruby项目以及一部分的vue项目等等，在mac最细系统下对老版本的ruby和gems的支持有些许问题给我带来了很大困扰，不同的环境交错复杂时间长了很难维护，遂产生了使用虚拟机或者d">
 <meta property="og:type" content="article">
-<meta property="og:title" content="rails-mailer">
-<meta property="og:url" content="qingyu.ren/2017/08/31/reila-mailer/index.html">
+<meta property="og:title" content="mac下使用虚拟机开发">
+<meta property="og:url" content="qingyu.ren/2019/06/24/mac下使用虚拟机开发/index.html">
 <meta property="og:site_name" content="Mikasa·Ackerman">
-<meta property="og:description" content="app/mailer 文件夹创建mailer.rb文件">
+<meta property="og:description" content="背景再过去的几年间一直使用MacBookPro(2015款13寸最低配，2013款15寸最高配)笔记本开发，使用了大概4年多的时间，非常的熟悉mac下开发。在换到黑苹果之后装载了最新的操作系统，电脑上可能会装有10几个ruby项目以及一部分的vue项目等等，在mac最细系统下对老版本的ruby和gems的支持有些许问题给我带来了很大困扰，不同的环境交错复杂时间长了很难维护，遂产生了使用虚拟机或者d">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-20T03:43:51.000Z">
+<meta property="og:updated_time" content="2019-06-24T10:23:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="rails-mailer">
-<meta name="twitter:description" content="app/mailer 文件夹创建mailer.rb文件">
+<meta name="twitter:title" content="mac下使用虚拟机开发">
+<meta name="twitter:description" content="背景再过去的几年间一直使用MacBookPro(2015款13寸最低配，2013款15寸最高配)笔记本开发，使用了大概4年多的时间，非常的熟悉mac下开发。在换到黑苹果之后装载了最新的操作系统，电脑上可能会装有10几个ruby项目以及一部分的vue项目等等，在mac最细系统下对老版本的ruby和gems的支持有些许问题给我带来了很大困扰，不同的环境交错复杂时间长了很难维护，遂产生了使用虚拟机或者d">
 
 
 
@@ -128,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="qingyu.ren/2017/08/31/reila-mailer/"/>
+  <link rel="canonical" href="qingyu.ren/2019/06/24/mac下使用虚拟机开发/"/>
 
 
 
 
 
-  <title> rails-mailer | Mikasa·Ackerman </title>
+  <title> mac下使用虚拟机开发 | Mikasa·Ackerman </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -295,7 +294,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="qingyu.ren/2017/08/31/reila-mailer/">
+    <link itemprop="mainEntityOfPage" href="qingyu.ren/2019/06/24/mac下使用虚拟机开发/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -316,7 +315,7 @@
             
             
               
-                rails-mailer
+                mac下使用虚拟机开发
               
             
           </h1>
@@ -331,8 +330,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-31T11:11:38+08:00">
-                2017-08-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T16:22:55+08:00">
+                2019-06-24
               </time>
             
 
@@ -367,24 +366,48 @@
       
 
       
-        <blockquote>
-<p>app/mailer 文件夹创建mailer.rb文件</p>
-</blockquote>
-<a id="more"></a>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserMailer</span> &lt; ActionMailer::Base</span></div><div class="line">  default <span class="symbol">:from</span> =&gt; <span class="string">"测试邮件 &lt;此处填写发件邮箱&gt;"</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">send_email</span><span class="params">(email, subject)</span></span></div><div class="line">     mail(<span class="symbol">to:</span> email, <span class="symbol">subject:</span> subject)</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>config/intializers 创建setup_mail.rb</p>
-</blockquote>
-<p>发送邮件服务器的配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"># -*- encoding : utf-8 -*-</div><div class="line"></div><div class="line">ActionMailer::Base.smtp_settings = &#123;</div><div class="line">    :address              =&gt; Settings.email.address,</div><div class="line">    :port                 =&gt; Settings.email.port,</div><div class="line">    :domain               =&gt; Settings.email.domain,</div><div class="line">    :user_name            =&gt; Settings.email.user_name,</div><div class="line">    :password             =&gt; Settings.email.password,</div><div class="line">    :authentication       =&gt; Settings.email.authentication,</div><div class="line">    :ssl =&gt; true,</div><div class="line">    :enable_starttls_auto =&gt; true</div><div class="line">&#125;</div><div class="line"></div><div class="line">ActionMailer::Base.default_url_options = &#123; host: Setting.host &#125;</div><div class="line"></div><div class="line"># development</div><div class="line"># ActionMailer::Base.default_url_options[:host] = &quot;localhost:3000&quot;</div><div class="line"># ActionMailer::Base.delivery_method = :letter_opener</div></pre></td></tr></table></figure>
-<blockquote>
-<p>settings.yml 添加配置</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">email:</div><div class="line">    address: &quot;smtp.qq.com&quot;</div><div class="line">    port: 25</div><div class="line">    domain: &quot;sinopr.org&quot;</div><div class="line">    user_name: &quot;登录名&quot;</div><div class="line">    password: &quot;密码&quot;</div><div class="line">    authentication: &quot;login&quot;</div><div class="line">    host: &apos;路径&apos;</div><div class="line">    mail_from: &apos;xxx@qq.com&apos;</div></pre></td></tr></table></figure>
-<p>如果是smtp 服务要保证 邮箱开启了此类服务，部分邮箱开启此类服务后 会给予授权码，如果有授权码，在password 后要填写此授权码 。</p>
-<blockquote>
-<p>app/user_mailer 下创建 send_email.html.erb, 里面写入想要发送的内容。</p>
-</blockquote>
+        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>再过去的几年间一直使用MacBookPro(2015款13寸最低配，2013款15寸最高配)笔记本开发，使用了大概4年多的时间，非常的熟悉mac下开发。在换到黑苹果之后装载了最新的操作系统，电脑上可能会装有10几个ruby项目以及一部分的vue项目等等，在mac最细系统下对老版本的ruby和gems的支持有些许问题给我带来了很大困扰，不同的环境交错复杂时间长了很难维护，遂产生了使用虚拟机或者docker开发 的想法。</p>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>这篇记录不讨论mac 虚拟机 和docker开发 客观的优缺点，而是带着主观来说优缺点可能某些优点在我使用就不是优点了(或者说不适合我)，所以我希望能达到几乎和mac下开发的体验保持一致，速度快隔离性好，之前考虑过docker由于docker偏向于一个项目一个docker镜像这对我来说是不可接受的，因为我项目很多镜像搞太多还单独独立于自己的容器中对我来说不方便，最后经由同事推荐使用Vagrant + VirtualBox(因为免费) + ubuntu18.04镜像。</p>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>Vagrant 支撑 VirtualBox、HyperV、VMWare 等虚拟机软件，<br>我安装的是 VirtualBox(因为其他的要么新系统装不上要么收费比如VMWare)</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>下载VirtualBox 安装这个比较简单就和装普通的软件一样，下载安装包安装也无需配置甚至都不用打开。</p>
+<p>然后安装Vagrant</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install vagrant</div></pre></td></tr></table></figure>
+<p>安装好之后我们来安装ubuntu18.04 的服务器版本(体积小)<br><a href="http://www.vagrantbox.es/" target="_blank" rel="external">更多系统镜像点击这里</a><br>这个地址的镜像都比较老旧了所以这次我去官网查到了最新的镜像<br><a href="https://app.vagrantup.com/generic/boxes/ubuntu1804" target="_blank" rel="external">ubuntu18.04LTS</a></p>
+<p>为了方便管理虚拟机的开发环境 共享文件夹还有配置文件等等，我这里在mac 的home目录下新建了一个共享文件夹就叫<code>vagrant</code> home目录下执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir vagrant</div></pre></td></tr></table></figure></p>
+<p>创建好之后<code>cd</code>进到目录中创建虚拟机配置文件 <code>Vagrantfile</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> vagrant</div><div class="line">vim Vagrantfile</div></pre></td></tr></table></figure>
+<p>填入如下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">Vagrant.configure(2) do |config|</div><div class="line">  # 选择系统镜像</div><div class="line">  config.vm.box = &quot;generic/ubuntu1804&quot;</div><div class="line">  config.vm.box_check_update = false</div><div class="line">  # 时区设置</div><div class="line">  if Vagrant.has_plugin?(&quot;vagrant-timezone&quot;)</div><div class="line">    config.timezone.value = &quot;Asia/Shanghai&quot;</div><div class="line">  end</div><div class="line">  # 固定IP 的私有网络 外部不可访问</div><div class="line">  config.vm.network &quot;private_network&quot;, ip: &quot;192.168.50.4&quot;</div><div class="line">  # 这是对于虚拟机共享文件夹的配置</div><div class="line">  config.vm.synced_folder &quot;.&quot;, &quot;/vagrant&quot;, type: &quot;nfs&quot;, disabled: true</div><div class="line">  config.vm.synced_folder &quot;~/vagrant&quot;, &quot;/vagrant&quot;, type: &quot;nfs&quot;, mount_options: [&quot;nolock&quot;, &quot;vers=3&quot;, &quot;udp&quot;, &quot;noatime&quot;, &quot;actimeo=1&quot;]</div><div class="line"></div><div class="line">  # 虚拟机配置 内存 cpu 等</div><div class="line">  config.vm.provider &quot;virtualbox&quot; do |vb|</div><div class="line">    vb.memory = 2048</div><div class="line">    vb.cpus = 2</div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>保存退出</p>
+<p>这些配置都配置好之后就可以在vagrant文件夹下使用命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vagrant up</div></pre></td></tr></table></figure>
+<p>来启动虚拟机并会自动从网上下载ubuntu18.04的镜像<br>这个过程我们需要等待。</p>
+<p>启动好了之后可以通过ssh登录到虚拟机并且 可以额设置通过ssh key登录 就和一台普通的服务器是一样的</p>
+<p>也可以在mac写入alias</p>
+<p>在 <code>~/.zshrc</code>(如果是bash请加入 ~/.bashrc) 中加入<br><code>alias va=&#39;ssh vagrant@ubuntu.com&#39;</code><br>这样以后就可以快速的使用 <code>va</code> 命令进入虚拟机, 当你在虚拟机启动了某项目 让你访问 <code>0.0.0.0:3000</code>端口时 你可以通过之前的配置访问 <code>192.168.50.4:3000</code>来访问也可以通过修改<br><code>/etc/hosts</code></p>
+<p>加入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">192.168.50.4    ubuntu.com</div></pre></td></tr></table></figure>
+<p>这样你就可以在mac浏览器使用 <code>ubuntu.com:3000</code> 来访问虚拟机的 <code>0.0.0.0:3000</code>地址</p>
+<h3 id="虚拟机内部配置"><a href="#虚拟机内部配置" class="headerlink" title="虚拟机内部配置"></a>虚拟机内部配置</h3><p>我在mac上习惯了使用zsh + oh-my-zsh来工作，那么在ubuntu这里也是一样可以使用的甚至当时在虚拟机中使用了同样的样式之后你都分辨不出你是在虚拟机中或是在mac中，所以还是建议使用不同的主题这样一看主题你就知道你在什么位置了。</p>
+<p>在ubuntu中也是可以访问mac 的比如 现在mac 的网段就是<code>192.168.50.1</code> 也可以用同样的手法修改 ubuntu 的<br><code>etc/hosts</code> 将mac改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">192.168.50.4  mac.com</div></pre></td></tr></table></figure></p>
+<p>这样在ubuntu下跑的服务数据库连接可以使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">database:</div><div class="line">  name: root</div><div class="line">  password:</div><div class="line">  host: mac.com</div><div class="line">  port: 3306</div></pre></td></tr></table></figure></p>
+<p>这样的配置来连接mac下的数据库(前提是mac下的数据库先开启允许远端访问哦)</p>
+<p>然后剩下的就是在虚拟机这里搭建你所需要的开发环境，将代码文件夹放置于共享文件夹中，mac上使用你喜欢的编辑器编辑共享文件夹内的代码，而虚拟机负责运行起代码，mac来提交代码。</p>
+<h3 id="备份镜像"><a href="#备份镜像" class="headerlink" title="备份镜像"></a>备份镜像</h3><p>在你将开发环境和配置都搭建好之后可以将自己搭建好的环境作为一个镜像输出出来，以后自己新建另一个虚拟机或是分配给新来的开发伙伴直接使用免于重新搭建都是可以的。<br>使用命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vagrant package --output boxname.box</div></pre></td></tr></table></figure>
+<p>就可以将现在运行的环境打包为一个镜像</p>
+<p>如果下次想要使用可以使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vagrant add box box 名字 box地址</div></pre></td></tr></table></figure>
+<p>虚拟机这里基本就是这些内容了，但是如果使用ruby on rails开发web项目那么还有几点稍微补充一下，我这里使用rvm + ruby 开发，其他都是比较正常的按照ruby-china 的教程你就可以搭建出开发环境这里掠过，要说的一点事首先rails console 的中文问题</p>
+<p>需要使用一条命令解决</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export LC_CTYPE=en_US.UTF-8</div></pre></td></tr></table></figure>
+<p>然后是rails开发在修改了controller代码时 rails(spring)无法获取到代码的修改事件从而导致你需要重启项目才能重新加载变更内容(view不分不会影响)</p>
+<p>rails4 项目可以采用安装插件的方式解决<br>在vagrant共享文件夹下执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vagrant plugin install vagrant-vbguest</div><div class="line">vagrant plugin install vagrant-librarian-chef-nochef</div></pre></td></tr></table></figure>
+<p>安装好插件之后 执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vagrant reload</div></pre></td></tr></table></figure>
+<p>重启虚拟机</p>
+<p>但是这个方法亲测在rails 5.2中是无效的 不知道rails5其他版本是否也是无效，由于这个原因导致要么使用vim编程要么就开发的时候修改了控制器就要重启项目，如果真的是这样就已经和mac下体验差距过大了，还好现在vscode编辑器支持 remote-ssh编程，也就是说在mac下使用vscode编辑器并安装remote-ssh插件之后可以远程虚拟机中编辑代码，实测在连接项目后延迟几乎感觉不到(可能是由于就在本地的缘故)，几乎和本地开发体验一致，并且也保证了虚拟机的独立性从此算是虚拟机开发圆满成功。</p>
 
       
     </div>
@@ -406,14 +429,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/ruby/" rel="tag"># ruby</a>
-          
-            <a href="/tags/rails/" rel="tag"># rails</a>
-          
-        </div>
-      
 
       
         
@@ -423,15 +438,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/06/24/rails应用模板/" rel="next" title="rails应用模板">
+                <i class="fa fa-chevron-left"></i> rails应用模板
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/31/shell/" rel="prev" title="shell">
-                shell <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -478,8 +493,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://i1.hdslb.com/bfs/face/be815f37d1103e80183687542b9eb8892a430571.jpg@150w_150h.jpg"
@@ -537,6 +561,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考"><span class="nav-number">2.</span> <span class="nav-text">思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备"><span class="nav-number">3.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">4.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟机内部配置"><span class="nav-number">5.</span> <span class="nav-text">虚拟机内部配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份镜像"><span class="nav-number">6.</span> <span class="nav-text">备份镜像</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
