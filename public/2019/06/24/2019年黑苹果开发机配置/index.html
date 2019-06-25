@@ -1,0 +1,929 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="黑苹果,电脑配置," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mikasa·Ackerman" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="2019年6月24日更新前两天由于mac下配置开发环境有些问题，使用了一次恢复备份（在windwos下恢复成功了，由于SSD 恢复时间大概在10分钟以内60G左右资料），现在改用虚拟机开发了回头写一篇记录mac下虚拟机开发 docker下开发 mac下开发的有点和缺点。 2019年6月10日更新之前系统做好后淘宝技术告诉我电脑不要睡眠容易睡死，我一直睡眠使用没啥事，端午节假期睡了三天，我回去发现已">
+<meta name="keywords" content="黑苹果,电脑配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019年黑苹果开发机配置">
+<meta property="og:url" content="qingyu.ren/2019/06/24/2019年黑苹果开发机配置/index.html">
+<meta property="og:site_name" content="Mikasa·Ackerman">
+<meta property="og:description" content="2019年6月24日更新前两天由于mac下配置开发环境有些问题，使用了一次恢复备份（在windwos下恢复成功了，由于SSD 恢复时间大概在10分钟以内60G左右资料），现在改用虚拟机开发了回头写一篇记录mac下虚拟机开发 docker下开发 mac下开发的有点和缺点。 2019年6月10日更新之前系统做好后淘宝技术告诉我电脑不要睡眠容易睡死，我一直睡眠使用没啥事，端午节假期睡了三天，我回去发现已">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://rails365.oss-cn-shenzhen.aliyuncs.com/uploads/photo/image/1409/2019/d2b5ca33bd970f64a6301fa75ae2eb22.png">
+<meta property="og:image" content="https://rails365.oss-cn-shenzhen.aliyuncs.com/uploads/photo/image/1368/2019/6d15952ab07475b42f890b5f4e16198f.png">
+<meta property="og:updated_time" content="2019-06-24T08:12:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2019年黑苹果开发机配置">
+<meta name="twitter:description" content="2019年6月24日更新前两天由于mac下配置开发环境有些问题，使用了一次恢复备份（在windwos下恢复成功了，由于SSD 恢复时间大概在10分钟以内60G左右资料），现在改用虚拟机开发了回头写一篇记录mac下虚拟机开发 docker下开发 mac下开发的有点和缺点。 2019年6月10日更新之前系统做好后淘宝技术告诉我电脑不要睡眠容易睡死，我一直睡眠使用没啥事，端午节假期睡了三天，我回去发现已">
+<meta name="twitter:image" content="https://rails365.oss-cn-shenzhen.aliyuncs.com/uploads/photo/image/1409/2019/d2b5ca33bd970f64a6301fa75ae2eb22.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="qingyu.ren/2019/06/24/2019年黑苹果开发机配置/"/>
+
+
+
+
+
+  <title> 2019年黑苹果开发机配置 | Mikasa·Ackerman </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+
+    
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mikasa·Ackerman</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="qingyu.ren/2019/06/24/2019年黑苹果开发机配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i1.hdslb.com/bfs/face/be815f37d1103e80183687542b9eb8892a430571.jpg@150w_150h.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mikasa·Ackerman">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                2019年黑苹果开发机配置
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T16:08:26+08:00">
+                2019-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="2019年6月24日更新"><a href="#2019年6月24日更新" class="headerlink" title="2019年6月24日更新"></a>2019年6月24日更新</h3><p>前两天由于mac下配置开发环境有些问题，使用了一次恢复备份（在windwos下恢复成功了，由于SSD 恢复时间大概在10分钟以内60G左右资料），现在改用虚拟机开发了回头写一篇记录mac下虚拟机开发 docker下开发 mac下开发的有点和缺点。</p>
+<h3 id="2019年6月10日更新"><a href="#2019年6月10日更新" class="headerlink" title="2019年6月10日更新"></a>2019年6月10日更新</h3><p>之前系统做好后淘宝技术告诉我电脑不要睡眠容易睡死，我一直睡眠使用没啥事，端午节假期睡了三天，我回去发现已经重启了，然后引导可以进去但是黑果一进去就黑屏，自己在win上瞎捅咕还给bcd误删导致win也进不去了，但是引导还在。我重装了win后，通过引导能够进入黑果和win了，数据没有丢失，一切还是睡眠时的样子 万幸，毕竟如果数据丢失重装费时费力。所以还是别作死睡眠了，下班要么就让他一直在那开机，关显示器，要不就关机。</p>
+<h3 id="2019年5月8日更新"><a href="#2019年5月8日更新" class="headerlink" title="2019年5月8日更新"></a>2019年5月8日更新</h3><p>换了LG 4K IPS显示器，显示效果和15寸的mbp效果差不多了，成本2099元，618京东这款显示器1799感觉自己亏了一个亿</p>
+<h3 id="2019-04-28更新"><a href="#2019-04-28更新" class="headerlink" title="2019-04-28更新"></a>2019-04-28更新</h3><p>目前使用了一段时间</p>
+<ul>
+<li>app store使用正常</li>
+<li>睡眠唤醒正常,后续验证长时间睡眠会睡死</li>
+<li>声卡正常</li>
+<li>显卡正常</li>
+<li>蓝牙安装了一个USB 蓝牙正常</li>
+<li>台式机我连网线但是我安装了一个TP_link300m USB 无线网卡正常</li>
+<li>iTunes正常</li>
+<li>安装ruby开发环境基本和MBP 安装一样的套路</li>
+<li>安装了一个office2019(新系统无法使用2016)</li>
+<li>安装了一个PS(虽然我不会用我就是装上试试看)</li>
+<li>安装了final cut pro(破解版，我也不会用就是试试看)</li>
+<li>air drop 貌似不可用虽然我有一个USB无线网卡:negative_squared_cross_mark:</li>
+<li>睡眠再唤醒也是可以的(后续测试时间长会睡死)</li>
+</ul>
+<p>不过么我现在已经是24小时不关机了 大概半个月了emmm 用mac的人是不是也和我一样<br>有了不关机的坏(good)习惯呢? 可惜我没有4K 显示器不然可以试试是不是3个DP 口输出3台4K 显示呢。</p>
+<h3 id="2019-04-17更新"><a href="#2019-04-17更新" class="headerlink" title="2019-04-17更新"></a>2019-04-17更新</h3><p>由于最近内存条价格比较低，又购入了2条幻光戟，emmm插满！！！<br>这中间出现了一点问题就是这个T400CPU 散热比较宽占用了一部分内存的插槽，<br>由于幻光戟内存很高挡住了，这里把T400 的风扇往上提了一些刚刚够放下内存。</p>
+<h3 id="展示"><a href="#展示" class="headerlink" title="展示"></a>展示</h3><h4 id="机箱侧面"><a href="#机箱侧面" class="headerlink" title="机箱侧面"></a>机箱侧面</h4><p><img src="https://rails365.oss-cn-shenzhen.aliyuncs.com/uploads/photo/image/1409/2019/d2b5ca33bd970f64a6301fa75ae2eb22.png" alt=""><br><a id="more"></a></p>
+<h4 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a>系统信息</h4><p><img src="https://rails365.oss-cn-shenzhen.aliyuncs.com/uploads/photo/image/1368/2019/6d15952ab07475b42f890b5f4e16198f.png" alt=""></p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>一直做ruby开发使用mac，由于之前的主力开发机是一台macbookpro 2013早期的顶配版本(i7 3610QM + 16G ddr3 1600 + 256G固态)，虽然现在使用依然是没什么问题的，但是人类毕竟是喜新厌旧(其实性能已经并不算很快了)的想要提升一下硬件，而且也算是满足我想玩黑苹果的心吧。</p>
+<h3 id="第一次装机经历"><a href="#第一次装机经历" class="headerlink" title="第一次装机经历"></a>第一次装机经历</h3><p>在这之前呢我查阅了很多的资料包括黑苹果配置，做了一些功课，然后再我家里使用的一台16年淘宝购入的整机上做测试（除了声卡开机有音爆以外）是可以稳定运行的，并且搭建了开发环境在家作为偶尔加班的开发机和游戏机双系统<br>主要配置如下：</p>
+<ul>
+<li><p>CPU: i5 6500</p>
+</li>
+<li><p>主板: 七彩虹B150M</p>
+</li>
+<li><p>内存: 金士顿2133 8G * 2</p>
+</li>
+<li><p>显卡: GTX950 2G</p>
+</li>
+<li><p>固态: 金泰克120G SATA3</p>
+</li>
+<li><p>机械: 希捷1T绿盘</p>
+</li>
+<li><p>电源: 鑫谷额定 300W</p>
+</li>
+<li><p>机箱: 爱国者</p>
+</li>
+<li><p>散热: 原装下压式散热 + 12CM风扇 * 2</p>
+</li>
+<li><p>2016年合计3800</p>
+</li>
+</ul>
+<p>由于在这之前windows搭建在了固态上，所以这次把macos搭建在了机械硬盘位，分区300G给系统，安装完之后由于是机械硬盘所以使用起来是不如macbookpro的固态的，其他功能正常。我本人比较懒找的淘宝黑苹果远程装机130元就搞定了，不好的地方就是刚开始安装的时候主板输出到核心显卡，而我显示器插得独显所以一开始黑屏浪费了不少时间。</p>
+<h3 id="本次装机准备"><a href="#本次装机准备" class="headerlink" title="本次装机准备"></a>本次装机准备</h3><p>有了第一次的装机之后我知道黑苹果系统也可以很稳定完全可以当做主力机来工作，而且由于其配件的价格对比macbookpro或者imac有一定的优势(主要还是白苹果太贵了 - -)，可定制化也很强（比如加硬盘，内存这种操作很简单）为后续的加配置也算留有余地。由于新款的imac大多采用了A卡，所以新系统对于部分型号的A卡是免驱的，小伙伴如果想要组装最新系统的黑苹果要选择A卡。</p>
+<p>由于本次选用的CPU是当前性价比最高的9400F，它相对于AMD cpu安装黑苹果更加稳定可靠，毕竟苹果笔记本和imac 也都是使用了intel的cpu。</p>
+<p>主板其实本来打算技嘉B360 M AORUS PRO “小雕”，传闻苹果很多主机的主板都是由技嘉代工的所以兼容性没有问题，而且考虑到以后有可能要升级CPU 为8700，此款主板配合8700 CPU 是不会降频的，但是由于装机时找的朋友他那里暂时没有这个，所以就找了同样非常不错的微星B360M 迫击炮，同样可以黑苹果并且上8700 不会降频。</p>
+<p>内存选择本来是不应该选择芝奇幻光戟C16 3000 的，因为这款主板内存的频率最高只能支持到2666Mhz，但是由于芝奇幻光戟RGB太帅了emmm😀，如果不喜欢光污染换两条金士顿骇客神条2666估计能省200多，而且这两条内存带的散热装甲过高所以现在内存条有一个插槽是无法插内存的会和CPU 散热风扇冲突这点值得注意。</p>
+<p>固态采用了双固态一个给windows，一个给mac系统两不耽误，而且这款主板支持2个M.2接口的固态正好，相比SATA3接口m.2(nvme)更快，值得注意的是如果装双系统windows要采用UEFI安装，这样才能正确引导黑苹果。</p>
+<p>主要配置如下:</p>
+<ul>
+<li><p>CPU: i5 9400F(无核显)</p>
+</li>
+<li><p>主板: 微星B360M 迫击炮</p>
+</li>
+<li><p>内存: 芝奇幻光戟C16 3000 8G * 4</p>
+</li>
+<li><p>显卡: 蓝宝石 RX590 8G 海外版</p>
+</li>
+<li><p>固态: 影驰 铁甲战将240G m.2(nvme协议) 装win10 + mac引导和数据恢复</p>
+</li>
+<li><p>固态: 西部数据 SN750黑盘 250G m.2(nvme协议) 装macos 10.14.4</p>
+</li>
+<li><p>机械: 无</p>
+</li>
+<li><p>电源: 航嘉GX600 白牌</p>
+</li>
+<li><p>机箱: TTF1</p>
+</li>
+<li><p>散热: 九州风神玄冰400 + 九州风神魔环 * 2</p>
+</li>
+<li><p>手办: 雪之下雪乃、 卧姿蕾姆</p>
+</li>
+<li><p>总计: 6800元</p>
+</li>
+</ul>
+<h3 id="最后要说的话"><a href="#最后要说的话" class="headerlink" title="最后要说的话"></a>最后要说的话</h3><p>如果小伙伴对苹果系统有需求或者想体验一下可以尝试，配置选好是关键，选好了装系统都是水到渠成，wifi和蓝牙可以上网查苹果免驱版pcie接口的。如果是工作需要也是可以考虑的，要注意主机不比macbookpro，它没有很好的便携性，如果是做设计或者视频剪辑对显示器有要求可以上4K（显卡要好），如果什么都不懂还是老老实实的查，如果和我一样懒或者比我更懒不想在这方面浪费时间，可以尝试把精力都用来学习专业知识赚更多的钱，直接买白苹果毕竟白苹果的体验是最好的。保持好心态加油。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/黑苹果/" rel="tag"># 黑苹果</a>
+          
+            <a href="/tags/电脑配置/" rel="tag"># 电脑配置</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/18/Rails项目搭建rabbitmq消息中间件/" rel="next" title="Rails项目搭建rabbitmq消息中间件">
+                <i class="fa fa-chevron-left"></i> Rails项目搭建rabbitmq消息中间件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/24/rails应用模板/" rel="prev" title="rails应用模板">
+                rails应用模板 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://i1.hdslb.com/bfs/face/be815f37d1103e80183687542b9eb8892a430571.jpg@150w_150h.jpg"
+               alt="" />
+          <p class="site-author-name" itemprop="name"></p>
+           
+              <p class="site-description motion-element" itemprop="description">任清宇</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2019年6月24日更新"><span class="nav-number">1.</span> <span class="nav-text">2019年6月24日更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019年6月10日更新"><span class="nav-number">2.</span> <span class="nav-text">2019年6月10日更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019年5月8日更新"><span class="nav-number">3.</span> <span class="nav-text">2019年5月8日更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-04-28更新"><span class="nav-number">4.</span> <span class="nav-text">2019-04-28更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-04-17更新"><span class="nav-number">5.</span> <span class="nav-text">2019-04-17更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#展示"><span class="nav-number">6.</span> <span class="nav-text">展示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#机箱侧面"><span class="nav-number">6.1.</span> <span class="nav-text">机箱侧面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统信息"><span class="nav-number">6.2.</span> <span class="nav-text">系统信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">7.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一次装机经历"><span class="nav-number">8.</span> <span class="nav-text">第一次装机经历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本次装机准备"><span class="nav-number">9.</span> <span class="nav-text">本次装机准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后要说的话"><span class="nav-number">10.</span> <span class="nav-text">最后要说的话</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-shizuku"},"display":{"position":"right","width":80,"height":150},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

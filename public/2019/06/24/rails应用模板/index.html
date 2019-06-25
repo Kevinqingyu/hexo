@@ -1,0 +1,844 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mikasa·Ackerman" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="背景应用模板是包含 DSL 的 Ruby 文件，作用是为新建的或现有的 Rails 项目添加 gem 和初始化脚本等。模板指南连接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rails应用模板">
+<meta property="og:url" content="qingyu.ren/2019/06/24/rails应用模板/index.html">
+<meta property="og:site_name" content="Mikasa·Ackerman">
+<meta property="og:description" content="背景应用模板是包含 DSL 的 Ruby 文件，作用是为新建的或现有的 Rails 项目添加 gem 和初始化脚本等。模板指南连接">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-24T08:20:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="rails应用模板">
+<meta name="twitter:description" content="背景应用模板是包含 DSL 的 Ruby 文件，作用是为新建的或现有的 Rails 项目添加 gem 和初始化脚本等。模板指南连接">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="qingyu.ren/2019/06/24/rails应用模板/"/>
+
+
+
+
+
+  <title> rails应用模板 | Mikasa·Ackerman </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+
+    
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mikasa·Ackerman</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="qingyu.ren/2019/06/24/rails应用模板/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i1.hdslb.com/bfs/face/be815f37d1103e80183687542b9eb8892a430571.jpg@150w_150h.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mikasa·Ackerman">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                rails应用模板
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T16:15:03+08:00">
+                2019-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>应用模板是包含 DSL 的 Ruby 文件，作用是为新建的或现有的 Rails 项目添加 gem 和初始化脚本等。<br><a href="https://ruby-china.github.io/rails-guides/rails_application_templates.html" target="_blank" rel="external">模板指南连接</a></p>
+<a id="more"></a>
+<h3 id="以下为api模板实例"><a href="#以下为api模板实例" class="headerlink" title="以下为api模板实例"></a>以下为api模板实例</h3><blockquote>
+<p>api-service-template(接口服务模板)<br>模板将会生成的文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Gemfile</div><div class="line">002-master_key.rb</div><div class="line">bigint_json.rb</div><div class="line">assets.rb</div><div class="line">/grape</div><div class="line">zh-CN.yml</div><div class="line">uid_service.rb</div><div class="line">app_config.rb</div><div class="line">.ruby-version</div><div class="line">.ruby-gemset</div><div class="line">README.md</div></pre></td></tr></table></figure>
+<h3 id="执行方法："><a href="#执行方法：" class="headerlink" title="执行方法："></a>执行方法：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ rails new blog -m ~/template.rb</div><div class="line">$ rails new blog -m http://example.com/template.rb</div></pre></td></tr></table></figure>
+<h3 id="template-rb-中的内容"><a href="#template-rb-中的内容" class="headerlink" title="template.rb 中的内容"></a>template.rb 中的内容</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div><div class="line">350</div><div class="line">351</div><div class="line">352</div><div class="line">353</div><div class="line">354</div><div class="line">355</div><div class="line">356</div><div class="line">357</div><div class="line">358</div><div class="line">359</div><div class="line">360</div><div class="line">361</div><div class="line">362</div><div class="line">363</div><div class="line">364</div><div class="line">365</div><div class="line">366</div><div class="line">367</div><div class="line">368</div><div class="line">369</div><div class="line">370</div><div class="line">371</div><div class="line">372</div><div class="line">373</div><div class="line">374</div><div class="line">375</div><div class="line">376</div><div class="line">377</div><div class="line">378</div><div class="line">379</div><div class="line">380</div><div class="line">381</div><div class="line">382</div><div class="line">383</div><div class="line">384</div><div class="line">385</div><div class="line">386</div><div class="line">387</div><div class="line">388</div><div class="line">389</div><div class="line">390</div><div class="line">391</div><div class="line">392</div><div class="line">393</div><div class="line">394</div><div class="line">395</div><div class="line">396</div><div class="line">397</div><div class="line">398</div><div class="line">399</div><div class="line">400</div><div class="line">401</div><div class="line">402</div><div class="line">403</div><div class="line">404</div><div class="line">405</div><div class="line">406</div><div class="line">407</div><div class="line">408</div><div class="line">409</div><div class="line">410</div><div class="line">411</div><div class="line">412</div><div class="line">413</div><div class="line">414</div><div class="line">415</div><div class="line">416</div><div class="line">417</div><div class="line">418</div><div class="line">419</div><div class="line">420</div><div class="line">421</div><div class="line">422</div><div class="line">423</div><div class="line">424</div><div class="line">425</div><div class="line">426</div><div class="line">427</div><div class="line">428</div><div class="line">429</div><div class="line">430</div><div class="line">431</div><div class="line">432</div><div class="line">433</div><div class="line">434</div><div class="line">435</div><div class="line">436</div><div class="line">437</div><div class="line">438</div><div class="line">439</div><div class="line">440</div><div class="line">441</div><div class="line">442</div><div class="line">443</div><div class="line">444</div><div class="line">445</div><div class="line">446</div><div class="line">447</div><div class="line">448</div><div class="line">449</div><div class="line">450</div><div class="line">451</div><div class="line">452</div><div class="line">453</div><div class="line">454</div><div class="line">455</div><div class="line">456</div><div class="line">457</div><div class="line">458</div><div class="line">459</div><div class="line">460</div><div class="line">461</div><div class="line">462</div><div class="line">463</div><div class="line">464</div><div class="line">465</div><div class="line">466</div><div class="line">467</div><div class="line">468</div><div class="line">469</div><div class="line">470</div><div class="line">471</div><div class="line">472</div><div class="line">473</div><div class="line">474</div><div class="line">475</div><div class="line">476</div><div class="line">477</div><div class="line">478</div><div class="line">479</div><div class="line">480</div><div class="line">481</div><div class="line">482</div><div class="line">483</div><div class="line">484</div><div class="line">485</div><div class="line">486</div><div class="line">487</div><div class="line">488</div><div class="line">489</div><div class="line">490</div><div class="line">491</div><div class="line">492</div><div class="line">493</div><div class="line">494</div><div class="line">495</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Gemfile</span></div><div class="line">file <span class="string">'Gemfile'</span>, &lt;&lt;~CODE</div><div class="line">  source <span class="string">'https://gems.ruby-china.com'</span></div><div class="line">  ruby <span class="string">'2.5.0'</span></div><div class="line">  <span class="comment"># Bundle edge Rails instead: gem 'rails', github: 'rails/rails'</span></div><div class="line">  gem <span class="string">'rails'</span>, <span class="string">'~&gt; 5.2.0'</span></div><div class="line">  <span class="comment"># Use mysql as the database for Active Record</span></div><div class="line">  gem <span class="string">'mysql2'</span>, <span class="string">'&gt;= 0.4.4'</span>, <span class="string">'&lt; 0.6.0'</span></div><div class="line">  <span class="comment"># Use Puma as the app server</span></div><div class="line">  gem <span class="string">'puma'</span>, <span class="string">'~&gt; 3.11'</span></div><div class="line">  <span class="comment"># Use SCSS for stylesheets</span></div><div class="line">  gem <span class="string">'sass-rails'</span>, <span class="string">'~&gt; 5.0'</span></div><div class="line">  <span class="comment"># Use Uglifier as compressor for JavaScript assets</span></div><div class="line">  gem <span class="string">'uglifier'</span>, <span class="string">'&gt;= 1.3.0'</span></div><div class="line">  <span class="comment"># See https://github.com/rails/execjs#readme for more supported runtimes</span></div><div class="line">  <span class="comment"># gem 'mini_racer', platforms: :ruby</span></div><div class="line">  <span class="comment"># Use CoffeeScript for .coffee assets and views</span></div><div class="line">  gem <span class="string">'coffee-rails'</span>, <span class="string">'~&gt; 4.2'</span></div><div class="line">  <span class="comment"># Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks</span></div><div class="line">  gem <span class="string">'turbolinks'</span>, <span class="string">'~&gt; 5'</span></div><div class="line">  <span class="comment"># Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder</span></div><div class="line">  gem <span class="string">'jbuilder'</span>, <span class="string">'~&gt; 2.5'</span></div><div class="line">  <span class="comment"># Use Redis adapter to run Action Cable in production</span></div><div class="line">  gem <span class="string">'kaminari'</span>, <span class="string">'~&gt; 0.16.3'</span></div><div class="line">  gem <span class="string">"snowflake-rb"</span>, <span class="string">'~&gt;0.0.2'</span></div><div class="line">  gem <span class="string">'rack-cors'</span>, <span class="symbol">:require</span> =&gt; <span class="string">'rack/cors'</span></div><div class="line">  gem <span class="string">'config'</span>, <span class="string">'~&gt; 1.7.0'</span></div><div class="line">CODE</div><div class="line"><span class="comment"># 创建grape文件</span></div><div class="line"><span class="keyword">if</span> yes?(<span class="string">"是否想要安装gem grape并创建grape API 默认文件?"</span>)</div><div class="line">  gem <span class="string">'grape'</span>, <span class="string">'~&gt; 1.0.2'</span></div><div class="line">  gem <span class="string">'grape-entity'</span>, <span class="string">'~&gt; 0.7.1'</span></div><div class="line">  gem <span class="string">'grape-swagger'</span>, <span class="string">'~&gt; 0.28.0'</span></div><div class="line">  gem <span class="string">'grape-swagger-entity'</span>, <span class="string">'~&gt; 0.2.3'</span></div><div class="line">  gem <span class="string">'grape-swagger-representable'</span>, <span class="string">'~&gt; 0.1.5'</span></div><div class="line">  gem <span class="string">'grape-swagger-ui'</span>, <span class="string">'~&gt; 2.2.8'</span></div><div class="line">  gem <span class="string">'grape_logging'</span>, <span class="string">'~&gt; 1.7.0'</span></div><div class="line"></div><div class="line">  <span class="comment"># routes</span></div><div class="line">  route <span class="string">"mount API::Base =&gt; '/'"</span></div><div class="line"></div><div class="line">  initializer <span class="string">"assets.rb"</span> <span class="keyword">do</span></div><div class="line">    &lt;&lt;~CODE</div><div class="line">      Rails.application.config.assets.version = <span class="string">'1.0'</span></div><div class="line">      Rails.application.config.assets.paths &lt;&lt; Rails.root.join(<span class="string">'node_modules'</span>)</div><div class="line">      Rails.application.config.assets.precompile += <span class="string">%w( swagger_ui.js swagger_ui_screen.css swagger_ui_print.css )</span></div><div class="line">    CODE</div><div class="line">  <span class="keyword">end</span></div><div class="line">  file <span class="string">'app/grape/api/error.rb'</span>, &lt;&lt;~CODE</div><div class="line">    <span class="class"><span class="keyword">module</span> <span class="title">API</span></span></div><div class="line">      <span class="class"><span class="keyword">class</span> <span class="title">Error</span> &lt; Grape::Entity</span></div><div class="line">        expose <span class="symbol">:code</span></div><div class="line">        expose <span class="symbol">:message</span></div><div class="line">      <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">  CODE</div><div class="line">  file <span class="string">'app/grape/api/api_error_handler.rb'</span>, &lt;&lt;~CODE</div><div class="line">    <span class="comment"># trap all exceptions and fail gracefuly with a 500 and a proper message</span></div><div class="line">    <span class="class"><span class="keyword">module</span> <span class="title">API</span></span></div><div class="line">      <span class="class"><span class="keyword">class</span> <span class="title">ApiErrorHandler</span> &lt; Grape::Middleware::<span class="title">Base</span></span></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">call!</span><span class="params">(env)</span></span></div><div class="line">          @env = env</div><div class="line">          <span class="keyword">begin</span></div><div class="line">            @app.call(@env)</div><div class="line">          <span class="keyword">rescue</span> Exception =&gt; e</div><div class="line">            throw <span class="symbol">:error</span>, <span class="symbol">:message</span> =&gt; e.message <span class="params">||</span> options[<span class="symbol">:default_message</span>], <span class="symbol">:status</span> =&gt; <span class="number">500</span></div><div class="line">          <span class="keyword">end</span></div><div class="line">        <span class="keyword">end</span></div><div class="line">      <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">  CODE</div><div class="line">  file <span class="string">'app/grape/api/base.rb'</span>, &lt;&lt;~CODE</div><div class="line">    <span class="class"><span class="keyword">module</span> <span class="title">API</span></span></div><div class="line">      <span class="class"><span class="keyword">class</span> <span class="title">Base</span> &lt; Grape::API</span></div><div class="line">        use GrapeLogging::Middleware::RequestLogger, <span class="symbol">logger:</span> logger, <span class="symbol">log_level:</span> <span class="string">'debug'</span><span class="comment">#, formatter: MyFormatter.new</span></div><div class="line">        version <span class="string">'v1'</span>, <span class="symbol">using:</span> <span class="symbol">:path</span>, <span class="symbol">vendor:</span> <span class="string">'InvoiceService'</span></div><div class="line">        prefix <span class="symbol">:api</span></div><div class="line">        format <span class="symbol">:json</span></div><div class="line">        rescue_from ActiveRecord::RecordNotFound <span class="keyword">do</span>  <span class="params">|e|</span></div><div class="line">          server_error!(<span class="number">404</span>, <span class="string">'数据未找到'</span>)</div><div class="line">        <span class="keyword">end</span></div><div class="line">        <span class="comment"># rescue最低优先级</span></div><div class="line">        rescue_from <span class="symbol">:all</span> <span class="keyword">do</span> <span class="params">|e|</span></div><div class="line">          puts e.message</div><div class="line">          puts e.backtrace</div><div class="line">          server_error!(<span class="number">500</span>, e.message)</div><div class="line">        <span class="keyword">end</span></div><div class="line">        formatter <span class="symbol">:json</span>, lambda &#123; <span class="params">|object, env|</span></div><div class="line">          <span class="keyword">if</span> object.<span class="keyword">class</span> == Hash &amp;&amp; object[<span class="symbol">:swagger</span>] <span class="comment"># 适配swagger输出</span></div><div class="line">            data = object.to_json</div><div class="line">          <span class="keyword">else</span></div><div class="line">            data = &#123; <span class="symbol">code:</span> <span class="number">0</span>, <span class="symbol">msg:</span> <span class="string">"success"</span>, <span class="symbol">:data</span> =&gt; object &#125;.to_json</div><div class="line">          <span class="keyword">end</span></div><div class="line">        &#125;</div><div class="line">        error_formatter <span class="symbol">:json</span>, lambda &#123; <span class="params">|message, backtrace, options, env, original_exception|</span></div><div class="line">            &#123; <span class="symbol">code:</span> <span class="number">500</span>, <span class="symbol">msg:</span> options &#125;.to_json</div><div class="line">        &#125;</div><div class="line">        helpers <span class="keyword">do</span></div><div class="line">          <span class="function"><span class="keyword">def</span> <span class="title">current_user</span></span></div><div class="line">            @current_user <span class="params">||</span>= User.authorize!(env)</div><div class="line">          <span class="keyword">end</span></div><div class="line">          <span class="function"><span class="keyword">def</span> <span class="title">authenticate!</span></span></div><div class="line">            error!(<span class="string">'401 Unauthorized'</span>, <span class="number">401</span>) <span class="keyword">unless</span> current_user</div><div class="line">          <span class="keyword">end</span></div><div class="line">          <span class="function"><span class="keyword">def</span> <span class="title">server_error!</span><span class="params">(code = <span class="number">500</span>, message = <span class="string">'Server error.'</span>)</span></span></div><div class="line">          <span class="comment"># failure [[code, message, API::Error]]</span></div><div class="line">            error!(message, code)</div><div class="line">          <span class="keyword">end</span></div><div class="line">        <span class="keyword">end</span></div><div class="line">        <span class="comment"># 配置完全局helper再mount api，否则helper不在api中生效</span></div><div class="line">        <span class="comment"># use API::ApiErrorHandler</span></div><div class="line">        <span class="comment"># 例如：mount API::Finance::Invoice</span></div><div class="line">        add_swagger_documentation <span class="symbol">base_path:</span> <span class="string">'/'</span>,</div><div class="line">                                  <span class="symbol">title:</span> <span class="string">"xxAPI"</span>,</div><div class="line">                                  <span class="symbol">doc_version:</span> <span class="string">'0.0.1'</span>,</div><div class="line">                                  <span class="symbol">hide_documentation_path:</span> <span class="literal">true</span>,</div><div class="line">                                  <span class="symbol">hide_format:</span> <span class="literal">true</span></div><div class="line">      <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">  CODE</div><div class="line"><span class="keyword">end</span></div><div class="line">gem_group <span class="symbol">:development</span>, <span class="symbol">:test</span> <span class="keyword">do</span></div><div class="line">  <span class="comment"># Call 'byebug' anywhere in the code to stop execution and get a debugger console</span></div><div class="line">  gem <span class="string">'byebug'</span>, <span class="symbol">platforms:</span> [<span class="symbol">:mri</span>, <span class="symbol">:mingw</span>, <span class="symbol">:x64_mingw</span>]</div><div class="line">  gem <span class="string">'pry-rails'</span>, <span class="string">'0.3.2'</span></div><div class="line">  gem <span class="string">'pry-byebug'</span></div><div class="line">  gem <span class="string">'capistrano-rails'</span></div><div class="line">  gem <span class="string">'capistrano-rvm'</span>, <span class="string">'~&gt; 0.1.2'</span></div><div class="line">  gem <span class="string">'capistrano3-puma'</span>, <span class="string">'~&gt; 1.2.1'</span></div><div class="line"><span class="keyword">end</span></div><div class="line">gem_group <span class="symbol">:development</span> <span class="keyword">do</span></div><div class="line">  <span class="comment"># Access an interactive console on exception pages or by calling 'console' anywhere in the code.</span></div><div class="line">  gem <span class="string">'web-console'</span>, <span class="string">'&gt;= 3.3.0'</span></div><div class="line">  gem <span class="string">'listen'</span>, <span class="string">'&gt;= 3.0.5'</span>, <span class="string">'&lt; 3.2'</span></div><div class="line">  <span class="comment"># Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring</span></div><div class="line">  gem <span class="string">'spring'</span></div><div class="line">  gem <span class="string">'spring-watcher-listen'</span>, <span class="string">'~&gt; 2.0.0'</span></div><div class="line"><span class="keyword">end</span></div><div class="line">gem_group <span class="symbol">:test</span> <span class="keyword">do</span></div><div class="line">  <span class="comment"># Adds support for Capybara system testing and selenium driver</span></div><div class="line">  gem <span class="string">'capybara'</span>, <span class="string">'&gt;= 2.15'</span>, <span class="string">'&lt; 4.0'</span></div><div class="line">  gem <span class="string">'selenium-webdriver'</span></div><div class="line">  <span class="comment"># Easy installation and use of chromedriver to run system tests with Chrome</span></div><div class="line">  gem <span class="string">'chromedriver-helper'</span></div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="keyword">if</span> yes?(<span class="string">"是否锁定ruby版本为2.5.0?"</span>)</div><div class="line">  file <span class="string">'.ruby-version'</span>, <span class="string">"ruby-2.5.0"</span></div><div class="line"><span class="keyword">end</span></div><div class="line">file <span class="string">'.ruby-gemset'</span>, <span class="string">"<span class="subst">#&#123;<span class="keyword">self</span>.app_path&#125;</span>"</span></div><div class="line"><span class="comment"># 初始化文件</span></div><div class="line">file <span class="string">'app/services/uid_service.rb'</span>, &lt;&lt;~CODE</div><div class="line">  <span class="class"><span class="keyword">class</span> <span class="title">UidService</span></span></div><div class="line">    <span class="class"><span class="keyword">class</span> &lt;&lt; self</span></div><div class="line">      <span class="keyword">attr_accessor</span> <span class="symbol">:worker_id</span>, <span class="symbol">:snowflake</span></div><div class="line">      <span class="function"><span class="keyword">def</span> <span class="title">next_id</span></span></div><div class="line">        @snowflake <span class="params">||</span>= Snowflake::Rb.snowflake(@worker_id<span class="params">||</span>get_worker_id, region_id)</div><div class="line">        @snowflake.next_id</div><div class="line">      <span class="keyword">end</span></div><div class="line">      private</div><div class="line">      <span class="function"><span class="keyword">def</span> <span class="title">get_worker_id</span></span></div><div class="line">        hostname = Socket.gethostname</div><div class="line">        id = (Socket.gethostname[<span class="number">0</span>].ord*<span class="number">100</span> + Socket.gethostname[<span class="number">1</span>].ord)%<span class="number">512</span></div><div class="line">        @worker_id = id</div><div class="line">      <span class="keyword">end</span></div><div class="line">      <span class="function"><span class="keyword">def</span> <span class="title">region_id</span></span></div><div class="line">        <span class="number">1</span></div><div class="line">      <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line">CODE</div><div class="line">file <span class="string">'config/initializers/002-master_key.rb'</span>, &lt;&lt;~CODE</div><div class="line">  ENV[<span class="string">'RAILS_MASTER_KEY'</span>] = ENV[<span class="string">'payment_service_STAG_RAILS_MASTER_KEY'</span>]</div><div class="line">CODE</div><div class="line">file <span class="string">'config/initializers/bigint_json.rb'</span>, &lt;&lt;~CODE</div><div class="line">  <span class="comment"># json输出bigint时转为字符串</span></div><div class="line">  <span class="comment"># 否则grape输出时以int导致数值错误</span></div><div class="line">  <span class="comment"># 且某些json解析也需要适配bigint</span></div><div class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Integer</span></span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">as_json</span><span class="params">(options = <span class="literal">nil</span>)</span></span></div><div class="line">      <span class="keyword">self</span> &gt; <span class="number">2147483647</span> ? <span class="keyword">self</span>.to_s : <span class="keyword">self</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line">CODE</div><div class="line">file <span class="string">'config/initializers/app_config.rb'</span>, &lt;&lt;~CODE</div><div class="line">  Rails.application.config.assets.version = <span class="string">'1.0'</span></div><div class="line">  Rails.application.config.time_zone = <span class="string">'Beijing'</span></div><div class="line">  <span class="comment"># # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.</span></div><div class="line">  <span class="comment"># # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.&#123;rb,yml&#125;').to_s]</span></div><div class="line">  Rails.application.config.i18n.default_locale = <span class="string">'zh-CN'</span></div><div class="line">  <span class="comment"># # Do not swallow errors in after_commit/after_rollback callbacks.</span></div><div class="line">  <span class="comment"># Rails.application.config.active_record.raise_in_transactional_callbacks = true</span></div><div class="line">  <span class="comment"># Cors支持， 兼容Grape</span></div><div class="line">  Rails.application.config.middleware.use Rack::Cors <span class="keyword">do</span></div><div class="line">    allow <span class="keyword">do</span></div><div class="line">      origins <span class="string">"*"</span></div><div class="line">      resource <span class="string">"*"</span>, <span class="symbol">headers:</span> <span class="symbol">:any</span>, <span class="symbol">methods:</span> [<span class="symbol">:get</span>, <span class="symbol">:post</span>, <span class="symbol">:put</span>, <span class="symbol">:delete</span>, <span class="symbol">:options</span>]</div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line">CODE</div><div class="line"><span class="comment"># 添加国际化文件</span></div><div class="line">file <span class="string">'config/locales/zh-CN.yml'</span>, &lt;&lt;~YAML</div><div class="line">  zh-<span class="symbol">CN:</span></div><div class="line">    <span class="symbol">grape:</span></div><div class="line">      <span class="symbol">errors:</span></div><div class="line">        <span class="symbol">format:</span> ! <span class="string">'%&#123;attributes&#125; %&#123;message&#125;'</span></div><div class="line">        <span class="symbol">messages:</span></div><div class="line">          <span class="symbol">coerce:</span> <span class="string">'无效'</span></div><div class="line">          <span class="symbol">presence:</span> <span class="string">'缺失'</span></div><div class="line">          <span class="symbol">regexp:</span> <span class="string">'无效'</span></div><div class="line">          <span class="symbol">blank:</span> <span class="string">'为空'</span></div><div class="line">          <span class="symbol">values:</span> <span class="string">'无效值'</span></div><div class="line">          <span class="symbol">missing_vendor_option:</span></div><div class="line">            <span class="symbol">problem:</span> <span class="string">'缺少 :vendor 选项。'</span></div><div class="line">            <span class="symbol">summary:</span> <span class="string">'当版本号使用 Header 指定时，必须指定 :vendor 选项。'</span></div><div class="line">            <span class="symbol">resolution:</span> <span class="string">"如：version 'v1', using: :header, vendor: 'twitter'"</span></div><div class="line">          <span class="symbol">missing_mime_type:</span></div><div class="line">            <span class="symbol">problem:</span> <span class="string">'缺少 %&#123;new_format&#125; 的 MIME 类型。'</span></div><div class="line">            <span class="symbol">resolution:</span></div><div class="line">              <span class="string">"你可以在 Grape::ContentTypes::CONTENT_TYPES 预置的 MIME 类型中选择一个，或者</span></div><div class="line"><span class="string">              通过 content_type :%&#123;new_format&#125;, 'application/%&#123;new_format&#125;' 自定义一个</span></div><div class="line"><span class="string">              "</span></div><div class="line">          <span class="symbol">invalid_with_option_for_represent:</span></div><div class="line">            <span class="symbol">problem:</span> <span class="string">'你必须通过 :with 选项指定一个 entity 类。'</span></div><div class="line">            <span class="symbol">resolution:</span> <span class="string">'如：represent User, :with =&gt; Entity::User'</span></div><div class="line">          <span class="symbol">missing_option:</span> <span class="string">'你必须指定 :%&#123;option&#125; 选项。'</span></div><div class="line">          <span class="symbol">invalid_formatter:</span> <span class="string">'不能将类型 %&#123;klass&#125; 转换为 %&#123;to_format&#125;'</span></div><div class="line">          <span class="symbol">invalid_versioner_option:</span></div><div class="line">            <span class="symbol">problem:</span> <span class="string">'version 声明中 :using 选项的取值：%&#123;strategy&#125; 无法识别。'</span></div><div class="line">            <span class="symbol">resolution:</span> <span class="string">'有效的 :using 取值为 :path，:header 或 :param'</span></div><div class="line">          <span class="symbol">unknown_validator:</span> <span class="string">'未知的校验器: %&#123;validator_type&#125;'</span></div><div class="line">          <span class="symbol">unknown_options:</span> <span class="string">'未知选项：%&#123;options&#125;'</span></div><div class="line">          <span class="symbol">unknown_parameter:</span> <span class="string">'未知参数：%&#123;param&#125;'</span></div><div class="line">          <span class="symbol">incompatible_option_values:</span> <span class="string">'%&#123;option1&#125;: %&#123;value1&#125; 和 %&#123;option2&#125;: %&#123;value2&#125; 不兼容'</span></div><div class="line">          <span class="symbol">mutual_exclusion:</span> <span class="string">'是互斥的'</span></div><div class="line">          <span class="symbol">at_least_one:</span> <span class="string">'缺失, 至少需要提供一个参数'</span></div><div class="line">          <span class="symbol">exactly_one:</span> <span class="string">'缺失, 只能提供一个参数'</span></div><div class="line">          <span class="symbol">all_or_none:</span> <span class="string">'提供全部参数，或者都不提供'</span></div><div class="line">          <span class="symbol">missing_group_type:</span> <span class="string">'需要提够 group 类型'</span></div><div class="line">          <span class="symbol">unsupported_group_type:</span> <span class="string">'group 类型只能是 Array 或 Hash'</span></div><div class="line">          <span class="symbol">invalid_message_body:</span></div><div class="line">            <span class="symbol">problem:</span> <span class="string">"信息内容和指定的格式不相符"</span></div><div class="line">            <span class="symbol">resolution:</span></div><div class="line">              <span class="string">"当指定 %&#123;body_format&#125; 作为 content-type 时，你必须在请求的 'body' 中</span></div><div class="line"><span class="string">              传递一个有效的 %&#123;body_format&#125;'</span></div><div class="line"><span class="string">              "</span></div><div class="line">          <span class="symbol">invalid_accept_header:</span></div><div class="line">            <span class="symbol">problem:</span> <span class="string">'无效的 Accept Header'</span></div><div class="line">            <span class="symbol">resolution:</span> <span class="string">'%&#123;message&#125;'</span></div><div class="line">          <span class="symbol">invalid_version_header:</span></div><div class="line">            <span class="symbol">problem:</span> <span class="string">'无效的 version header'</span></div><div class="line">            <span class="symbol">resolution:</span> <span class="string">'%&#123;message&#125;'</span></div><div class="line">    <span class="symbol">errors:</span></div><div class="line">      <span class="symbol">messages:</span></div><div class="line">        <span class="symbol">extension_white_list_error:</span> <span class="string">'文件类型不允许'</span></div><div class="line">    <span class="symbol">views:</span></div><div class="line">      <span class="symbol">pagination:</span></div><div class="line">        <span class="symbol">first:</span> <span class="string">"&amp;laquo;"</span></div><div class="line">        <span class="symbol">last:</span> <span class="string">"&amp;raquo;"</span></div><div class="line">        <span class="symbol">previous:</span> <span class="string">"&amp;lsaquo;"</span></div><div class="line">        <span class="symbol">next:</span> <span class="string">"&amp;rsaquo;"</span></div><div class="line">        <span class="symbol">truncate:</span> <span class="string">"&amp;hellip;"</span></div><div class="line">    <span class="symbol">helpers:</span></div><div class="line">      <span class="symbol">page_entries_info:</span></div><div class="line">        <span class="symbol">one_page:</span></div><div class="line">          <span class="symbol">display_entries:</span></div><div class="line">            <span class="symbol">zero:</span> <span class="string">"No %&#123;entry_name&#125; found"</span></div><div class="line">            <span class="symbol">one:</span> <span class="string">"Displaying &lt;b&gt;1&lt;/b&gt; %&#123;entry_name&#125;"</span></div><div class="line">            <span class="symbol">other:</span> <span class="string">"Displaying &lt;b&gt;all %&#123;count&#125;&lt;/b&gt; %&#123;entry_name&#125;"</span></div><div class="line">        <span class="symbol">more_pages:</span></div><div class="line">          <span class="symbol">display_entries:</span> <span class="string">"Displaying %&#123;entry_name&#125; &lt;b&gt;%&#123;first&#125;&amp;nbsp;-&amp;nbsp;%&#123;last&#125;&lt;/b&gt; of &lt;b&gt;%&#123;total&#125;&lt;/b&gt; in total"</span></div><div class="line">    <span class="symbol">flash:</span></div><div class="line">      <span class="symbol">create:</span></div><div class="line">        <span class="symbol">success:</span> <span class="string">'创建成功'</span></div><div class="line">      <span class="symbol">update:</span></div><div class="line">        <span class="symbol">success:</span> <span class="string">'更新成功'</span></div><div class="line">    <span class="symbol">date:</span></div><div class="line">      <span class="symbol">abbr_day_names:</span></div><div class="line">      - 日</div><div class="line">      - 一</div><div class="line">      - 二</div><div class="line">      - 三</div><div class="line">      - 四</div><div class="line">      - 五</div><div class="line">      - 六</div><div class="line">      <span class="symbol">abbr_month_names:</span></div><div class="line">      -</div><div class="line">      - <span class="number">1</span>月</div><div class="line">      - <span class="number">2</span>月</div><div class="line">      - <span class="number">3</span>月</div><div class="line">      - <span class="number">4</span>月</div><div class="line">      - <span class="number">5</span>月</div><div class="line">      - <span class="number">6</span>月</div><div class="line">      - <span class="number">7</span>月</div><div class="line">      - <span class="number">8</span>月</div><div class="line">      - <span class="number">9</span>月</div><div class="line">      - <span class="number">10</span>月</div><div class="line">      - <span class="number">11</span>月</div><div class="line">      - <span class="number">12</span>月</div><div class="line">      <span class="symbol">day_names:</span></div><div class="line">      - 星期日</div><div class="line">      - 星期一</div><div class="line">      - 星期二</div><div class="line">      - 星期三</div><div class="line">      - 星期四</div><div class="line">      - 星期五</div><div class="line">      - 星期六</div><div class="line">      <span class="symbol">formats:</span></div><div class="line">        <span class="symbol">default:</span> ! <span class="string">'%Y-%m-%d'</span></div><div class="line">        <span class="symbol">long:</span> ! <span class="string">'%Y年%b%d日'</span></div><div class="line">        <span class="symbol">short:</span> ! <span class="string">'%b%d日'</span></div><div class="line">      <span class="symbol">month_names:</span></div><div class="line">      -</div><div class="line">      - 一月</div><div class="line">      - 二月</div><div class="line">      - 三月</div><div class="line">      - 四月</div><div class="line">      - 五月</div><div class="line">      - 六月</div><div class="line">      - 七月</div><div class="line">      - 八月</div><div class="line">      - 九月</div><div class="line">      - 十月</div><div class="line">      - 十一月</div><div class="line">      - 十二月</div><div class="line">      <span class="symbol">order:</span></div><div class="line">      - <span class="symbol">:year</span></div><div class="line">      - <span class="symbol">:month</span></div><div class="line">      - <span class="symbol">:day</span></div><div class="line">    <span class="symbol">datetime:</span></div><div class="line">      <span class="symbol">distance_in_words:</span></div><div class="line">        <span class="symbol">about_x_hours:</span></div><div class="line">          <span class="symbol">one:</span> 大约一小时</div><div class="line">          <span class="symbol">other:</span> 大约 <span class="string">%&#123;count&#125;</span> 小时</div><div class="line">        <span class="symbol">about_x_months:</span></div><div class="line">          <span class="symbol">one:</span> 大约一个月</div><div class="line">          <span class="symbol">other:</span> 大约 <span class="string">%&#123;count&#125;</span> 个月</div><div class="line">        <span class="symbol">about_x_years:</span></div><div class="line">          <span class="symbol">one:</span> 大约一年</div><div class="line">          <span class="symbol">other:</span> 大约 <span class="string">%&#123;count&#125;</span> 年</div><div class="line">        <span class="symbol">almost_x_years:</span></div><div class="line">          <span class="symbol">one:</span> 接近一年</div><div class="line">          <span class="symbol">other:</span> 接近 <span class="string">%&#123;count&#125;</span> 年</div><div class="line">        <span class="symbol">half_a_minute:</span> 半分钟</div><div class="line">        <span class="symbol">less_than_x_minutes:</span></div><div class="line">          <span class="symbol">one:</span> 不到一分钟</div><div class="line">          <span class="symbol">other:</span> 不到 <span class="string">%&#123;count&#125;</span> 分钟</div><div class="line">        <span class="symbol">less_than_x_seconds:</span></div><div class="line">          <span class="symbol">one:</span> 不到一秒</div><div class="line">          <span class="symbol">other:</span> 不到 <span class="string">%&#123;count&#125;</span> 秒</div><div class="line">        <span class="symbol">over_x_years:</span></div><div class="line">          <span class="symbol">one:</span> 一年多</div><div class="line">          <span class="symbol">other:</span> ! <span class="string">'%&#123;count&#125; 年多'</span></div><div class="line">        <span class="symbol">x_days:</span></div><div class="line">          <span class="symbol">one:</span> 一天</div><div class="line">          <span class="symbol">other:</span> ! <span class="string">'%&#123;count&#125; 天'</span></div><div class="line">        <span class="symbol">x_minutes:</span></div><div class="line">          <span class="symbol">one:</span> 一分钟</div><div class="line">          <span class="symbol">other:</span> ! <span class="string">'%&#123;count&#125; 分钟'</span></div><div class="line">        <span class="symbol">x_months:</span></div><div class="line">          <span class="symbol">one:</span> 一个月</div><div class="line">          <span class="symbol">other:</span> ! <span class="string">'%&#123;count&#125; 个月'</span></div><div class="line">        <span class="symbol">x_seconds:</span></div><div class="line">          <span class="symbol">one:</span> 一秒</div><div class="line">          <span class="symbol">other:</span> ! <span class="string">'%&#123;count&#125; 秒'</span></div><div class="line">      <span class="symbol">prompts:</span></div><div class="line">        <span class="symbol">day:</span> 日</div><div class="line">        <span class="symbol">hour:</span> 时</div><div class="line">        <span class="symbol">minute:</span> 分</div><div class="line">        <span class="symbol">month:</span> 月</div><div class="line">        <span class="symbol">second:</span> 秒</div><div class="line">        <span class="symbol">year:</span> 年</div><div class="line">    <span class="symbol">errors:</span> &amp;errors</div><div class="line">      <span class="symbol">format:</span> ! <span class="string">'%&#123;attribute&#125; %&#123;message&#125;'</span></div><div class="line">      <span class="symbol">messages:</span></div><div class="line">        <span class="symbol">accepted:</span> 必须是可被接受的</div><div class="line">        <span class="symbol">blank:</span> 不能为空</div><div class="line">        <span class="symbol">confirmation:</span> 不一致</div><div class="line">        <span class="symbol">empty:</span> 不能留空</div><div class="line">        <span class="symbol">equal_to:</span> 必须等于 <span class="string">%&#123;count&#125;</span></div><div class="line">        <span class="symbol">even:</span> 必须为双数</div><div class="line">        <span class="symbol">exclusion:</span> 是保留关键字</div><div class="line">        <span class="symbol">greater_than:</span> 必须大于 <span class="string">%&#123;count&#125;</span></div><div class="line">        <span class="symbol">greater_than_or_equal_to:</span> 必须大于或等于 <span class="string">%&#123;count&#125;</span></div><div class="line">        <span class="symbol">inclusion:</span> 不包含于列表中</div><div class="line">        <span class="symbol">invalid:</span> 是无效的</div><div class="line">        <span class="symbol">less_than:</span> 必须小于 <span class="string">%&#123;count&#125;</span></div><div class="line">        <span class="symbol">less_than_or_equal_to:</span> 必须小于或等于 <span class="string">%&#123;count&#125;</span></div><div class="line">        <span class="symbol">not_a_number:</span> 不是数字</div><div class="line">        <span class="symbol">not_an_integer:</span> 必须是整数</div><div class="line">        <span class="symbol">odd:</span> 必须为单数</div><div class="line">        <span class="symbol">record_invalid:</span> ! <span class="string">'%&#123;errors&#125;'</span></div><div class="line">        <span class="symbol">taken:</span> 已经被使用</div><div class="line">        <span class="symbol">too_long:</span> 过长（最长为 <span class="string">%&#123;count&#125;</span> 个字符）</div><div class="line">        <span class="symbol">too_short:</span> 过短（最短为 <span class="string">%&#123;count&#125;</span> 个字符）</div><div class="line">        <span class="symbol">wrong_length:</span> 长度非法（必须为 <span class="string">%&#123;count&#125;</span> 个字符）</div><div class="line">        <span class="symbol">extension_white_list_error:</span> 不允许的文件类型</div><div class="line">      <span class="symbol">template:</span></div><div class="line">        <span class="symbol">body:</span> 如下字段出现错误：</div><div class="line">        <span class="symbol">header:</span></div><div class="line">          <span class="symbol">one:</span> 有 <span class="number">1</span> 个错误发生导致「<span class="string">%&#123;model&#125;</span>」无法被保存。</div><div class="line">          <span class="symbol">other:</span> 有 <span class="string">%&#123;count&#125;</span> 个错误发生导致「<span class="string">%&#123;model&#125;</span>」无法被保存。</div><div class="line">    <span class="symbol">helpers:</span></div><div class="line">      <span class="symbol">select:</span></div><div class="line">        <span class="symbol">prompt:</span> 请选择</div><div class="line">      <span class="symbol">submit:</span></div><div class="line">        <span class="symbol">create:</span> 新增<span class="string">%&#123;model&#125;</span></div><div class="line">        <span class="symbol">submit:</span> 保存<span class="string">%&#123;model&#125;</span></div><div class="line">        <span class="symbol">update:</span> 更新<span class="string">%&#123;model&#125;</span></div><div class="line">    <span class="symbol">number:</span></div><div class="line">      <span class="symbol">currency:</span></div><div class="line">        <span class="symbol">format:</span></div><div class="line">          <span class="symbol">delimiter:</span> ! <span class="string">','</span></div><div class="line">          <span class="symbol">format:</span> ! <span class="string">'%u %n'</span></div><div class="line">          <span class="symbol">precision:</span> <span class="number">2</span></div><div class="line">          <span class="symbol">separator:</span> .</div><div class="line">          <span class="symbol">significant:</span> <span class="literal">false</span></div><div class="line">          <span class="symbol">strip_insignificant_zeros:</span> <span class="literal">false</span></div><div class="line">          <span class="symbol">unit:</span> CN¥</div><div class="line">      <span class="symbol">format:</span></div><div class="line">        <span class="symbol">delimiter:</span> ! <span class="string">','</span></div><div class="line">        <span class="symbol">precision:</span> <span class="number">3</span></div><div class="line">        <span class="symbol">separator:</span> .</div><div class="line">        <span class="symbol">significant:</span> <span class="literal">false</span></div><div class="line">        <span class="symbol">strip_insignificant_zeros:</span> <span class="literal">false</span></div><div class="line">      <span class="symbol">human:</span></div><div class="line">        <span class="symbol">decimal_units:</span></div><div class="line">          <span class="symbol">format:</span> ! <span class="string">'%n %u'</span></div><div class="line">          <span class="symbol">units:</span></div><div class="line">            <span class="symbol">billion:</span> 十亿</div><div class="line">            <span class="symbol">million:</span> 百万</div><div class="line">            <span class="symbol">quadrillion:</span> 千兆</div><div class="line">            <span class="symbol">thousand:</span> 千</div><div class="line">            <span class="symbol">trillion:</span> 兆</div><div class="line">            <span class="symbol">unit:</span> <span class="string">''</span></div><div class="line">        <span class="symbol">format:</span></div><div class="line">          <span class="symbol">delimiter:</span> <span class="string">''</span></div><div class="line">          <span class="symbol">precision:</span> <span class="number">1</span></div><div class="line">          <span class="symbol">significant:</span> <span class="literal">false</span></div><div class="line">          <span class="symbol">strip_insignificant_zeros:</span> <span class="literal">false</span></div><div class="line">        <span class="symbol">storage_units:</span></div><div class="line">          <span class="symbol">format:</span> ! <span class="string">'%n %u'</span></div><div class="line">          <span class="symbol">units:</span></div><div class="line">            <span class="symbol">byte:</span></div><div class="line">              <span class="symbol">one:</span> Byte</div><div class="line">              <span class="symbol">other:</span> Bytes</div><div class="line">            <span class="symbol">gb:</span> GB</div><div class="line">            <span class="symbol">kb:</span> KB</div><div class="line">            <span class="symbol">mb:</span> MB</div><div class="line">            <span class="symbol">tb:</span> TB</div><div class="line">      <span class="symbol">percentage:</span></div><div class="line">        <span class="symbol">format:</span></div><div class="line">          <span class="symbol">delimiter:</span> <span class="string">''</span></div><div class="line">      <span class="symbol">precision:</span></div><div class="line">        <span class="symbol">format:</span></div><div class="line">          <span class="symbol">delimiter:</span> <span class="string">''</span></div><div class="line">    <span class="symbol">support:</span></div><div class="line">      <span class="symbol">array:</span></div><div class="line">        <span class="symbol">last_word_connector:</span> ! <span class="string">', 和 '</span></div><div class="line">        <span class="symbol">two_words_connector:</span> ! <span class="string">' 和 '</span></div><div class="line">        <span class="symbol">words_connector:</span> ! <span class="string">', '</span></div><div class="line">    <span class="symbol">time:</span></div><div class="line">      <span class="symbol">am:</span> 上午</div><div class="line">      <span class="symbol">formats:</span></div><div class="line">        <span class="symbol">default:</span> ! <span class="string">'%Y年%b%d日 %H:%M:%S'</span></div><div class="line">        <span class="symbol">full:</span> ! <span class="string">'%Y年%b%d日 %A %H:%M:%S %Z'</span></div><div class="line">        <span class="symbol">long:</span> ! <span class="string">'%Y年%b%d日 %H:%M'</span></div><div class="line">        <span class="symbol">short:</span> ! <span class="string">'%b%d日 %H:%M'</span></div><div class="line">      <span class="symbol">pm:</span> 下午</div><div class="line">    <span class="symbol">activerecord:</span></div><div class="line">      <span class="symbol">models:</span></div><div class="line">        <span class="symbol">invoice:</span></div><div class="line">          <span class="symbol">status:</span></div><div class="line">            <span class="symbol">canceled:</span> 已取消</div><div class="line">            <span class="symbol">closed:</span> 关闭</div><div class="line">            <span class="symbol">rejected:</span> 审核不通过</div><div class="line">            <span class="symbol">wait_audit:</span> 等待审核</div><div class="line">            <span class="symbol">passed:</span> 审核通过</div><div class="line">            <span class="symbol">invoiced:</span> 已开票</div><div class="line">          <span class="symbol">service_type:</span></div><div class="line">            <span class="symbol">print:</span> 印刷品</div><div class="line">            <span class="symbol">service_fee:</span> 服务费</div><div class="line">          <span class="symbol">buyer_type:</span></div><div class="line">            <span class="symbol">individual:</span> 个人</div><div class="line">            <span class="symbol">unit:</span> 单位</div><div class="line">        <span class="symbol">user_invoice_info:</span></div><div class="line">          <span class="symbol">default:</span></div><div class="line">            <span class="symbol">true:</span> 是</div><div class="line">            <span class="symbol">false:</span> 否</div><div class="line">      <span class="symbol">errors:</span></div><div class="line">        &lt;&lt;: *errors</div><div class="line">YAML</div><div class="line">file <span class="string">'README.md'</span>, &lt;&lt;~MD</div><div class="line">  <span class="comment">### #&#123;self.app_path&#125;服务</span></div><div class="line">  接口信息请下载本项目并在本地启动后查看 <span class="symbol">http:</span>/<span class="regexp">/localhost:你的端口号/api</span><span class="regexp">/swagger#/</span></div><div class="line">MD</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/24/2019年黑苹果开发机配置/" rel="next" title="2019年黑苹果开发机配置">
+                <i class="fa fa-chevron-left"></i> 2019年黑苹果开发机配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/24/mac下使用虚拟机开发/" rel="prev" title="mac下使用虚拟机开发">
+                mac下使用虚拟机开发 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://i1.hdslb.com/bfs/face/be815f37d1103e80183687542b9eb8892a430571.jpg@150w_150h.jpg"
+               alt="" />
+          <p class="site-author-name" itemprop="name"></p>
+           
+              <p class="site-description motion-element" itemprop="description">任清宇</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以下为api模板实例"><span class="nav-number">2.</span> <span class="nav-text">以下为api模板实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行方法："><span class="nav-number">3.</span> <span class="nav-text">执行方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#template-rb-中的内容"><span class="nav-number">4.</span> <span class="nav-text">template.rb 中的内容</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-shizuku"},"display":{"position":"right","width":80,"height":150},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
