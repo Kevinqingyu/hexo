@@ -3,6 +3,129 @@
   
     
     <entry>
+      <title><![CDATA[ruby笔记（三）]]></title>
+      <url>/2019/08/29/ruby%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</url>
+      <content type="html"><![CDATA[<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1511244769207&amp;di=97fe709abd32e51b037c5bf3d37b8e4b&amp;imgtype=0&amp;src=http%3A%2F%2Ftc.sinaimg.cn%2Fmaxwidth.2048%2Ftc.service.weibo.com%2Fp3_pstatp_com%2Fe59d73299cfdc86f63ef07248bad7bd3.jpg" alt=""><br><a id="more"></a></p>
+<h3 id="div内滚动"><a href="#div内滚动" class="headerlink" title="div内滚动"></a>div内滚动</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">style</span>: &#123;</div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="attribute">height</span>: <span class="number">400px</span>;</div><div class="line">  <span class="attribute">overflow</span>:auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="淡出"><a href="#淡出" class="headerlink" title="淡出"></a>淡出</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="keyword">this</span>).fadeOut(<span class="string">'fast'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    $(<span class="keyword">this</span>).remove();</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="pack-和-unpack"><a href="#pack-和-unpack" class="headerlink" title="pack 和 unpack"></a>pack 和 unpack</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pry(main)&gt; [<span class="string">'hello'</span>].pack(<span class="string">'m'</span>)</div><div class="line">=&gt; <span class="string">"aGVsbG8=\n"</span></div></pre></td></tr></table></figure>
+<p>效果等同于：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pry(main)&gt; Base64.encode64(<span class="string">'hello'</span>)</div><div class="line">=&gt; <span class="string">"aGVsbG8=\n"</span></div></pre></td></tr></table></figure>
+<p>好奇为什么命名已经有了base64的转码还要有一个pack方法呢？查了一下阮一峰的讲解<br>这里直接引用：</p>
+<p>大概原因就是Base64将三个字节转化成四个字节</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Text</th>
+<th>content</th>
+<th>M</th>
+<th>a</th>
+<th>n</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>ASCII</td>
+<td>77</td>
+<td>97</td>
+<td>110</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Bitpattern</td>
+<td>010011</td>
+<td>010110</td>
+<td>000101</td>
+<td>101110</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Index</td>
+<td>19</td>
+<td>22</td>
+<td>5</td>
+<td>46</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Base64-Encoded</td>
+<td>T</td>
+<td>W</td>
+<td>F</td>
+<td>u</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<blockquote>
+<p>第一步，”M”、”a”、”n”的ASCII值分别是77、97、110，对应的二进制值是01001101、01100001、01101110，将它们连成一个24位的二进制字符串010011010110000101101110。</p>
+<p>第二步，将这个24位的二进制字符串分成4组，每组6个二进制位：010011、010110、000101、101110。</p>
+<p>第三步，在每组前面加两个00，扩展成32个二进制位，即四个字节：00010011、00010110、00000101、00101110。它们的十进制值分别是19、22、5、46。</p>
+<p>第四步，根据上表，得到每个值对应Base64编码，即T、W、F、u。</p>
+<p>因此，Man的Base64编码就是TWFu。</p>
+<p>如果字节数不足三，则这样处理：</p>
+</blockquote>
+<ol>
+<li><p>二个字节的情况：将这二个字节的一共16个二进制位，按照上面的规则，转成三组，最后一组除了前面加两个0以外，后面也要加两个0。这样得到一个三位的Base64编码，再在末尾补上一个”=”号。比如，”Ma”这个字符串是两个字节，可以转化成三组00010011、00010110、00010000以后，对应Base64值分别为T、W、E，再补上一个”=”号，因此”Ma”的Base64编码就是TWE=。</p>
+</li>
+<li><p>一个字节的情况：将这一个字节的8个二进制位，按照上面的规则转成二组，最后一组除了前面加二个0以外，后面再加4个0。这样得到一个二位的Base64编码，再在末尾补上两个”=”号。比如，”M”这个字母是一个字节，可以转化为二组00010011、00010000，对应的Base64值分别为T、Q，再补上二个”=”号，因此”M”的Base64编码就是TQ==。</p>
+</li>
+</ol>
+<blockquote>
+<p>再举一个中文的例子，汉字”严”如何转化成Base64编码？</p>
+<p>这里需要注意，汉字本身可以有多种编码，比如gb2312、utf-8、gbk等等，每一种编码的Base64对应值都不一样。下面的例子以utf-8为例。</p>
+<p>首先，”严”的utf-8编码为E4B8A5，写成二进制就是三字节的”11100100 10111000 10100101”。将这个24位的二进制字符串，按照第3节中的规则，转换成四组一共32位的二进制值”00111001 00001011 00100010 00100101”，相应的十进制数为57、11、34、37，它们对应的Base64值就为5、L、i、l。</p>
+<p>所以，汉字”严”（utf-8编码）的Base64值就是5Lil。</p>
+</blockquote>
+<p>看完之后虽然对base64已经有所了解但是还是对pack这个方法抱有疑惑，继续查找<br>往上资料显示原文：</p>
+<blockquote>
+<p>Per OP’s clarified question, “Why do we use #pack to get base64 and #unpack to get other representations of raw data?”</p>
+<p>The surface level reason is because Array#pack is a method that returns a String, while String#unpack is a method that returns an Array.</p>
+<p>There are stronger conceptual reasons underlying this. The key principle is that base64 is not an array of raw bytes. Rather, it’s a 7-bit-ASCII-safe string that can represent arbitrary bytes if properly (de)coded.</p>
+<p>Each base64 character maps to a sequence of six bits. At the byte level, that’s a 4:3 ratio of characters to raw bytes. Since integer powers of 2 don’t divide by 3, we end up with padding more often than not, and you can’t slice base64 in arbitrary places to get ranges of bytes out of it (you’d have to figure out which bytes you want in groups of three and go get the associated base64 characters in groups of four).</p>
+<p>Arbitrary sequences of data are, fundamentally, arrays of bytes. Base64-encoded sequences are, fundamentally, strings: data sequences constrained to the range of bytes safely transmissible and displayable as text.</p>
+<p>Base64 is the encapsulation (or “packing”) of a data array into a string</p>
+</blockquote>
+<p>根据OP澄清的问题，“为什么我们要使用pack来获取base64和unpack来获取原始数据的其他表示？”</p>
+<p>表面层原因是因为 <code>Array#pack</code> 是返回字符串的方法，而<code>String#unpack</code>是返回数组的方法。</p>
+<p>这背后有更强有力的概念原因。关键原因是base64不是原始字节数组。相反，它是一个7位的ASCII安全字符串，如果编码正确，它可以表示任意字节。</p>
+<p>每个base64字符映射到一个六位序列。在字节级别，这是字符与原始字节的4:3比例。由于2的整数幂不能被3整除，所以我们最终得到字节长度比原字节长度更长，而且你不能在任意位置对base64进行切割，以从中获取字节范围（你必须找出三个字节组中需要哪些字节，然后四个字节组中获取相关的base64字符）。</p>
+<p>从根本上讲，任意数据序列是字节数组。基本上，base64编码序列是字符串：数据序列被限制在字节范围内，可以安全地作为文本传输和显示。</p>
+<p>base64是将数据数组封装（或“打包”）为字符串</p>
+<h4 id="这么看来-pack-和-unpack现在看来就更加形象了"><a href="#这么看来-pack-和-unpack现在看来就更加形象了" class="headerlink" title="这么看来 pack 和 unpack现在看来就更加形象了"></a>这么看来 pack 和 unpack现在看来就更加形象了</h4><p>这次遇到一个小问题就是对接方是java代码生成的base64 字符串末尾是的不带<code>\n</code>的<br>然后我使用了 <code>String#chomp</code>方法去掉了末尾的换行符<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pry(main)&gt; Base64.encode64(<span class="string">'hello'</span>).chomp</div><div class="line">=&gt; <span class="string">"aGVsbG8="</span></div></pre></td></tr></table></figure></p>
+<p>但是这里还有点小疑惑，为什么ruby不和java一样反而自己要加换行符呢，原来是因为ruby 的Base64.encode64方法遵循了<code>RFC 4648</code>规范，该方法会将encoded的字符串每60个字符换行（”\n”），所以后续ruby推出了 <code>Base64#strict_encode64</code> 和 <code>Base64#strict_encode64</code>方法</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">pry(main)&gt; Base64.strict_encode64(<span class="string">'hello'</span>)</div><div class="line">=&gt; <span class="string">"aGVsbG8="</span></div><div class="line">pry(main)&gt; Base64.strict_decode64(<span class="string">"aGVsbG8="</span>)</div><div class="line">=&gt; <span class="string">"hello"</span></div></pre></td></tr></table></figure>
+<p>那么问题来了 <code>Base64#strict_encode64</code> 是你怎么实现的呢？</p>
+<p>查看源码，原来就是这么简单的且枯燥</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># File activesupport/lib/active_support/base64.rb, line 29</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Base64</span>.<span class="title">strict_encode64</span><span class="params">(value)</span></span></div><div class="line">  encode64(value).gsub(<span class="regexp">/\n/</span>, <span class="string">''</span>)</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<h3 id="and-和-amp-amp-的区别"><a href="#and-和-amp-amp-的区别" class="headerlink" title="and 和 &amp;&amp; 的区别"></a>and 和 &amp;&amp; 的区别</h3><p>虽然二者都是<code>与门</code>但是明显 在ruby中 &amp;&amp; 的优先级更高</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">pry(main)&gt;</span><span class="bash"> <span class="literal">true</span> and <span class="literal">true</span> ? <span class="string">'hello'</span> : <span class="string">'hi'</span></span></div><div class="line">=&gt; "hello"</div><div class="line"></div><div class="line"><span class="meta">pry(main)&gt;</span><span class="bash"> <span class="literal">true</span> &amp;&amp; <span class="literal">true</span> ? <span class="string">'hello'</span> : <span class="string">'hi'</span></span></div><div class="line">=&gt; "hello"</div><div class="line"></div><div class="line"><span class="meta">pry(main)&gt;</span><span class="bash"> <span class="literal">false</span> and <span class="literal">true</span> ? <span class="string">'hello'</span> : <span class="string">'hi'</span></span></div><div class="line">=&gt; false</div><div class="line"></div><div class="line"><span class="meta">pry(main)&gt;</span><span class="bash"> <span class="literal">false</span> &amp;&amp; <span class="literal">true</span> ? <span class="string">'hello'</span> : <span class="string">'hi'</span></span></div><div class="line">=&gt; "hi"</div></pre></td></tr></table></figure>
+<h3 id="form-for-和-form-tag-区别"><a href="#form-for-和-form-tag-区别" class="headerlink" title="form_for 和 form_tag 区别"></a>form_for 和 form_tag 区别</h3><p>生成的html不同<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">form_for @object <span class="keyword">do</span> <span class="params">|f|</span></div><div class="line">  f.text_field <span class="symbol">:name</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">生成 input id=<span class="string">"object_name"</span> name=<span class="string">"object[name]"</span></div><div class="line"></div><div class="line">form_tag @object <span class="keyword">do</span></div><div class="line">  text_field_tag <span class="symbol">:name</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">生成 input id=<span class="string">"name"</span> name=<span class="string">"name"</span></div></pre></td></tr></table></figure></p>
+<p>还有就是form_for 算是 对象处理+url+form_tag的一个封装</p>
+<p>通过源码也可以看出form_for 在判断了url 和 对象之后还是调用的form_tag</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">form_for</span><span class="params">(record, options = &#123;&#125;, &amp;block)</span></span></div><div class="line">  raise ArgumentError, <span class="string">"Missing block"</span> <span class="keyword">unless</span> block_given?</div><div class="line"></div><div class="line">  options[<span class="symbol">:html</span>] <span class="params">||</span>= &#123;&#125;</div><div class="line"></div><div class="line">  <span class="keyword">case</span> record</div><div class="line">  <span class="keyword">when</span> String, Symbol</div><div class="line">    object_name = record</div><div class="line">    object      = <span class="literal">nil</span></div><div class="line">  <span class="keyword">else</span></div><div class="line">    object      = record.is_a?(Array) ? record.last : record</div><div class="line">    object_name = options[<span class="symbol">:as</span>] <span class="params">||</span> ActiveModel::Naming.param_key(object)</div><div class="line">    apply_form_for_options!(record, options)</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  options[<span class="symbol">:html</span>][<span class="symbol">:remote</span>] = options.delete(<span class="symbol">:remote</span>) <span class="keyword">if</span> options.has_key?(<span class="symbol">:remote</span>)</div><div class="line">  options[<span class="symbol">:html</span>][<span class="symbol">:method</span>] = options.delete(<span class="symbol">:method</span>) <span class="keyword">if</span> options.has_key?(<span class="symbol">:method</span>)</div><div class="line">  options[<span class="symbol">:html</span>][<span class="symbol">:authenticity_token</span>] = options.delete(<span class="symbol">:authenticity_token</span>)</div><div class="line"></div><div class="line">  builder = options[<span class="symbol">:parent_builder</span>] = instantiate_builder(object_name, object, options, &amp;block)</div><div class="line">  output  = capture(builder, &amp;block)</div><div class="line">  default_options = builder.multipart? ? &#123; <span class="symbol">:multipart</span> =&gt; <span class="literal">true</span> &#125; : &#123;&#125;</div><div class="line">  form_tag(options.delete(<span class="symbol">:url</span>) <span class="params">||</span> &#123;&#125;, default_options.merge!(options.delete(<span class="symbol">:html</span>))) &#123; output &#125;</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> ruby </tag>
+            
+            <tag> rails </tag>
+            
+            <tag> 笔记 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[mac下使用虚拟机开发]]></title>
       <url>/2019/06/24/mac%E4%B8%8B%E4%BD%BF%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%BC%80%E5%8F%91/</url>
       <content type="html"><![CDATA[<p><img src="https://rails365.oss-cn-shenzhen.aliyuncs.com/uploads/photo/image/1543/2019/d2b5ca33bd970f64a6301fa75ae2eb22.png" alt=""></p>
@@ -277,11 +400,11 @@
         
         <tags>
             
+            <tag> SQL </tag>
+            
             <tag> ruby </tag>
             
             <tag> rails </tag>
-            
-            <tag> SQL </tag>
             
         </tags>
         
@@ -544,6 +667,8 @@
             
             <tag> rails </tag>
             
+            <tag> 笔记 </tag>
+            
         </tags>
         
     </entry>
@@ -652,24 +777,6 @@
             <tag> elasticsearch </tag>
             
         </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>/2017/08/31/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-      
         
     </entry>
     
