@@ -698,7 +698,7 @@
     <link href="qingyu.ren/2017/11/20/ruby%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>qingyu.ren/2017/11/20/ruby笔记（二）/</id>
     <published>2017-11-20T03:20:36.000Z</published>
-    <updated>2017-11-21T03:34:45.000Z</updated>
+    <updated>2019-08-29T09:41:08.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3942457143,1284096136&amp;fm=27&amp;gp=0.jpg" alt=""><br><a id="more"></a></p>
 <p>最近有朋友有问我<code>ActiveRecord</code>中 <code>scope</code> 和 <code>validate</code> 方法的实现机制，之前一直在使用它但是我还真的没有细细的了解过这个方法，于是决定深入探究一下。</p>
@@ -745,6 +745,8 @@
       <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
     
       <category term="rails" scheme="qingyu.ren/tags/rails/"/>
+    
+      <category term="笔记" scheme="qingyu.ren/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
