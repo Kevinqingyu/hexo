@@ -5,17 +5,47 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="qingyu.ren/"/>
-  <updated>2019-09-04T01:39:59.000Z</updated>
+  <updated>2019-11-25T02:28:48.000Z</updated>
   <id>qingyu.ren/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ruby笔记（四）</title>
+    <link href="qingyu.ren/2019/11/25/ruby%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
+    <id>qingyu.ren/2019/11/25/ruby笔记（四）/</id>
+    <published>2019-11-25T01:44:51.000Z</published>
+    <updated>2019-11-25T02:28:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1511244769207&amp;di=97fe709abd32e51b037c5bf3d37b8e4b&amp;imgtype=0&amp;src=http%3A%2F%2Ftc.sinaimg.cn%2Fmaxwidth.2048%2Ftc.service.weibo.com%2Fp3_pstatp_com%2Fe59d73299cfdc86f63ef07248bad7bd3.jpg" alt=""><br><a id="more"></a></p>
+<h3 id="rails关联查询"><a href="#rails关联查询" class="headerlink" title="rails关联查询"></a>rails关联查询</h3><p>单个关联<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Client.includes(<span class="symbol">:address</span>).limit(<span class="number">10</span>)</div></pre></td></tr></table></figure></p>
+<p>多个关联<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Article.includes(<span class="symbol">:category</span>, <span class="symbol">:comments</span>)</div></pre></td></tr></table></figure></p>
+<p>嵌套关联散列<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Category.includes(<span class="symbol">articles:</span> [&#123; <span class="symbol">comments:</span> <span class="symbol">:guest</span> &#125;, <span class="symbol">:tags</span>])</div></pre></td></tr></table></figure></p>
+<p>关联查询 为关联指明条件<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Article.includes(<span class="symbol">:comments</span>).where(<span class="symbol">comments:</span> &#123; <span class="symbol">visible:</span> <span class="literal">true</span> &#125;)</div></pre></td></tr></table></figure></p>
+<p>上面的代码会生成使用 LEFT OUTER JOIN 子句的 SQL 语句，而 joins 方法会成生使用 INNER JOIN 子句的 SQL 语句。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="string">"articles"</span>.<span class="string">"id"</span> <span class="keyword">AS</span> t0_r0, ... <span class="string">"comments"</span>.<span class="string">"updated_at"</span> <span class="keyword">AS</span> t1_r5 <span class="keyword">FROM</span> <span class="string">"articles"</span> <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> <span class="string">"comments"</span> <span class="keyword">ON</span> <span class="string">"comments"</span>.<span class="string">"article_id"</span> = <span class="string">"articles"</span>.<span class="string">"id"</span> <span class="keyword">WHERE</span> (comments.visible = <span class="number">1</span>)</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://timgsa.baidu.com/timg?image&amp;amp;quality=80&amp;amp;size=b9999_10000&amp;amp;sec=1511244769207&amp;amp;di=97fe709abd32e51b037c5bf3d37b8e4b&amp;amp;imgtype=0&amp;amp;src=http%3A%2F%2Ftc.sinaimg.cn%2Fmaxwidth.2048%2Ftc.service.weibo.com%2Fp3_pstatp_com%2Fe59d73299cfdc86f63ef07248bad7bd3.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
+    
+      <category term="rails" scheme="qingyu.ren/tags/rails/"/>
+    
+      <category term="笔记" scheme="qingyu.ren/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>ruby笔记（三）</title>
     <link href="qingyu.ren/2019/08/29/ruby%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"/>
     <id>qingyu.ren/2019/08/29/ruby笔记（三）/</id>
     <published>2019-08-29T07:53:25.000Z</published>
-    <updated>2019-09-04T01:39:59.000Z</updated>
+    <updated>2019-09-04T01:40:19.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1511244769207&amp;di=97fe709abd32e51b037c5bf3d37b8e4b&amp;imgtype=0&amp;src=http%3A%2F%2Ftc.sinaimg.cn%2Fmaxwidth.2048%2Ftc.service.weibo.com%2Fp3_pstatp_com%2Fe59d73299cfdc86f63ef07248bad7bd3.jpg" alt=""><br><a id="more"></a></p>
 <h3 id="div内滚动"><a href="#div内滚动" class="headerlink" title="div内滚动"></a>div内滚动</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">style</span>: &#123;</div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="attribute">height</span>: <span class="number">400px</span>;</div><div class="line">  <span class="attribute">overflow</span>:auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -108,7 +138,7 @@
 <p>查看源码，原来就是这么简单的且枯燥</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># File activesupport/lib/active_support/base64.rb, line 29</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Base64</span>.<span class="title">strict_encode64</span><span class="params">(value)</span></span></div><div class="line">  encode64(value).gsub(<span class="regexp">/\n/</span>, <span class="string">''</span>)</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
 <h3 id="and-和-amp-amp-的区别"><a href="#and-和-amp-amp-的区别" class="headerlink" title="and 和 &amp;&amp; 的区别"></a>and 和 &amp;&amp; 的区别</h3><p>虽然二者都是<code>与门</code>但是明显 在ruby中 &amp;&amp; 的优先级更高</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">pry(main)&gt;</span> true and true ? 'hello' : 'hi'</div><div class="line">=&gt; "hello"</div><div class="line"></div><div class="line"><span class="meta">pry(main)&gt;</span> true &amp;&amp; true ? 'hello' : 'hi'</div><div class="line">=&gt; "hello"</div><div class="line"></div><div class="line"><span class="meta">pry(main)&gt;</span> false and true ? 'hello' : 'hi'</div><div class="line">=&gt; false</div><div class="line"></div><div class="line"><span class="meta">pry(main)&gt;</span> false &amp;&amp; true ? 'hello' : 'hi'</div><div class="line">=&gt; "hi"</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">pry(main)&gt;</span><span class="bash"> <span class="literal">true</span> and <span class="literal">true</span> ? <span class="string">'hello'</span> : <span class="string">'hi'</span></span></div><div class="line">=&gt; "hello"</div><div class="line"></div><div class="line"><span class="meta">pry(main)&gt;</span><span class="bash"> <span class="literal">true</span> &amp;&amp; <span class="literal">true</span> ? <span class="string">'hello'</span> : <span class="string">'hi'</span></span></div><div class="line">=&gt; "hello"</div><div class="line"></div><div class="line"><span class="meta">pry(main)&gt;</span><span class="bash"> <span class="literal">false</span> and <span class="literal">true</span> ? <span class="string">'hello'</span> : <span class="string">'hi'</span></span></div><div class="line">=&gt; false</div><div class="line"></div><div class="line"><span class="meta">pry(main)&gt;</span><span class="bash"> <span class="literal">false</span> &amp;&amp; <span class="literal">true</span> ? <span class="string">'hello'</span> : <span class="string">'hi'</span></span></div><div class="line">=&gt; "hi"</div></pre></td></tr></table></figure>
 <h3 id="form-for-和-form-tag-区别"><a href="#form-for-和-form-tag-区别" class="headerlink" title="form_for 和 form_tag 区别"></a>form_for 和 form_tag 区别</h3><p>生成的html不同<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">form_for @object <span class="keyword">do</span> <span class="params">|f|</span></div><div class="line">  f.text_field <span class="symbol">:name</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">生成 input id=<span class="string">"object_name"</span> name=<span class="string">"object[name]"</span></div><div class="line"></div><div class="line">form_tag @object <span class="keyword">do</span></div><div class="line">  text_field_tag <span class="symbol">:name</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">生成 input id=<span class="string">"name"</span> name=<span class="string">"name"</span></div></pre></td></tr></table></figure></p>
 <p>还有就是form_for 算是 对象处理+url+form_tag的一个封装</p>
 <p>通过源码也可以看出form_for 在判断了url 和 对象之后还是调用的form_tag</p>
@@ -927,46 +957,6 @@
       <category term="rails" scheme="qingyu.ren/tags/rails/"/>
     
       <category term="elasticsearch" scheme="qingyu.ren/tags/elasticsearch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>shell</title>
-    <link href="qingyu.ren/2017/08/31/shell/"/>
-    <id>qingyu.ren/2017/08/31/shell/</id>
-    <published>2017-08-31T03:35:41.000Z</published>
-    <updated>2017-11-20T03:41:31.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>vps 设置系统定时重启， ssserver 开机启动</p>
-<p>首先先编写开启启动ssserver 脚本<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo ssserver -p 443 -k password -m rc4-md5 --user nobody -d start</div></pre></td></tr></table></figure></p>
-<p>P 服务端口<br>K密码m 加密方式 我们选择 比较快速的rc4-md5 放弃了aes-256<br>user 选择 nobody 然后 把这段话保存 为 shadowsocks.sh</p>
-<p>将其放在 /opt 目录下</p>
-<p>打开开机自启配置文件 <code>vim /etc/rc.local</code></p>
-<p>将 <code>/opt/./shadowsocks.sh</code> 这句放在最下方 保存退出<br>执行 <code>source ~/etc/rc.local</code> 让配置生效</p>
-<p>crontab -l 查看当前在执行的 定时任务</p>
-<p>crontab -e 编辑定时任务</p>
-<p>在最下方加 <code>0 13 * * * /sbin/reboot</code></p>
-<p>每天的13点重启vps， 因为vps 是美国服务器 有时差 所以13点应该是中国的凌晨 刚刚好</p>
-<p>然后 <code>*/5 * * * * ./shadowsocks.sh</code></p>
-<p>每5分钟就检测一次 ssserver 如果没有进程 就启动一遍，有就不执行</p>
-<p>保存退出</p>
-<p>重启vps</p>
-<p>登录 vps 输入 top</p>
-<p>查看到 ssserver 服务已经启动</p>
-<p>说明已经生效了 OK</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;vps 设置系统定时重启， ssserver 开机启动&lt;/p&gt;
-&lt;p&gt;首先先编写开启启动ssserver 脚本&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="centos" scheme="qingyu.ren/tags/centos/"/>
-    
-      <category term="shell" scheme="qingyu.ren/tags/shell/"/>
     
   </entry>
   

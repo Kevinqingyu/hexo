@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Mikasa·Ackerman">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511244769207&di=97fe709abd32e51b037c5bf3d37b8e4b&imgtype=0&src=http%3A%2F%2Ftc.sinaimg.cn%2Fmaxwidth.2048%2Ftc.service.weibo.com%2Fp3_pstatp_com%2Fe59d73299cfdc86f63ef07248bad7bd3.jpg">
-<meta property="og:updated_time" content="2019-09-04T01:39:59.000Z">
+<meta property="og:updated_time" content="2019-09-04T01:40:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ruby笔记（三）">
 <meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511244769207&di=97fe709abd32e51b037c5bf3d37b8e4b&imgtype=0&src=http%3A%2F%2Ftc.sinaimg.cn%2Fmaxwidth.2048%2Ftc.service.weibo.com%2Fp3_pstatp_com%2Fe59d73299cfdc86f63ef07248bad7bd3.jpg">
@@ -457,7 +457,7 @@
 <p>查看源码，原来就是这么简单的且枯燥</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># File activesupport/lib/active_support/base64.rb, line 29</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Base64</span>.<span class="title">strict_encode64</span><span class="params">(value)</span></span></div><div class="line">  encode64(value).gsub(<span class="regexp">/\n/</span>, <span class="string">''</span>)</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
 <h3 id="and-和-amp-amp-的区别"><a href="#and-和-amp-amp-的区别" class="headerlink" title="and 和 &amp;&amp; 的区别"></a>and 和 &amp;&amp; 的区别</h3><p>虽然二者都是<code>与门</code>但是明显 在ruby中 &amp;&amp; 的优先级更高</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">pry(main)&gt;</span> true and true ? 'hello' : 'hi'</div><div class="line">=&gt; "hello"</div><div class="line"></div><div class="line"><span class="meta">pry(main)&gt;</span> true &amp;&amp; true ? 'hello' : 'hi'</div><div class="line">=&gt; "hello"</div><div class="line"></div><div class="line"><span class="meta">pry(main)&gt;</span> false and true ? 'hello' : 'hi'</div><div class="line">=&gt; false</div><div class="line"></div><div class="line"><span class="meta">pry(main)&gt;</span> false &amp;&amp; true ? 'hello' : 'hi'</div><div class="line">=&gt; "hi"</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">pry(main)&gt;</span><span class="bash"> <span class="literal">true</span> and <span class="literal">true</span> ? <span class="string">'hello'</span> : <span class="string">'hi'</span></span></div><div class="line">=&gt; "hello"</div><div class="line"></div><div class="line"><span class="meta">pry(main)&gt;</span><span class="bash"> <span class="literal">true</span> &amp;&amp; <span class="literal">true</span> ? <span class="string">'hello'</span> : <span class="string">'hi'</span></span></div><div class="line">=&gt; "hello"</div><div class="line"></div><div class="line"><span class="meta">pry(main)&gt;</span><span class="bash"> <span class="literal">false</span> and <span class="literal">true</span> ? <span class="string">'hello'</span> : <span class="string">'hi'</span></span></div><div class="line">=&gt; false</div><div class="line"></div><div class="line"><span class="meta">pry(main)&gt;</span><span class="bash"> <span class="literal">false</span> &amp;&amp; <span class="literal">true</span> ? <span class="string">'hello'</span> : <span class="string">'hi'</span></span></div><div class="line">=&gt; "hi"</div></pre></td></tr></table></figure>
 <h3 id="form-for-和-form-tag-区别"><a href="#form-for-和-form-tag-区别" class="headerlink" title="form_for 和 form_tag 区别"></a>form_for 和 form_tag 区别</h3><p>生成的html不同<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">form_for @object <span class="keyword">do</span> <span class="params">|f|</span></div><div class="line">  f.text_field <span class="symbol">:name</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">生成 input id=<span class="string">"object_name"</span> name=<span class="string">"object[name]"</span></div><div class="line"></div><div class="line">form_tag @object <span class="keyword">do</span></div><div class="line">  text_field_tag <span class="symbol">:name</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">生成 input id=<span class="string">"name"</span> name=<span class="string">"name"</span></div></pre></td></tr></table></figure></p>
 <p>还有就是form_for 算是 对象处理+url+form_tag的一个封装</p>
 <p>通过源码也可以看出form_for 在判断了url 和 对象之后还是调用的form_tag</p>
@@ -511,6 +511,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/25/ruby笔记（四）/" rel="prev" title="ruby笔记（四）">
+                ruby笔记（四） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -582,7 +586,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -658,7 +662,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
