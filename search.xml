@@ -3,6 +3,32 @@
   
     
     <entry>
+      <title><![CDATA[sidekiq 使用]]></title>
+      <url>/2020/04/29/sidekiq-%E4%BD%BF%E7%94%A8/</url>
+      <content type="html"><![CDATA[<h2 id="sidekiq-使用"><a href="#sidekiq-使用" class="headerlink" title="sidekiq 使用"></a>sidekiq 使用</h2><blockquote>
+<p>配置好sidekiq和redis后首先新建job</p>
+</blockquote>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FinishCourseJob</span> &lt; ApplicationJob</span></div><div class="line">  queue_as <span class="symbol">:course</span></div><div class="line"></div><div class="line">  <span class="comment"># 上完课后完成课程</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">perform</span><span class="params">(id, finished_at)</span></span></div><div class="line">    @@log = Logger.new(<span class="string">'log/delayed_job.log'</span>)</div><div class="line">    course = Course.find_by(<span class="symbol">id:</span> id)</div><div class="line">    @@log.info <span class="string">"当前课程状态：<span class="subst">#&#123;course.status&#125;</span>"</span></div><div class="line">    <span class="keyword">if</span> course.online? &amp;&amp; finished_at == course.finished_at.to_i &amp;&amp; course.may_finish?</div><div class="line">      @@log.info <span class="string">'-------------完成课程---------------'</span></div><div class="line">      course.finish!</div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用方法</p>
+</blockquote>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 立即执行</span></div><div class="line">FinishCourseJob.perform_now(id)</div><div class="line"><span class="comment"># 常规异步执行，有空闲就执行</span></div><div class="line">FinishCourseJob.perform_later(id)</div><div class="line"><span class="comment"># 指定延迟多久执行</span></div><div class="line">FinishCourseJob.set( <span class="symbol">wait:</span> <span class="number">20</span>.minutes ).perform_later</div><div class="line"><span class="comment"># 指定执行时间</span></div><div class="line">FinishCourseJob.set(<span class="symbol">wait_until:</span> start_registration_at).perform_later(id, start_registration_at.to_i)</div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> ruby </tag>
+            
+            <tag> rails </tag>
+            
+            <tag> sidekiq </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[ruby笔记（四）]]></title>
       <url>/2019/11/25/ruby%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/</url>
       <content type="html"><![CDATA[<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1511244769207&amp;di=97fe709abd32e51b037c5bf3d37b8e4b&amp;imgtype=0&amp;src=http%3A%2F%2Ftc.sinaimg.cn%2Fmaxwidth.2048%2Ftc.service.weibo.com%2Fp3_pstatp_com%2Fe59d73299cfdc86f63ef07248bad7bd3.jpg" alt=""><br><a id="more"></a></p>
@@ -868,6 +894,12 @@
   
     
     <entry>
+      <title><![CDATA[Tagcloud]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[博主简介]]></title>
       <url>/about/index.html</url>
       <content type="html"><![CDATA[<h3 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h3><ul>
@@ -907,12 +939,6 @@
 <li>rabbitmq</li>
 </ul>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Tagcloud]]></title>
-      <url>/tags/index.html</url>
-      <content type="html"></content>
     </entry>
     
   

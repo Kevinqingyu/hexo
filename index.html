@@ -295,6 +295,131 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="qingyu.ren/2020/04/29/sidekiq-使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i1.hdslb.com/bfs/face/be815f37d1103e80183687542b9eb8892a430571.jpg@150w_150h.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mikasa·Ackerman">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/04/29/sidekiq-使用/" itemprop="url">
+                  sidekiq 使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-29T10:42:34+08:00">
+                2020-04-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="sidekiq-使用"><a href="#sidekiq-使用" class="headerlink" title="sidekiq 使用"></a>sidekiq 使用</h2><blockquote>
+<p>配置好sidekiq和redis后首先新建job</p>
+</blockquote>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FinishCourseJob</span> &lt; ApplicationJob</span></div><div class="line">  queue_as <span class="symbol">:course</span></div><div class="line"></div><div class="line">  <span class="comment"># 上完课后完成课程</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">perform</span><span class="params">(id, finished_at)</span></span></div><div class="line">    @@log = Logger.new(<span class="string">'log/delayed_job.log'</span>)</div><div class="line">    course = Course.find_by(<span class="symbol">id:</span> id)</div><div class="line">    @@log.info <span class="string">"当前课程状态：<span class="subst">#&#123;course.status&#125;</span>"</span></div><div class="line">    <span class="keyword">if</span> course.online? &amp;&amp; finished_at == course.finished_at.to_i &amp;&amp; course.may_finish?</div><div class="line">      @@log.info <span class="string">'-------------完成课程---------------'</span></div><div class="line">      course.finish!</div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用方法</p>
+</blockquote>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 立即执行</span></div><div class="line">FinishCourseJob.perform_now(id)</div><div class="line"><span class="comment"># 常规异步执行，有空闲就执行</span></div><div class="line">FinishCourseJob.perform_later(id)</div><div class="line"><span class="comment"># 指定延迟多久执行</span></div><div class="line">FinishCourseJob.set( <span class="symbol">wait:</span> <span class="number">20</span>.minutes ).perform_later</div><div class="line"><span class="comment"># 指定执行时间</span></div><div class="line">FinishCourseJob.set(<span class="symbol">wait_until:</span> start_registration_at).perform_later(id, start_registration_at.to_i)</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="qingyu.ren/2019/11/25/ruby笔记（四）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1412,132 +1537,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="qingyu.ren/2018/09/29/实现一个ftp连接池/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://i1.hdslb.com/bfs/face/be815f37d1103e80183687542b9eb8892a430571.jpg@150w_150h.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mikasa·Ackerman">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/09/29/实现一个ftp连接池/" itemprop="url">
-                  实现一个ftp连接池
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-29T12:14:29+08:00">
-                2018-09-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="需求背景："><a href="#需求背景：" class="headerlink" title="需求背景："></a>需求背景：</h3><h5 id="项目中使用Net-FTP上传文件到服务器，有时候会出现一次性上传几十到几百不等的文件，每次上传一个文件都要-执行："><a href="#项目中使用Net-FTP上传文件到服务器，有时候会出现一次性上传几十到几百不等的文件，每次上传一个文件都要-执行：" class="headerlink" title="项目中使用Net::FTP上传文件到服务器，有时候会出现一次性上传几十到几百不等的文件，每次上传一个文件都要 执行："></a>项目中使用Net::FTP上传文件到服务器，有时候会出现一次性上传几十到几百不等的文件，每次上传一个文件都要 执行：</h5><p>1.创建client</p>
-<p>2.连接</p>
-<p>3.登录</p>
-<p>4.上传文件</p>
-<p>5.关闭client<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/29/实现一个ftp连接池/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1587,7 +1586,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1598,7 +1597,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

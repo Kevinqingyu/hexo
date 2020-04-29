@@ -5,10 +5,43 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="qingyu.ren/"/>
-  <updated>2019-11-25T02:28:48.000Z</updated>
+  <updated>2020-04-29T03:01:41.000Z</updated>
   <id>qingyu.ren/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>sidekiq 使用</title>
+    <link href="qingyu.ren/2020/04/29/sidekiq-%E4%BD%BF%E7%94%A8/"/>
+    <id>qingyu.ren/2020/04/29/sidekiq-使用/</id>
+    <published>2020-04-29T02:42:34.000Z</published>
+    <updated>2020-04-29T03:01:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="sidekiq-使用"><a href="#sidekiq-使用" class="headerlink" title="sidekiq 使用"></a>sidekiq 使用</h2><blockquote>
+<p>配置好sidekiq和redis后首先新建job</p>
+</blockquote>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FinishCourseJob</span> &lt; ApplicationJob</span></div><div class="line">  queue_as <span class="symbol">:course</span></div><div class="line"></div><div class="line">  <span class="comment"># 上完课后完成课程</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">perform</span><span class="params">(id, finished_at)</span></span></div><div class="line">    @@log = Logger.new(<span class="string">'log/delayed_job.log'</span>)</div><div class="line">    course = Course.find_by(<span class="symbol">id:</span> id)</div><div class="line">    @@log.info <span class="string">"当前课程状态：<span class="subst">#&#123;course.status&#125;</span>"</span></div><div class="line">    <span class="keyword">if</span> course.online? &amp;&amp; finished_at == course.finished_at.to_i &amp;&amp; course.may_finish?</div><div class="line">      @@log.info <span class="string">'-------------完成课程---------------'</span></div><div class="line">      course.finish!</div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用方法</p>
+</blockquote>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 立即执行</span></div><div class="line">FinishCourseJob.perform_now(id)</div><div class="line"><span class="comment"># 常规异步执行，有空闲就执行</span></div><div class="line">FinishCourseJob.perform_later(id)</div><div class="line"><span class="comment"># 指定延迟多久执行</span></div><div class="line">FinishCourseJob.set( <span class="symbol">wait:</span> <span class="number">20</span>.minutes ).perform_later</div><div class="line"><span class="comment"># 指定执行时间</span></div><div class="line">FinishCourseJob.set(<span class="symbol">wait_until:</span> start_registration_at).perform_later(id, start_registration_at.to_i)</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;sidekiq-使用&quot;&gt;&lt;a href=&quot;#sidekiq-使用&quot; class=&quot;headerlink&quot; title=&quot;sidekiq 使用&quot;&gt;&lt;/a&gt;sidekiq 使用&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;配置好sidekiq和redis后首先新建job&lt;
+    
+    </summary>
+    
+    
+      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
+    
+      <category term="rails" scheme="qingyu.ren/tags/rails/"/>
+    
+      <category term="sidekiq" scheme="qingyu.ren/tags/sidekiq/"/>
+    
+  </entry>
   
   <entry>
     <title>ruby笔记（四）</title>
@@ -911,52 +944,6 @@
     
     
       <category term="centos" scheme="qingyu.ren/tags/centos/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>为rails 项目搭建elasticsearch服务</title>
-    <link href="qingyu.ren/2017/09/06/%E4%B8%BArails-%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BAelasticsearch%E6%9C%8D%E5%8A%A1/"/>
-    <id>qingyu.ren/2017/09/06/为rails-项目搭建elasticsearch服务/</id>
-    <published>2017-09-06T14:11:57.000Z</published>
-    <updated>2018-01-16T09:28:19.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="为-rails-本地项目搭建-elasticsearch-服务"><a href="#为-rails-本地项目搭建-elasticsearch-服务" class="headerlink" title="为 rails 本地项目搭建  elasticsearch  服务"></a>为 rails 本地项目搭建  elasticsearch  服务</h2><h3 id="首先安装-elasticsearch-服务"><a href="#首先安装-elasticsearch-服务" class="headerlink" title="首先安装  elasticsearch  服务"></a>首先安装  elasticsearch  服务</h3><p>OSX  系统<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">brew install elasticsearch@2.4</div><div class="line">brew services start elasticsearch</div></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>测试服务是否启动<br>浏览器输入 localhost:9200<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot; : &quot;Lynx&quot;,</div><div class="line">  &quot;cluster_name&quot; : &quot;elasticsearch_marin&quot;,</div><div class="line">  &quot;cluster_uuid&quot; : &quot;acE95aJmQxuMz0cx47b2WQ&quot;,</div><div class="line">  &quot;version&quot; : &#123;</div><div class="line">    &quot;number&quot; : &quot;2.4.6&quot;,</div><div class="line">    &quot;build_hash&quot; : &quot;5376dca9f70f3abef96a77f4bb22720ace8240fd&quot;,</div><div class="line">    &quot;build_timestamp&quot; : &quot;2017-07-18T12:17:44Z&quot;,</div><div class="line">    &quot;build_snapshot&quot; : false,</div><div class="line">    &quot;lucene_version&quot; : &quot;5.5.4&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;tagline&quot; : &quot;You Know, for Search&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>出现类似上述信息 number 表示当前  elasticsearch  的版本号，需要注意的是  elasticsearch  现在分为 v2+ 和 v5+  两个版本，要根据自己的版本来选择  searchkick  对应的版本是否合适</p>
-<h3 id="gemfile中-引用-searchkick"><a href="#gemfile中-引用-searchkick" class="headerlink" title="gemfile中  引用  searchkick"></a>gemfile中  引用  searchkick</h3><p>这里我们是使用了 1.3.3 版本的<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem <span class="string">'searchkick'</span>, <span class="string">'1.3.3'</span></div></pre></td></tr></table></figure></p>
-<h3 id="model-中引用searchkick"><a href="#model-中引用searchkick" class="headerlink" title="model 中引用searchkick"></a>model 中引用searchkick</h3><p>现在我们已经有搜索服务了，现在要配置需要搜索的  model<br>在  model  中引用  searchkick</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 全文检索  searchkick</span></div><div class="line">searchkick</div></pre></td></tr></table></figure>
-<p>给  products  表重建索引<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Product.reindex</div></pre></td></tr></table></figure></p>
-<p>进行搜索<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">products = Product.search <span class="string">"apples"</span></div></pre></td></tr></table></figure></p>
-<p>这时就会得到结果集。<br>如果是简单的应用到这里就可以满足要求 ，当然我们有时候需要一些个性化的配置。</p>
-<h3 id="给部分字段建立索引"><a href="#给部分字段建立索引" class="headerlink" title="给部分字段建立索引"></a>给部分字段建立索引</h3><p>reindex 方法会默认给所有的字段建立索引，但是由于字段过长，或者性能原因我们只需要部分字段有索引 可以这样：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">search_data</span></span></div><div class="line">  &#123; <span class="symbol">name:</span> name &#125;</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
-<p>重写  search_data 方法加入name 这样就只给  name  字段打索引了</p>
-<h3 id="关联表建索引"><a href="#关联表建索引" class="headerlink" title="关联表建索引"></a>关联表建索引</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Catalog</span> &lt; ActiveRecord::Base</span></div><div class="line">  has_many <span class="symbol">:products</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span> &lt; ActiveRecord::Base</span></div><div class="line">  belongs_to <span class="symbol">:catalog</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">search_data</span></span></div><div class="line">  &#123; <span class="symbol">name:</span> name &#125;.merge&#123; <span class="symbol">catalog_name:</span> catalog.name &#125;</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<p>这里 我们给  product  表添加一个索引叫做 分类名称  catalog_name<br>这样搜索分类名称就可以搜索出 同一个分类的 商品列表了</p>
-<h3 id="指定查询字段"><a href="#指定查询字段" class="headerlink" title="指定查询字段"></a>指定查询字段</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Product.search key</div></pre></td></tr></table></figure>
-<p>这个方法会默认搜索 所有的字段 并返回 所有包含  key  的结果集。<br>如果我们想搜索指定的字段该如何设置呢？</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">elasticsearch</span><span class="params">(params = &#123;&#125;, options = &#123;&#125;)</span></span></div><div class="line">  key = params[<span class="symbol">:key</span>].blank? ? <span class="string">"*"</span> : params[<span class="symbol">:key</span>] <span class="comment"># 关键字</span></div><div class="line">  params[<span class="symbol">:page</span>] <span class="params">||</span>= <span class="number">1</span> <span class="comment"># 分页</span></div><div class="line">  params[<span class="symbol">:per_page</span>] <span class="params">||</span>= <span class="number">20</span> <span class="comment"># 每页条数</span></div><div class="line">  where_hash = &#123;</div><div class="line">    <span class="symbol">status:</span> <span class="string">'success'</span>, <span class="comment"># 固定筛选值</span></div><div class="line">  &#125;</div><div class="line">  conditions = &#123;<span class="symbol">where:</span> where_hash&#125;</div><div class="line">  conditions[<span class="symbol">:page</span>] = params[<span class="symbol">:page</span>]</div><div class="line">  conditions[<span class="symbol">:per_page</span>] = params[<span class="symbol">:per_page</span>]</div><div class="line">  search key, conditions</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<p>这样 就相当于给结果集添加  scope，和分页效果，前端配合  kaminari  就可以实现分页效果了<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@articles = Product.elasticsearch(params)</div></pre></td></tr></table></figure></p>
-<p>action  中将设定好的参数传入就可以得到结果集了</p>
-<p> QWQ~!!</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;为-rails-本地项目搭建-elasticsearch-服务&quot;&gt;&lt;a href=&quot;#为-rails-本地项目搭建-elasticsearch-服务&quot; class=&quot;headerlink&quot; title=&quot;为 rails 本地项目搭建  elasticsearch  服务&quot;&gt;&lt;/a&gt;为 rails 本地项目搭建  elasticsearch  服务&lt;/h2&gt;&lt;h3 id=&quot;首先安装-elasticsearch-服务&quot;&gt;&lt;a href=&quot;#首先安装-elasticsearch-服务&quot; class=&quot;headerlink&quot; title=&quot;首先安装  elasticsearch  服务&quot;&gt;&lt;/a&gt;首先安装  elasticsearch  服务&lt;/h3&gt;&lt;p&gt;OSX  系统&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;brew install elasticsearch@2.4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;brew services start elasticsearch&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
-    
-      <category term="rails" scheme="qingyu.ren/tags/rails/"/>
-    
-      <category term="elasticsearch" scheme="qingyu.ren/tags/elasticsearch/"/>
     
   </entry>
   
