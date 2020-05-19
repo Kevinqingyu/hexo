@@ -48,6 +48,7 @@
 <p><img src="https://user-images.githubusercontent.com/5518/49985459-f8492f80-ffa6-11e8-9ef5-8f8f522e4707.png" alt=""><br><a id="more"></a></p>
 <blockquote>
 <p>特色</p>
+</blockquote>
 <ul>
 <li>不需要 RMagick，所以安装不再有困难、内存泄露也不再有了!</li>
 <li>调用系统 ImageMagick 命令生成图片，效率高，和 mini_magick 机制一样；</li>
@@ -55,6 +56,7 @@
 <li>自动化的文件缓存，减少图片生成时对 CPU 的开销；</li>
 <li>漂亮！</li>
 </ul>
+<blockquote>
 <p>使用方法 这里引入 <a href="https://ruby-china.org/topics/27832" target="_blank" rel="external">官方文档</a></p>
 </blockquote>
 <p>  Gemfile:</p>
