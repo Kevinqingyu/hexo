@@ -913,7 +913,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[shell]]></title>
+      <title><![CDATA[租用vps后的一些操作]]></title>
       <url>/2017/08/31/shell/</url>
       <content type="html"><![CDATA[<p>vps 设置系统定时重启， ssserver 开机启动</p>
 <p>首先先编写开启启动ssserver 脚本<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo ssserver -p 443 -k password -m rc4-md5 --user nobody -d start</div></pre></td></tr></table></figure></p>
