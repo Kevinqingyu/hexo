@@ -5,10 +5,127 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="qingyu.ren/"/>
-  <updated>2020-05-19T08:51:25.000Z</updated>
+  <updated>2020-05-29T09:25:53.000Z</updated>
   <id>qingyu.ren/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>backbone history 问题的思考</title>
+    <link href="qingyu.ren/2020/05/29/backbone-history-%E9%97%AE%E9%A2%98%E7%9A%84%E6%80%9D%E8%80%83/"/>
+    <id>qingyu.ren/2020/05/29/backbone-history-问题的思考/</id>
+    <published>2020-05-29T08:49:24.000Z</published>
+    <updated>2020-05-29T09:25:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="浏览器后退前进缓存"><a href="#浏览器后退前进缓存" class="headerlink" title="浏览器后退前进缓存"></a>浏览器后退前进缓存</h3><p>学习中…</p>
+<h3 id="backbone-history-缓存原理"><a href="#backbone-history-缓存原理" class="headerlink" title="backbone history 缓存原理"></a>backbone history 缓存原理</h3><p>学习中…</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;浏览器后退前进缓存&quot;&gt;&lt;a href=&quot;#浏览器后退前进缓存&quot; class=&quot;headerlink&quot; title=&quot;浏览器后退前进缓存&quot;&gt;&lt;/a&gt;浏览器后退前进缓存&lt;/h3&gt;&lt;p&gt;学习中…&lt;/p&gt;
+&lt;h3 id=&quot;backbone-history-缓存原理&quot;&gt;&lt;a
+    
+    </summary>
+    
+    
+      <category term="backbone" scheme="qingyu.ren/tags/backbone/"/>
+    
+      <category term="react-router" scheme="qingyu.ren/tags/react-router/"/>
+    
+      <category term="browser" scheme="qingyu.ren/tags/browser/"/>
+    
+      <category term="cache" scheme="qingyu.ren/tags/cache/"/>
+    
+      <category term="history" scheme="qingyu.ren/tags/history/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>rails css scss 使用 asset_path问题</title>
+    <link href="qingyu.ren/2020/05/29/rails-css-scss-%E4%BD%BF%E7%94%A8-asset-path%E9%97%AE%E9%A2%98/"/>
+    <id>qingyu.ren/2020/05/29/rails-css-scss-使用-asset-path问题/</id>
+    <published>2020-05-29T08:38:54.000Z</published>
+    <updated>2020-05-29T09:26:43.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="rails-css-scss-使用-asset-path问题"><a href="#rails-css-scss-使用-asset-path问题" class="headerlink" title="rails css scss 使用 asset_path问题"></a>rails css scss 使用 asset_path问题</h3><p>背景图加载如果想要使用静态资源<br><a id="more"></a></p>
+<h4 id="CSS-和-ERB"><a href="#CSS-和-ERB" class="headerlink" title="CSS 和 ERB"></a>CSS 和 ERB</h4><blockquote>
+<p>Asset Pipeline 会自动计算 ERB 的值。也就是说，只要给 CSS 文件添加 .erb 扩展名（例如 application.css.erb），就可以在 CSS 规则中使用 asset_path 等辅助方法。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.class</span> &#123; <span class="attribute">background-image</span>: <span class="built_in">url</span>(&lt;%= asset_path <span class="string">'image.png'</span> %&gt;) &#125;</div></pre></td></tr></table></figure>
+<p>上述代码中的 asset_path 辅助方法会返回指向图像真实路径的链接。图像必须位于静态文件加载路径中，例如 app/assets/images/image.png，以便在这里引用。如果在 public/assets 文件夹中已经存在此图像的带指纹的版本，那么将引用这个带指纹的版本。</p>
+<blockquote>
+<p>要想使用 data URI（用于把图像数据直接嵌入 CSS 文件中），可以使用 asset_data_uri 辅助方法</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#logo</span> &#123; <span class="attribute">background</span>: <span class="built_in">url</span>(&lt;%= asset_data_uri <span class="string">'logo.png'</span> %&gt;) &#125;</div></pre></td></tr></table></figure>
+<h4 id="CSS-和-Sass"><a href="#CSS-和-Sass" class="headerlink" title="CSS 和 Sass"></a>CSS 和 Sass</h4><blockquote>
+<p>在使用 Asset Pipeline 时，静态资源文件的路径都必须重写，为此 sass-rails gem 提供了 -url 和 -path 系列辅助方法（在 Sass 中使用连字符，在 Ruby 中使用下划线），用于处理图像、字体、视频、音频、JavaScript 和 CSS 等类型的静态资源文件。</p>
+</blockquote>
+<ul>
+<li>image-url(“rails.png”) 会返回 url(/assets/rails.png)</li>
+<li>image-path(“rails.png”) 会返回 “/assets/rails.png”</li>
+</ul>
+<p>或使用更通用的形式：</p>
+<ul>
+<li>asset-url(“rails.png”) 返回 url(/assets/rails.png)</li>
+<li>asset-path(“rails.png”) 返回 “/assets/rails.png”</li>
+</ul>
+<h4 id="JavaScript-CoffeeScript-和-ERB"><a href="#JavaScript-CoffeeScript-和-ERB" class="headerlink" title="JavaScript/CoffeeScript 和 ERB"></a>JavaScript/CoffeeScript 和 ERB</h4><blockquote>
+<p>只要给 JavaScript 文件添加 .erb 扩展名（例如 application.js.erb），就可以在 JavaScript 源代码中使用 asset_path 辅助方法：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#logo'</span>).attr(&#123; <span class="attr">src</span>: <span class="string">"&lt;%= asset_path('logo.png') %&gt;"</span> &#125;);</div></pre></td></tr></table></figure>
+<p>上述代码中的 asset_path 辅助方法会返回指向图像真实路径的链接。</p>
+<p>同样，只要给 CoffeeScript 文件添加 .erb 扩展名（例如 application.coffee.erb），就可以在 CoffeeScript 源代码中使用 asset_path 辅助方法：</p>
+<figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#logo'</span>).attr src: <span class="string">"&lt;%= asset_path('logo.png') %&gt;"</span></div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;rails-css-scss-使用-asset-path问题&quot;&gt;&lt;a href=&quot;#rails-css-scss-使用-asset-path问题&quot; class=&quot;headerlink&quot; title=&quot;rails css scss 使用 asset_path问题&quot;&gt;&lt;/a&gt;rails css scss 使用 asset_path问题&lt;/h3&gt;&lt;p&gt;背景图加载如果想要使用静态资源&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="rails" scheme="qingyu.ren/tags/rails/"/>
+    
+      <category term="css" scheme="qingyu.ren/tags/css/"/>
+    
+      <category term="Asset Pipeline" scheme="qingyu.ren/tags/Asset-Pipeline/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>css元素固定</title>
+    <link href="qingyu.ren/2020/05/29/css%E5%85%83%E7%B4%A0%E5%9B%BA%E5%AE%9A/"/>
+    <id>qingyu.ren/2020/05/29/css元素固定/</id>
+    <published>2020-05-29T08:21:22.000Z</published>
+    <updated>2020-05-29T09:26:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="css元素固定"><a href="#css元素固定" class="headerlink" title="css元素固定"></a>css元素固定</h3><ul>
+<li><p>固定顶部<br>加入我们将一个头部导航栏固定</p>
+<a id="more"></a>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.menu</span> &#123;</div><div class="line">  <span class="attribute">position</span>: fixed; <span class="comment">/* 关键 */</span></div><div class="line">  <span class="attribute">top</span>:<span class="number">0</span>; <span class="comment">/* 关键 */</span></div><div class="line">  <span class="attribute">max-width</span>: <span class="number">640px</span>;</div><div class="line">  <span class="attribute">z-index</span>: <span class="number">999</span>;</div><div class="line">  <span class="attribute">margin</span>:<span class="number">0</span> auto;</div><div class="line">  <span class="attribute">background</span>: <span class="number">#fff</span>;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">  <span class="attribute">border-bottom</span>:<span class="number">1px</span> solid <span class="number">#eee</span>;</div><div class="line">  <span class="attribute">box-shadow</span>:<span class="number">0px</span> <span class="number">3px</span> <span class="number">6px</span> <span class="built_in">rgba</span>(0,0,0,0.09)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>固定底部</p>
+</li>
+</ul>
+<p>比如我们将footer 固定底部</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.footer</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">max-width</span>: <span class="number">640px</span>;</div><div class="line">  <span class="attribute">position</span>: fixed; <span class="comment">/* 关键 */</span></div><div class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>; <span class="comment">/* 关键 */</span></div><div class="line">  <span class="attribute">text-align</span>: center;</div><div class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;css元素固定&quot;&gt;&lt;a href=&quot;#css元素固定&quot; class=&quot;headerlink&quot; title=&quot;css元素固定&quot;&gt;&lt;/a&gt;css元素固定&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;固定顶部&lt;br&gt;加入我们将一个头部导航栏固定&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="css" scheme="qingyu.ren/tags/css/"/>
+    
+      <category term="html" scheme="qingyu.ren/tags/html/"/>
+    
+  </entry>
   
   <entry>
     <title>css渐变做出突变进度条</title>
@@ -56,7 +173,7 @@
     <link href="qingyu.ren/2020/05/19/rails-%E6%B7%BB%E5%8A%A0%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81/"/>
     <id>qingyu.ren/2020/05/19/rails-添加图形验证码/</id>
     <published>2020-05-19T07:08:33.000Z</published>
-    <updated>2020-05-19T08:58:23.000Z</updated>
+    <updated>2020-05-29T08:51:06.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="RuCaptcha"><a href="#RuCaptcha" class="headerlink" title="RuCaptcha"></a>RuCaptcha</h3><p><a href="https://github.com/huacnlee/rucaptcha" target="_blank" rel="external">完美的 Ruby 图形验证码 Gem - RuCaptcha</a></p>
 <p>由ruby china 社区创始人之一 <a href="https://ruby-china.org/huacnlee" target="_blank" rel="external">李华顺</a>打造！</p>
@@ -850,150 +967,6 @@
       <category term="rails" scheme="qingyu.ren/tags/rails/"/>
     
       <category term="excel" scheme="qingyu.ren/tags/excel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ruby笔记（二）</title>
-    <link href="qingyu.ren/2017/11/20/ruby%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>qingyu.ren/2017/11/20/ruby笔记（二）/</id>
-    <published>2017-11-20T03:20:36.000Z</published>
-    <updated>2019-08-29T09:41:08.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3942457143,1284096136&amp;fm=27&amp;gp=0.jpg" alt=""><br><a id="more"></a></p>
-<p>最近有朋友有问我<code>ActiveRecord</code>中 <code>scope</code> 和 <code>validate</code> 方法的实现机制，之前一直在使用它但是我还真的没有细细的了解过这个方法，于是决定深入探究一下。</p>
-<h4 id="scope-name-scope-options-public"><a href="#scope-name-scope-options-public" class="headerlink" title="scope(name, scope_options = {}) public"></a>scope(name, scope_options = {}) public</h4><blockquote>
-<p>添加一个用于检索和查询对象的类方法。</p>
-</blockquote>
-<p>可以这样使用：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shirt</span> &lt; ActiveRecord::Base</span></div><div class="line">  scope <span class="symbol">:red</span>, where(<span class="symbol">:color</span> =&gt; <span class="string">'red'</span>)</div><div class="line">  scope <span class="symbol">:end_date</span>, -&gt;(date) &#123; where(<span class="symbol">:end_date</span> =&gt; date) &#125;</div><div class="line">  scope <span class="symbol">:dry_clean_only</span>, joins(<span class="symbol">:washing_instructions</span>).where(<span class="string">'washing_instructions.dry_clean_only = ?'</span>, <span class="literal">true</span>)</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>上面的调用<code>scope</code>定义了类方法<code>Shirt.red</code>和<code>Shirt.dry_clean_only</code>。 <code>Shirt.red</code>实际上代表查询<code>Shirt.where(:color =&gt;&#39;red&#39;)</code>。<br>请注意，这只是用于定义实际类方法的<code>语法糖</code></p>
-</blockquote>
-<p>实现的作用和类方法一样，但是类方法是在载入类的时候就会一起加载，而<code>scope</code> 定义的方法是在方法调用时才会加载<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shirt</span> &lt; ActiveRecord::Base</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">red</span></span></div><div class="line">    where(<span class="symbol">color:</span> <span class="string">'red'</span>)</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
-<p>不过需要注意的是，<code>scope</code>方法即使在什么也没查到的情况下依然会返回<code>Relation</code>对象，也就是说 <code>scope</code> 方法可以进行链式调用而不担心会抛出<code>nil:NilClass</code> 异常。</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Article</span> &lt; ActiveRecord::Base</span></div><div class="line">  scope <span class="symbol">:published</span>, -&gt; &#123; where(<span class="symbol">published:</span> <span class="literal">true</span>) &#125;</div><div class="line">  scope <span class="symbol">:featured</span>, -&gt; &#123; where(<span class="symbol">featured:</span> <span class="literal">true</span>) &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">latest_article</span></span></div><div class="line">    order(<span class="string">'published_at desc'</span>).first</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">titles</span></span></div><div class="line">    pluck(<span class="symbol">:title</span>)</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<p>我们可以这样调用方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Article.published.featured.latest_article</div><div class="line">Article.featured.titles</div></pre></td></tr></table></figure></p>
-<p>下面看一下具体的实现源码：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># File activerecord/lib/active_record/scoping/named.rb, line 141</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">scope</span><span class="params">(name, body, &amp;block)</span></span></div><div class="line">  <span class="keyword">unless</span> body.respond_to?(<span class="symbol">:call</span>)</div><div class="line">    raise ArgumentError, <span class="string">'The scope body needs to be callable.'</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="keyword">if</span> dangerous_class_method?(name)</div><div class="line">    raise ArgumentError, <span class="string">"You tried to define a scope named \"<span class="subst">#&#123;name&#125;</span>\" "</span>                <span class="string">"on the model \"<span class="subst">#&#123;<span class="keyword">self</span>.name&#125;</span>\", but Active Record already defined "</span>                <span class="string">"a class method with the same name."</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  extension = Module.new(&amp;block) <span class="keyword">if</span> block</div><div class="line"></div><div class="line">  singleton_class.send(<span class="symbol">:define_method</span>, name) <span class="keyword">do</span> <span class="params">|*args|</span></div><div class="line">    scope = all.scoping &#123; body.call(*args) &#125;</div><div class="line">    scope = scope.extending(extension) <span class="keyword">if</span> extension</div><div class="line"></div><div class="line">    scope <span class="params">||</span> all</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<p>除去数据验证以外，值得关注的方法就是<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">singleton_class.send(<span class="symbol">:define_method</span>, name)</div></pre></td></tr></table></figure></p>
-<p>这一句实现了将传入的方法名定义成一个类方法的过程，我们试着简易的实现以下<code>scope</code> 方法的原理</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">scope</span><span class="params">(name, body)</span></span></div><div class="line">  singleton_class.send(<span class="symbol">:define_method</span>, name, &amp;body)</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<p>参数接受名字和代码块，然后将名字定义为方法名，代码块作为方法内部可执行代码。这样我们就简易的实现了<code>scope</code>这个方法。</p>
-<p>这时候scope 的内部实现机制就算比较了解了，但是我对这个<code>singleton_class</code> 非常好奇，它是如何实现的呢？</p>
-<h4 id="singleton-class-→-class"><a href="#singleton-class-→-class" class="headerlink" title="singleton_class → class"></a>singleton_class → class</h4><blockquote>
-<p>返回obj的单例类。 如果obj没有，则此方法创建一个新的单例类。<br>如果obj为nil，true或false，则分别返回NilClass，TrueClass或FalseClass。 如果obj是一个Fixnum或一个符号，它会引发一个TypeError。</p>
-</blockquote>
-<p>我们可以这么用它：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Object.new.singleton_class  #=&gt; #&lt;Class:#&lt;Object:0xb7ce1e24&gt;&gt;</div><div class="line">String.singleton_class      #=&gt; #&lt;Class:String&gt;</div><div class="line">nil.singleton_class         #=&gt; NilClass</div></pre></td></tr></table></figure></p>
-<p>那么<code>scope</code> 就算是告一段落，算是浅尝辄止，下次我们要仔细的研究一下<code>singleton_class</code>，下一步看看<code>validate</code>的实现机制。</p>
-<h4 id="validate-methods-amp-block-public"><a href="#validate-methods-amp-block-public" class="headerlink" title="validate(*methods, &amp;block) public"></a>validate(*methods, &amp;block) public</h4><blockquote>
-<p>向类中添加验证方法或块。 当重写#validate实例方法变得过于强硬时，这是很有用的，而且您正在寻找更多关于验证的描述性声明。<br>这可以通过一个指向方法的符号来完成：</p>
-</blockquote>
-<p>这个非常常用的校验方法，我们经常这样用：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Comment</span> &lt; ActiveRecord::Base</span></div><div class="line">  validate <span class="symbol">:must_be_friends</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">must_be_friends</span></span></div><div class="line">    errors.add_to_base(<span class="string">"Must be friends to leave a comment"</span>) <span class="keyword">unless</span> commenter.friend_of?(commentee)</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<p>或者用一个传递当前记录的块进行验证：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Comment</span> &lt; ActiveRecord::Base</span></div><div class="line">  validate <span class="keyword">do</span> <span class="params">|comment|</span></div><div class="line">    comment.must_be_friends</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">must_be_friends</span></span></div><div class="line">    errors.add_to_base(<span class="string">"Must be friends to leave a comment"</span>) <span class="keyword">unless</span> commenter.friend_of?(commentee)</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
-<p>看得出这里 参数接受方法或者代码块，然后定义了一个实例方法，当实例不满足校验条件时，将会抛出异常。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3942457143,1284096136&amp;amp;fm=27&amp;amp;gp=0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
-    
-      <category term="rails" scheme="qingyu.ren/tags/rails/"/>
-    
-      <category term="笔记" scheme="qingyu.ren/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ruby笔记（一）</title>
-    <link href="qingyu.ren/2017/11/14/ruby%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>qingyu.ren/2017/11/14/ruby笔记（一）/</id>
-    <published>2017-11-14T03:48:30.000Z</published>
-    <updated>2019-08-29T07:54:04.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1511244769207&amp;di=97fe709abd32e51b037c5bf3d37b8e4b&amp;imgtype=0&amp;src=http%3A%2F%2Ftc.sinaimg.cn%2Fmaxwidth.2048%2Ftc.service.weibo.com%2Fp3_pstatp_com%2Fe59d73299cfdc86f63ef07248bad7bd3.jpg" alt=""><br><a id="more"></a></p>
-<p>记录一下自己在工作当中会用到 的一些比较好用的方法</p>
-<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><h4 id="step"><a href="#step" class="headerlink" title="step"></a>step</h4><p><code>ruby2.X</code> 中我们这么用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">pry(main)&gt; range = 1..10</div><div class="line">=&gt; 1..10</div><div class="line">pry(main)&gt; range.step(2) &#123;|x| puts x&#125;</div><div class="line">1</div><div class="line">3</div><div class="line">5</div><div class="line">7</div><div class="line">9</div><div class="line">=&gt; 1..10</div></pre></td></tr></table></figure></p>
-<ul>
-<li>创建一个1-10差为2的等差数列，有时也可以这么用</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">pry(main)&gt; 0.step(10, 2) &#123;|x| puts x&#125;</div><div class="line">0</div><div class="line">2</div><div class="line">4</div><div class="line">6</div><div class="line">8</div><div class="line">10</div><div class="line">=&gt; 0</div></pre></td></tr></table></figure>
-<p>和上面的方法是一样的作用。</p>
-<h4 id="eval"><a href="#eval" class="headerlink" title="eval"></a>eval</h4><ul>
-<li>将字符串当做代码执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">pry(main)&gt; str = &quot;hello&quot;</div><div class="line">=&gt; &quot;hello&quot;</div><div class="line">pry(main)&gt; eval &quot;str + &apos; Fred&apos;&quot;</div><div class="line">=&gt; &quot;hello Fred&quot;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="camelize-amp-underscore"><a href="#camelize-amp-underscore" class="headerlink" title="camelize &amp; underscore"></a>camelize &amp; underscore</h4><p>蛇形和驼峰的互换</p>
-<ul>
-<li>camelize将蛇形转换为驼峰</li>
-<li>underscore将驼峰转换为蛇形</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">pry(main)&gt; &apos;user_mailer&apos;.camelize</div><div class="line">=&gt; &quot;UserMailer&quot;</div><div class="line">pry(main)&gt; &quot;UserMailer&quot;.underscore</div><div class="line">=&gt; &quot;user_mailer&quot;</div></pre></td></tr></table></figure>
-<p>采用正则转换</p>
-<h4 id="constantize"><a href="#constantize" class="headerlink" title="constantize"></a>constantize</h4><p>将驼峰转换为类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">pry(main)&gt; &quot;UserMailer&quot;.constantize</div><div class="line">=&gt; UserMailer</div><div class="line">pry(main)&gt; &quot;UserMailer&quot;.constantize.class</div><div class="line">=&gt; Class</div></pre></td></tr></table></figure>
-<p>如果想要转换的类不存在，将会抛出异常<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pry(main)&gt; &quot;AserMailer&quot;.constantize.class</div><div class="line">NameError: uninitialized constant AserMailer</div></pre></td></tr></table></figure></p>
-<h4 id="reduce-amp-inject"><a href="#reduce-amp-inject" class="headerlink" title="reduce &amp; inject"></a>reduce &amp; inject</h4><p>官方示例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">pry(main)&gt; (5..10).reduce(:+)</div><div class="line">=&gt; 45</div><div class="line">pry(main)&gt; (5..10).inject &#123;|sum, n| sum + n &#125;</div><div class="line">=&gt; 45</div><div class="line">pry(main)&gt; (5..10).reduce(1, :*)</div><div class="line">=&gt; 151200</div><div class="line">pry(main)&gt; (5..10).inject(1) &#123;|product, n| product * n &#125;</div><div class="line">=&gt; 151200</div></pre></td></tr></table></figure></p>
-<p>这两个方法在使用上看起来不太一样，但是在结果上是一致的。</p>
-<h4 id="map-amp"><a href="#map-amp" class="headerlink" title="map(&amp;:)"></a>map(&amp;:)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(5..10).map(&amp;:to_s)</div><div class="line">=&gt; [&quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;10&quot;]</div><div class="line">(5..10).map &#123;|i| i.to_s &#125;</div><div class="line">=&gt; [&quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;10&quot;]</div></pre></td></tr></table></figure>
-<h4 id="hash-invert"><a href="#hash-invert" class="headerlink" title="hash.invert"></a>hash.invert</h4><p>互换hash 键和值的位置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pry(main)&gt; &#123;&quot;1&quot;=&gt;&quot;hello&quot;, &quot;2&quot;=&gt;&quot;dear&quot;&#125;.invert</div><div class="line">=&gt; &#123;&quot;hello&quot;=&gt;&quot;1&quot;, &quot;dear&quot;=&gt;&quot;2&quot;&#125;</div></pre></td></tr></table></figure>
-<h4 id="array-zip"><a href="#array-zip" class="headerlink" title="array.zip"></a>array.zip</h4><p>将两个一维数组转换为二维数组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">pry(main)&gt; %w(供应商 供应商1 供应商2).zip([1, 2, 3])</div><div class="line">=&gt; [[&quot;供应商&quot;, 1], [&quot;供应商1&quot;, 2], [&quot;供应商2&quot;, 3]]</div><div class="line">pry(main)&gt; %w(供应商 供应商1 供应商2).zip([1, 2])</div><div class="line">=&gt; [[&quot;供应商&quot;, 1], [&quot;供应商1&quot;, 2], [&quot;供应商2&quot;, nil]]</div><div class="line">pry(main)&gt; %w(供应商 供应商1).zip([1, 2, 3])</div><div class="line">=&gt; [[&quot;供应商&quot;, 1], [&quot;供应商1&quot;, 2]]</div></pre></td></tr></table></figure>
-<p>重新生成的数组长度以第一个数组为准，后者缺少的值以<code>nil</code>代替，后者多余的会直接丢弃。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://timgsa.baidu.com/timg?image&amp;amp;quality=80&amp;amp;size=b9999_10000&amp;amp;sec=1511244769207&amp;amp;di=97fe709abd32e51b037c5bf3d37b8e4b&amp;amp;imgtype=0&amp;amp;src=http%3A%2F%2Ftc.sinaimg.cn%2Fmaxwidth.2048%2Ftc.service.weibo.com%2Fp3_pstatp_com%2Fe59d73299cfdc86f63ef07248bad7bd3.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
-    
-      <category term="rails" scheme="qingyu.ren/tags/rails/"/>
-    
-      <category term="笔记" scheme="qingyu.ren/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>提问的智慧</title>
-    <link href="qingyu.ren/2017/10/31/%E6%8F%90%E9%97%AE%E7%9A%84%E6%99%BA%E6%85%A7/"/>
-    <id>qingyu.ren/2017/10/31/提问的智慧/</id>
-    <published>2017-10-31T03:12:12.000Z</published>
-    <updated>2018-01-10T07:06:47.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>提问的智慧</p>
-<p>艾瑞克.史蒂文.雷蒙德（Eric Steven Raymond）</p>
-<p><a href="https://github.com/ruby-china/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md" target="_blank" rel="external">https://github.com/ruby-china/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md</a></p>
-<p>初入ruby china 后就阅读过，偶尔还是会再次的拿出来看一看。每一次看后都有新的思路出现。值得一看。<br><a id="more"></a></p>
-<blockquote>
-<p>这是一篇长文，看完需要十几分钟的时间。如果之前没有认真看过并且思考过，这十几分钟会改变你的职业生涯。这文章可能会出现一些让人不适的词语或者过时的例子，但我认为这不会影响它要表达的内容，而你需要好好琢磨作者的思想。</p>
-<p>《提问的智慧》是一个敲门砖，它把黑客间的礼仪和准则明白地写下来，让我们了解到一个事实，为什么那些看起来很牛的人几乎从不提问。其实他们也有问题，但是通常在提问之前就自己解决了。不是因为他们本来就牛，而是解决问题的经历让他们成为牛人。最终，你只会看到网络上多了一篇文章：关于解决XXX问题的方案。</p>
-<p>要不要花十几分钟改变自己的人生，决定权在自己。 – RubyChina  @Rei</p>
-</blockquote>
-<p><a href="https://ruby-china.org/topics/24325" target="_blank" rel="external">原文链接</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;提问的智慧&lt;/p&gt;
-&lt;p&gt;艾瑞克.史蒂文.雷蒙德（Eric Steven Raymond）&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/ruby-china/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/ruby-china/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;初入ruby china 后就阅读过，偶尔还是会再次的拿出来看一看。每一次看后都有新的思路出现。值得一看。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
     
   </entry>
   

@@ -3,6 +3,103 @@
   
     
     <entry>
+      <title><![CDATA[backbone history 问题的思考]]></title>
+      <url>/2020/05/29/backbone-history-%E9%97%AE%E9%A2%98%E7%9A%84%E6%80%9D%E8%80%83/</url>
+      <content type="html"><![CDATA[<h3 id="浏览器后退前进缓存"><a href="#浏览器后退前进缓存" class="headerlink" title="浏览器后退前进缓存"></a>浏览器后退前进缓存</h3><p>学习中…</p>
+<h3 id="backbone-history-缓存原理"><a href="#backbone-history-缓存原理" class="headerlink" title="backbone history 缓存原理"></a>backbone history 缓存原理</h3><p>学习中…</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> backbone </tag>
+            
+            <tag> react-router </tag>
+            
+            <tag> browser </tag>
+            
+            <tag> cache </tag>
+            
+            <tag> history </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[rails css scss 使用 asset_path问题]]></title>
+      <url>/2020/05/29/rails-css-scss-%E4%BD%BF%E7%94%A8-asset-path%E9%97%AE%E9%A2%98/</url>
+      <content type="html"><![CDATA[<h3 id="rails-css-scss-使用-asset-path问题"><a href="#rails-css-scss-使用-asset-path问题" class="headerlink" title="rails css scss 使用 asset_path问题"></a>rails css scss 使用 asset_path问题</h3><p>背景图加载如果想要使用静态资源<br><a id="more"></a></p>
+<h4 id="CSS-和-ERB"><a href="#CSS-和-ERB" class="headerlink" title="CSS 和 ERB"></a>CSS 和 ERB</h4><blockquote>
+<p>Asset Pipeline 会自动计算 ERB 的值。也就是说，只要给 CSS 文件添加 .erb 扩展名（例如 application.css.erb），就可以在 CSS 规则中使用 asset_path 等辅助方法。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.class</span> &#123; <span class="attribute">background-image</span>: <span class="built_in">url</span>(&lt;%= asset_path <span class="string">'image.png'</span> %&gt;) &#125;</div></pre></td></tr></table></figure>
+<p>上述代码中的 asset_path 辅助方法会返回指向图像真实路径的链接。图像必须位于静态文件加载路径中，例如 app/assets/images/image.png，以便在这里引用。如果在 public/assets 文件夹中已经存在此图像的带指纹的版本，那么将引用这个带指纹的版本。</p>
+<blockquote>
+<p>要想使用 data URI（用于把图像数据直接嵌入 CSS 文件中），可以使用 asset_data_uri 辅助方法</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#logo</span> &#123; <span class="attribute">background</span>: <span class="built_in">url</span>(&lt;%= asset_data_uri <span class="string">'logo.png'</span> %&gt;) &#125;</div></pre></td></tr></table></figure>
+<h4 id="CSS-和-Sass"><a href="#CSS-和-Sass" class="headerlink" title="CSS 和 Sass"></a>CSS 和 Sass</h4><blockquote>
+<p>在使用 Asset Pipeline 时，静态资源文件的路径都必须重写，为此 sass-rails gem 提供了 -url 和 -path 系列辅助方法（在 Sass 中使用连字符，在 Ruby 中使用下划线），用于处理图像、字体、视频、音频、JavaScript 和 CSS 等类型的静态资源文件。</p>
+</blockquote>
+<ul>
+<li>image-url(“rails.png”) 会返回 url(/assets/rails.png)</li>
+<li>image-path(“rails.png”) 会返回 “/assets/rails.png”</li>
+</ul>
+<p>或使用更通用的形式：</p>
+<ul>
+<li>asset-url(“rails.png”) 返回 url(/assets/rails.png)</li>
+<li>asset-path(“rails.png”) 返回 “/assets/rails.png”</li>
+</ul>
+<h4 id="JavaScript-CoffeeScript-和-ERB"><a href="#JavaScript-CoffeeScript-和-ERB" class="headerlink" title="JavaScript/CoffeeScript 和 ERB"></a>JavaScript/CoffeeScript 和 ERB</h4><blockquote>
+<p>只要给 JavaScript 文件添加 .erb 扩展名（例如 application.js.erb），就可以在 JavaScript 源代码中使用 asset_path 辅助方法：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#logo'</span>).attr(&#123; <span class="attr">src</span>: <span class="string">"&lt;%= asset_path('logo.png') %&gt;"</span> &#125;);</div></pre></td></tr></table></figure>
+<p>上述代码中的 asset_path 辅助方法会返回指向图像真实路径的链接。</p>
+<p>同样，只要给 CoffeeScript 文件添加 .erb 扩展名（例如 application.coffee.erb），就可以在 CoffeeScript 源代码中使用 asset_path 辅助方法：</p>
+<figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#logo'</span>).attr src: <span class="string">"&lt;%= asset_path('logo.png') %&gt;"</span></div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> rails </tag>
+            
+            <tag> css </tag>
+            
+            <tag> Asset Pipeline </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[css元素固定]]></title>
+      <url>/2020/05/29/css%E5%85%83%E7%B4%A0%E5%9B%BA%E5%AE%9A/</url>
+      <content type="html"><![CDATA[<h3 id="css元素固定"><a href="#css元素固定" class="headerlink" title="css元素固定"></a>css元素固定</h3><ul>
+<li><p>固定顶部<br>加入我们将一个头部导航栏固定</p>
+<a id="more"></a>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.menu</span> &#123;</div><div class="line">  <span class="attribute">position</span>: fixed; <span class="comment">/* 关键 */</span></div><div class="line">  <span class="attribute">top</span>:<span class="number">0</span>; <span class="comment">/* 关键 */</span></div><div class="line">  <span class="attribute">max-width</span>: <span class="number">640px</span>;</div><div class="line">  <span class="attribute">z-index</span>: <span class="number">999</span>;</div><div class="line">  <span class="attribute">margin</span>:<span class="number">0</span> auto;</div><div class="line">  <span class="attribute">background</span>: <span class="number">#fff</span>;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">  <span class="attribute">border-bottom</span>:<span class="number">1px</span> solid <span class="number">#eee</span>;</div><div class="line">  <span class="attribute">box-shadow</span>:<span class="number">0px</span> <span class="number">3px</span> <span class="number">6px</span> <span class="built_in">rgba</span>(0,0,0,0.09)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>固定底部</p>
+</li>
+</ul>
+<p>比如我们将footer 固定底部</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.footer</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">max-width</span>: <span class="number">640px</span>;</div><div class="line">  <span class="attribute">position</span>: fixed; <span class="comment">/* 关键 */</span></div><div class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>; <span class="comment">/* 关键 */</span></div><div class="line">  <span class="attribute">text-align</span>: center;</div><div class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> css </tag>
+            
+            <tag> html </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[css渐变做出突变进度条]]></title>
       <url>/2020/05/19/css%E6%B8%90%E5%8F%98%E5%81%9A%E5%87%BA%E7%AA%81%E5%8F%98%E8%BF%9B%E5%BA%A6%E6%9D%A1/</url>
       <content type="html"><![CDATA[<h2 id="css渐变色做出突变色进度条"><a href="#css渐变色做出突变色进度条" class="headerlink" title="css渐变色做出突变色进度条"></a>css渐变色做出突变色进度条</h2><p>一开始接到需求的时候以为是一个简单的进度条，用两个div上下重叠，下面放浅色，上面div根据进度设置width长度盖住下方div 即可。</p>
@@ -983,12 +1080,6 @@
   
     
     <entry>
-      <title><![CDATA[Tagcloud]]></title>
-      <url>/tags/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[博主简介]]></title>
       <url>/about/index.html</url>
       <content type="html"><![CDATA[<h3 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h3><ul>
@@ -1028,6 +1119,12 @@
 <li>rabbitmq</li>
 </ul>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Tagcloud]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
     </entry>
     
   
