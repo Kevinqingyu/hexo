@@ -627,11 +627,11 @@
         
         <tags>
             
-            <tag> SQL </tag>
-            
             <tag> ruby </tag>
             
             <tag> rails </tag>
+            
+            <tag> SQL </tag>
             
         </tags>
         
@@ -1080,12 +1080,6 @@
   
     
     <entry>
-      <title><![CDATA[Tagcloud]]></title>
-      <url>/tags/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[博主简介]]></title>
       <url>/about/index.html</url>
       <content type="html"><![CDATA[<h3 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h3><ul>
@@ -1125,6 +1119,12 @@
 <li>rabbitmq</li>
 </ul>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Tagcloud]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
     </entry>
     
   
