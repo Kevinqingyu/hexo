@@ -3,6 +3,66 @@
   
     
     <entry>
+      <title><![CDATA[mac主机使用2K屏幕UI字体过小问题]]></title>
+      <url>/2021/01/13/mac%E4%B8%BB%E6%9C%BA%E4%BD%BF%E7%94%A82K%E5%B1%8F%E5%B9%95UI%E5%AD%97%E4%BD%93%E8%BF%87%E5%B0%8F%E9%97%AE%E9%A2%98/</url>
+      <content type="html"><![CDATA[<h3 id="macmini-黑苹果-使用2k屏幕字体太小的问题"><a href="#macmini-黑苹果-使用2k屏幕字体太小的问题" class="headerlink" title="macmini, 黑苹果 使用2k屏幕字体太小的问题"></a>macmini, 黑苹果 使用2k屏幕字体太小的问题</h3><p><a href="https://github.com/xzhih/one-key-hidpi/blob/master/README-zh.md" target="_blank" rel="external">点击这里查看方案</a></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> 黑苹果 </tag>
+            
+            <tag> macmini </tag>
+            
+            <tag> 2K </tag>
+            
+            <tag> 主机 </tag>
+            
+            <tag> 显示器 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[openssl1.1安装ruby小于2.4版本失败问题]]></title>
+      <url>/2021/01/13/openssl1-1%E5%AE%89%E8%A3%85ruby%E5%B0%8F%E4%BA%8E2-4%E7%89%88%E6%9C%AC%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/</url>
+      <content type="html"><![CDATA[<h3 id="openssl1-1安装ruby小于2-4版本失败问题"><a href="#openssl1-1安装ruby小于2-4版本失败问题" class="headerlink" title="openssl1.1安装ruby小于2.4版本失败问题"></a>openssl1.1安装ruby小于2.4版本失败问题</h3><p>实测macos 10.14系统可以成功，10.15没有成功。</p>
+<a id="more"></a>
+<blockquote>
+<p>1.我们使用rvm 来安装ruby</p>
+<p>2.卸载和清除所有rbenv环境变量和安装数据(包括软件，目录，环境变量)</p>
+<p>3.重新安装低版本openssl</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm pkg install openssl</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm reinstall ruby-2.1.10 -C --with-openssl-dir=$HOME/.rvm/usr 5.rvm use ruby-2.1.10</div></pre></td></tr></table></figure>
+<blockquote>
+<p>4.重新创建gemset<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm gemset create test_gemset</div></pre></td></tr></table></figure></p>
+<p>5.使用创建的gemset</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm use ruby-2.1.10@test_gemset</div></pre></td></tr></table></figure>
+<blockquote>
+<p>进入项目目录开始 <code>bundle install</code> 吧</p>
+</blockquote>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> ruby </tag>
+            
+            <tag> rvm </tag>
+            
+            <tag> openssl </tag>
+            
+            <tag> 安装教程 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[rails css scss 使用 asset_path问题]]></title>
       <url>/2020/05/29/rails-css-scss-%E4%BD%BF%E7%94%A8-asset-path%E9%97%AE%E9%A2%98/</url>
       <content type="html"><![CDATA[<h3 id="rails-css-scss-使用-asset-path问题"><a href="#rails-css-scss-使用-asset-path问题" class="headerlink" title="rails css scss 使用 asset_path问题"></a>rails css scss 使用 asset_path问题</h3><p>背景图加载如果想要使用静态资源<br><a id="more"></a></p>
@@ -1056,6 +1116,12 @@
   
     
     <entry>
+      <title><![CDATA[Tagcloud]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[博主简介]]></title>
       <url>/about/index.html</url>
       <content type="html"><![CDATA[<h3 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h3><ul>
@@ -1096,12 +1162,6 @@
 <li>rabbitmq</li>
 </ul>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Tagcloud]]></title>
-      <url>/tags/index.html</url>
-      <content type="html"></content>
     </entry>
     
   

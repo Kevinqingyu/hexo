@@ -5,10 +5,82 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="qingyu.ren/"/>
-  <updated>2020-05-29T09:26:43.000Z</updated>
+  <updated>2021-01-13T05:34:39.000Z</updated>
   <id>qingyu.ren/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mac主机使用2K屏幕UI字体过小问题</title>
+    <link href="qingyu.ren/2021/01/13/mac%E4%B8%BB%E6%9C%BA%E4%BD%BF%E7%94%A82K%E5%B1%8F%E5%B9%95UI%E5%AD%97%E4%BD%93%E8%BF%87%E5%B0%8F%E9%97%AE%E9%A2%98/"/>
+    <id>qingyu.ren/2021/01/13/mac主机使用2K屏幕UI字体过小问题/</id>
+    <published>2021-01-13T05:33:17.000Z</published>
+    <updated>2021-01-13T05:34:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="macmini-黑苹果-使用2k屏幕字体太小的问题"><a href="#macmini-黑苹果-使用2k屏幕字体太小的问题" class="headerlink" title="macmini, 黑苹果 使用2k屏幕字体太小的问题"></a>macmini, 黑苹果 使用2k屏幕字体太小的问题</h3><p><a href="https://github.com/xzhih/one-key-hidpi/blob/master/README-zh.md" target="_blank" rel="external">点击这里查看方案</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;macmini-黑苹果-使用2k屏幕字体太小的问题&quot;&gt;&lt;a href=&quot;#macmini-黑苹果-使用2k屏幕字体太小的问题&quot; class=&quot;headerlink&quot; title=&quot;macmini, 黑苹果 使用2k屏幕字体太小的问题&quot;&gt;&lt;/a&gt;macmini, 黑
+    
+    </summary>
+    
+    
+      <category term="黑苹果" scheme="qingyu.ren/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+    
+      <category term="macmini" scheme="qingyu.ren/tags/macmini/"/>
+    
+      <category term="2K" scheme="qingyu.ren/tags/2K/"/>
+    
+      <category term="主机" scheme="qingyu.ren/tags/%E4%B8%BB%E6%9C%BA/"/>
+    
+      <category term="显示器" scheme="qingyu.ren/tags/%E6%98%BE%E7%A4%BA%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>openssl1.1安装ruby小于2.4版本失败问题</title>
+    <link href="qingyu.ren/2021/01/13/openssl1-1%E5%AE%89%E8%A3%85ruby%E5%B0%8F%E4%BA%8E2-4%E7%89%88%E6%9C%AC%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/"/>
+    <id>qingyu.ren/2021/01/13/openssl1-1安装ruby小于2-4版本失败问题/</id>
+    <published>2021-01-13T05:26:03.000Z</published>
+    <updated>2021-01-13T05:32:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="openssl1-1安装ruby小于2-4版本失败问题"><a href="#openssl1-1安装ruby小于2-4版本失败问题" class="headerlink" title="openssl1.1安装ruby小于2.4版本失败问题"></a>openssl1.1安装ruby小于2.4版本失败问题</h3><p>实测macos 10.14系统可以成功，10.15没有成功。</p>
+<a id="more"></a>
+<blockquote>
+<p>1.我们使用rvm 来安装ruby</p>
+<p>2.卸载和清除所有rbenv环境变量和安装数据(包括软件，目录，环境变量)</p>
+<p>3.重新安装低版本openssl</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm pkg install openssl</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm reinstall ruby-2.1.10 -C --with-openssl-dir=$HOME/.rvm/usr 5.rvm use ruby-2.1.10</div></pre></td></tr></table></figure>
+<blockquote>
+<p>4.重新创建gemset<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm gemset create test_gemset</div></pre></td></tr></table></figure></p>
+<p>5.使用创建的gemset</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm use ruby-2.1.10@test_gemset</div></pre></td></tr></table></figure>
+<blockquote>
+<p>进入项目目录开始 <code>bundle install</code> 吧</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;openssl1-1安装ruby小于2-4版本失败问题&quot;&gt;&lt;a href=&quot;#openssl1-1安装ruby小于2-4版本失败问题&quot; class=&quot;headerlink&quot; title=&quot;openssl1.1安装ruby小于2.4版本失败问题&quot;&gt;&lt;/a&gt;openssl1.1安装ruby小于2.4版本失败问题&lt;/h3&gt;&lt;p&gt;实测macos 10.14系统可以成功，10.15没有成功。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
+    
+      <category term="rvm" scheme="qingyu.ren/tags/rvm/"/>
+    
+      <category term="openssl" scheme="qingyu.ren/tags/openssl/"/>
+    
+      <category term="安装教程" scheme="qingyu.ren/tags/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>rails css scss 使用 asset_path问题</title>
@@ -906,93 +978,6 @@
       <category term="rails" scheme="qingyu.ren/tags/rails/"/>
     
       <category term="二维码" scheme="qingyu.ren/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>rails导出电子表格</title>
-    <link href="qingyu.ren/2018/01/10/rails%E5%AF%BC%E5%87%BA%E7%94%B5%E5%AD%90%E8%A1%A8%E6%A0%BC/"/>
-    <id>qingyu.ren/2018/01/10/rails导出电子表格/</id>
-    <published>2018-01-10T07:05:24.000Z</published>
-    <updated>2018-12-20T01:58:16.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="如何在rails应用中导出电子表格"><a href="#如何在rails应用中导出电子表格" class="headerlink" title="如何在rails应用中导出电子表格"></a>如何在<code>rails</code>应用中导出电子表格</h4><p><img src="https://www.edx.org/sites/default/files/course/image/promoted/analyzing_and_visualizing_data_with_excel_378x225.jpg" alt=""><br><a id="more"></a><br>在 <code>Gemfile</code> 中添加<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem <span class="string">'spreadsheet'</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bundle install</div></pre></td></tr></table></figure>
-<p>假设我们要导出 项目数据：</p>
-<p><code>controller</code> 中添加导出：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">exprot</span></span></div><div class="line">  projects = Project.limit(<span class="number">10</span>)</div><div class="line">  send_data(Project.exprot_projects(projects), <span class="symbol">:type</span> =&gt; <span class="string">"text/excel;charset=utf-8; header=present"</span>, <span class="symbol">:filename</span> =&gt; <span class="string">"项目统计表.xls"</span>)</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
-<p><code>model</code> 中添加想要导出的数据格式<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">exprot_pojects</span><span class="params">(projects)</span></span></div><div class="line">  xls_report = StringIO.new</div><div class="line">  Spreadsheet.client_encoding = <span class="string">"UTF-8"</span></div><div class="line">  book = Spreadsheet::Workbook.new</div><div class="line">  style<span class="number">0</span> = Spreadsheet::Format.new <span class="symbol">:weight</span> =&gt; <span class="symbol">:bold</span>, <span class="symbol">:size</span> =&gt; <span class="number">16</span>, <span class="symbol">:align</span> =&gt; <span class="symbol">:center</span></div><div class="line">  style = Spreadsheet::Format.new <span class="symbol">:weight</span> =&gt; <span class="symbol">:bold</span>, <span class="symbol">:size</span> =&gt; <span class="number">10</span></div><div class="line">  sheet1 = book.create_worksheet <span class="symbol">:name</span> =&gt; <span class="string">"项目统计表.xls"</span></div><div class="line">  <span class="comment"># 设置单元格高度</span></div><div class="line">  sheet1.row(<span class="number">0</span>).height = <span class="number">18</span></div><div class="line">  sheet1.row(<span class="number">0</span>).default_format = style</div><div class="line">  <span class="comment"># 设置单元格宽度</span></div><div class="line">  sheet1.column(<span class="number">0</span>).width = <span class="number">15</span></div><div class="line">  sheet1.column(<span class="number">1</span>).width = <span class="number">15</span></div><div class="line">  sheet1.row(<span class="number">0</span>).concat [<span class="string">"项目名称"</span>,<span class="string">"项目编号"</span>]</div><div class="line"></div><div class="line">  projects.each_with_index <span class="keyword">do</span> <span class="params">|project, index|</span></div><div class="line">    sheet1.row(index+<span class="number">1</span>).concat [project.name, project.number]</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  book.write xls_report</div><div class="line">  xls_report.string</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
-<p>这样在controller中调用此方法，或者传入想要导出的集合就可以导出了</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;如何在rails应用中导出电子表格&quot;&gt;&lt;a href=&quot;#如何在rails应用中导出电子表格&quot; class=&quot;headerlink&quot; title=&quot;如何在rails应用中导出电子表格&quot;&gt;&lt;/a&gt;如何在&lt;code&gt;rails&lt;/code&gt;应用中导出电子表格&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://www.edx.org/sites/default/files/course/image/promoted/analyzing_and_visualizing_data_with_excel_378x225.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
-    
-      <category term="rails" scheme="qingyu.ren/tags/rails/"/>
-    
-      <category term="excel" scheme="qingyu.ren/tags/excel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ruby笔记（二）</title>
-    <link href="qingyu.ren/2017/11/20/ruby%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>qingyu.ren/2017/11/20/ruby笔记（二）/</id>
-    <published>2017-11-20T03:20:36.000Z</published>
-    <updated>2019-08-29T09:41:08.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3942457143,1284096136&amp;fm=27&amp;gp=0.jpg" alt=""><br><a id="more"></a></p>
-<p>最近有朋友有问我<code>ActiveRecord</code>中 <code>scope</code> 和 <code>validate</code> 方法的实现机制，之前一直在使用它但是我还真的没有细细的了解过这个方法，于是决定深入探究一下。</p>
-<h4 id="scope-name-scope-options-public"><a href="#scope-name-scope-options-public" class="headerlink" title="scope(name, scope_options = {}) public"></a>scope(name, scope_options = {}) public</h4><blockquote>
-<p>添加一个用于检索和查询对象的类方法。</p>
-</blockquote>
-<p>可以这样使用：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shirt</span> &lt; ActiveRecord::Base</span></div><div class="line">  scope <span class="symbol">:red</span>, where(<span class="symbol">:color</span> =&gt; <span class="string">'red'</span>)</div><div class="line">  scope <span class="symbol">:end_date</span>, -&gt;(date) &#123; where(<span class="symbol">:end_date</span> =&gt; date) &#125;</div><div class="line">  scope <span class="symbol">:dry_clean_only</span>, joins(<span class="symbol">:washing_instructions</span>).where(<span class="string">'washing_instructions.dry_clean_only = ?'</span>, <span class="literal">true</span>)</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>上面的调用<code>scope</code>定义了类方法<code>Shirt.red</code>和<code>Shirt.dry_clean_only</code>。 <code>Shirt.red</code>实际上代表查询<code>Shirt.where(:color =&gt;&#39;red&#39;)</code>。<br>请注意，这只是用于定义实际类方法的<code>语法糖</code></p>
-</blockquote>
-<p>实现的作用和类方法一样，但是类方法是在载入类的时候就会一起加载，而<code>scope</code> 定义的方法是在方法调用时才会加载<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shirt</span> &lt; ActiveRecord::Base</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">red</span></span></div><div class="line">    where(<span class="symbol">color:</span> <span class="string">'red'</span>)</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
-<p>不过需要注意的是，<code>scope</code>方法即使在什么也没查到的情况下依然会返回<code>Relation</code>对象，也就是说 <code>scope</code> 方法可以进行链式调用而不担心会抛出<code>nil:NilClass</code> 异常。</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Article</span> &lt; ActiveRecord::Base</span></div><div class="line">  scope <span class="symbol">:published</span>, -&gt; &#123; where(<span class="symbol">published:</span> <span class="literal">true</span>) &#125;</div><div class="line">  scope <span class="symbol">:featured</span>, -&gt; &#123; where(<span class="symbol">featured:</span> <span class="literal">true</span>) &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">latest_article</span></span></div><div class="line">    order(<span class="string">'published_at desc'</span>).first</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">titles</span></span></div><div class="line">    pluck(<span class="symbol">:title</span>)</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<p>我们可以这样调用方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Article.published.featured.latest_article</div><div class="line">Article.featured.titles</div></pre></td></tr></table></figure></p>
-<p>下面看一下具体的实现源码：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># File activerecord/lib/active_record/scoping/named.rb, line 141</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">scope</span><span class="params">(name, body, &amp;block)</span></span></div><div class="line">  <span class="keyword">unless</span> body.respond_to?(<span class="symbol">:call</span>)</div><div class="line">    raise ArgumentError, <span class="string">'The scope body needs to be callable.'</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="keyword">if</span> dangerous_class_method?(name)</div><div class="line">    raise ArgumentError, <span class="string">"You tried to define a scope named \"<span class="subst">#&#123;name&#125;</span>\" "</span>                <span class="string">"on the model \"<span class="subst">#&#123;<span class="keyword">self</span>.name&#125;</span>\", but Active Record already defined "</span>                <span class="string">"a class method with the same name."</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  extension = Module.new(&amp;block) <span class="keyword">if</span> block</div><div class="line"></div><div class="line">  singleton_class.send(<span class="symbol">:define_method</span>, name) <span class="keyword">do</span> <span class="params">|*args|</span></div><div class="line">    scope = all.scoping &#123; body.call(*args) &#125;</div><div class="line">    scope = scope.extending(extension) <span class="keyword">if</span> extension</div><div class="line"></div><div class="line">    scope <span class="params">||</span> all</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<p>除去数据验证以外，值得关注的方法就是<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">singleton_class.send(<span class="symbol">:define_method</span>, name)</div></pre></td></tr></table></figure></p>
-<p>这一句实现了将传入的方法名定义成一个类方法的过程，我们试着简易的实现以下<code>scope</code> 方法的原理</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">scope</span><span class="params">(name, body)</span></span></div><div class="line">  singleton_class.send(<span class="symbol">:define_method</span>, name, &amp;body)</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<p>参数接受名字和代码块，然后将名字定义为方法名，代码块作为方法内部可执行代码。这样我们就简易的实现了<code>scope</code>这个方法。</p>
-<p>这时候scope 的内部实现机制就算比较了解了，但是我对这个<code>singleton_class</code> 非常好奇，它是如何实现的呢？</p>
-<h4 id="singleton-class-→-class"><a href="#singleton-class-→-class" class="headerlink" title="singleton_class → class"></a>singleton_class → class</h4><blockquote>
-<p>返回obj的单例类。 如果obj没有，则此方法创建一个新的单例类。<br>如果obj为nil，true或false，则分别返回NilClass，TrueClass或FalseClass。 如果obj是一个Fixnum或一个符号，它会引发一个TypeError。</p>
-</blockquote>
-<p>我们可以这么用它：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Object.new.singleton_class  #=&gt; #&lt;Class:#&lt;Object:0xb7ce1e24&gt;&gt;</div><div class="line">String.singleton_class      #=&gt; #&lt;Class:String&gt;</div><div class="line">nil.singleton_class         #=&gt; NilClass</div></pre></td></tr></table></figure></p>
-<p>那么<code>scope</code> 就算是告一段落，算是浅尝辄止，下次我们要仔细的研究一下<code>singleton_class</code>，下一步看看<code>validate</code>的实现机制。</p>
-<h4 id="validate-methods-amp-block-public"><a href="#validate-methods-amp-block-public" class="headerlink" title="validate(*methods, &amp;block) public"></a>validate(*methods, &amp;block) public</h4><blockquote>
-<p>向类中添加验证方法或块。 当重写#validate实例方法变得过于强硬时，这是很有用的，而且您正在寻找更多关于验证的描述性声明。<br>这可以通过一个指向方法的符号来完成：</p>
-</blockquote>
-<p>这个非常常用的校验方法，我们经常这样用：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Comment</span> &lt; ActiveRecord::Base</span></div><div class="line">  validate <span class="symbol">:must_be_friends</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">must_be_friends</span></span></div><div class="line">    errors.add_to_base(<span class="string">"Must be friends to leave a comment"</span>) <span class="keyword">unless</span> commenter.friend_of?(commentee)</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<p>或者用一个传递当前记录的块进行验证：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Comment</span> &lt; ActiveRecord::Base</span></div><div class="line">  validate <span class="keyword">do</span> <span class="params">|comment|</span></div><div class="line">    comment.must_be_friends</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">must_be_friends</span></span></div><div class="line">    errors.add_to_base(<span class="string">"Must be friends to leave a comment"</span>) <span class="keyword">unless</span> commenter.friend_of?(commentee)</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
-<p>看得出这里 参数接受方法或者代码块，然后定义了一个实例方法，当实例不满足校验条件时，将会抛出异常。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3942457143,1284096136&amp;amp;fm=27&amp;amp;gp=0.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="ruby" scheme="qingyu.ren/tags/ruby/"/>
-    
-      <category term="rails" scheme="qingyu.ren/tags/rails/"/>
-    
-      <category term="笔记" scheme="qingyu.ren/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
