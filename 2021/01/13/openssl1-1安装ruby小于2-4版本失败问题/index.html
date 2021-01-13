@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="Mikasa·Ackerman">
 <meta property="og:description" content="openssl1.1安装ruby小于2.4版本失败问题实测macos 10.14系统可以成功，10.15没有成功。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-01-13T05:32:28.000Z">
+<meta property="og:updated_time" content="2021-01-13T05:40:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openssl1.1安装ruby小于2.4版本失败问题">
 <meta name="twitter:description" content="openssl1.1安装ruby小于2.4版本失败问题实测macos 10.14系统可以成功，10.15没有成功。">
@@ -377,7 +377,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm pkg install openssl</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm reinstall ruby-2.1.10 -C --with-openssl-dir=$HOME/.rvm/usr 5.rvm use ruby-2.1.10</div></pre></td></tr></table></figure>
 <blockquote>
-<p>4.重新创建gemset<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm gemset create test_gemset</div></pre></td></tr></table></figure></p>
+<p>4.重新创建gemset</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm gemset create test_gemset</div></pre></td></tr></table></figure>
+<blockquote>
 <p>5.使用创建的gemset</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm use ruby-2.1.10@test_gemset</div></pre></td></tr></table></figure>
