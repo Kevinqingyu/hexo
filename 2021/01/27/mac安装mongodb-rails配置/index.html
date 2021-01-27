@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ruby,FTP," />
+  <meta name="keywords" content="ruby,rails,mongodb,mac," />
 
 
 
@@ -89,18 +89,18 @@
 
 
 
-<meta name="description" content="需求背景：项目中使用Net::FTP上传文件到服务器，有时候会出现一次性上传几十到几百不等的文件，每次上传一个文件都要 执行：1.创建client 2.连接 3.登录 4.上传文件 5.关闭client">
-<meta name="keywords" content="ruby,FTP">
+<meta name="description" content="1.安装mongodb使用 home brew 安装 如果brew安装或者更新较慢可以添加代理查看本机代理软件监听的http端口然后在~/.zshrc中添加 12alias proxy=&amp;apos;export http_proxy=http://127.0.0.1:1088 https_proxy=http://127.0.0.1:1088&amp;apos;alias unset_proxy=&amp;apo">
+<meta name="keywords" content="ruby,rails,mongodb,mac">
 <meta property="og:type" content="article">
-<meta property="og:title" content="实现一个ftp连接池">
-<meta property="og:url" content="qingyu.ren/2018/09/29/实现一个ftp连接池/index.html">
+<meta property="og:title" content="mac安装mongodb + rails配置">
+<meta property="og:url" content="qingyu.ren/2021/01/27/mac安装mongodb-rails配置/index.html">
 <meta property="og:site_name" content="Mikasa·Ackerman">
-<meta property="og:description" content="需求背景：项目中使用Net::FTP上传文件到服务器，有时候会出现一次性上传几十到几百不等的文件，每次上传一个文件都要 执行：1.创建client 2.连接 3.登录 4.上传文件 5.关闭client">
+<meta property="og:description" content="1.安装mongodb使用 home brew 安装 如果brew安装或者更新较慢可以添加代理查看本机代理软件监听的http端口然后在~/.zshrc中添加 12alias proxy=&amp;apos;export http_proxy=http://127.0.0.1:1088 https_proxy=http://127.0.0.1:1088&amp;apos;alias unset_proxy=&amp;apo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-29T07:05:51.000Z">
+<meta property="og:updated_time" content="2021-01-27T06:58:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="实现一个ftp连接池">
-<meta name="twitter:description" content="需求背景：项目中使用Net::FTP上传文件到服务器，有时候会出现一次性上传几十到几百不等的文件，每次上传一个文件都要 执行：1.创建client 2.连接 3.登录 4.上传文件 5.关闭client">
+<meta name="twitter:title" content="mac安装mongodb + rails配置">
+<meta name="twitter:description" content="1.安装mongodb使用 home brew 安装 如果brew安装或者更新较慢可以添加代理查看本机代理软件监听的http端口然后在~/.zshrc中添加 12alias proxy=&amp;apos;export http_proxy=http://127.0.0.1:1088 https_proxy=http://127.0.0.1:1088&amp;apos;alias unset_proxy=&amp;apo">
 
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="qingyu.ren/2018/09/29/实现一个ftp连接池/"/>
+  <link rel="canonical" href="qingyu.ren/2021/01/27/mac安装mongodb-rails配置/"/>
 
 
 
 
 
-  <title> 实现一个ftp连接池 | Mikasa·Ackerman </title>
+  <title> mac安装mongodb + rails配置 | Mikasa·Ackerman </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -295,7 +295,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="qingyu.ren/2018/09/29/实现一个ftp连接池/">
+    <link itemprop="mainEntityOfPage" href="qingyu.ren/2021/01/27/mac安装mongodb-rails配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -316,7 +316,7 @@
             
             
               
-                实现一个ftp连接池
+                mac安装mongodb + rails配置
               
             
           </h1>
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-29T12:14:29+08:00">
-                2018-09-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-27T13:09:18+08:00">
+                2021-01-27
               </time>
             
 
@@ -367,19 +367,24 @@
       
 
       
-        <h3 id="需求背景："><a href="#需求背景：" class="headerlink" title="需求背景："></a>需求背景：</h3><h5 id="项目中使用Net-FTP上传文件到服务器，有时候会出现一次性上传几十到几百不等的文件，每次上传一个文件都要-执行："><a href="#项目中使用Net-FTP上传文件到服务器，有时候会出现一次性上传几十到几百不等的文件，每次上传一个文件都要-执行：" class="headerlink" title="项目中使用Net::FTP上传文件到服务器，有时候会出现一次性上传几十到几百不等的文件，每次上传一个文件都要 执行："></a>项目中使用Net::FTP上传文件到服务器，有时候会出现一次性上传几十到几百不等的文件，每次上传一个文件都要 执行：</h5><p>1.创建client</p>
-<p>2.连接</p>
-<p>3.登录</p>
-<p>4.上传文件</p>
-<p>5.关闭client<br><a id="more"></a></p>
-<h3 id="目标："><a href="#目标：" class="headerlink" title="目标："></a>目标：</h3><h5 id="希望能像ftp软件类似-filezilla一样，当同时上传10个文件时，只登陆一次，上传完毕后在下线（或者被服务器踢掉）"><a href="#希望能像ftp软件类似-filezilla一样，当同时上传10个文件时，只登陆一次，上传完毕后在下线（或者被服务器踢掉）" class="headerlink" title="希望能像ftp软件类似 filezilla一样，当同时上传10个文件时，只登陆一次，上传完毕后在下线（或者被服务器踢掉）"></a>希望能像ftp软件类似 filezilla一样，当同时上传10个文件时，只登陆一次，上传完毕后在下线（或者被服务器踢掉）</h5><h3 id="想法："><a href="#想法：" class="headerlink" title="想法："></a>想法：</h3><p> 1.实现一个连接池</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">require</span> <span class="string">'net/ftp'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FtpPool</span></span></div><div class="line">  <span class="keyword">include</span> Singleton</div><div class="line"></div><div class="line">  <span class="keyword">attr_accessor</span> <span class="symbol">:connections</span></div><div class="line"></div><div class="line">  semaphore = Mutex.new</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span></span></div><div class="line">    @connections = &#123;&#125;</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">get_connection</span><span class="params">(ftp_server)</span></span></div><div class="line">    key = <span class="string">"<span class="subst">#&#123;ftp_server.address&#125;</span><span class="subst">#&#123;ftp_server.port&#125;</span><span class="subst">#&#123;ftp_server.username&#125;</span>"</span></div><div class="line"></div><div class="line">    semaphore.synchronize&#123;</div><div class="line">      client = @connections[key] <span class="params">||</span> @connections[key] = Net::FTP.new</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">begin</span></div><div class="line">      client.noop</div><div class="line">    <span class="keyword">rescue</span> Exception =&gt; e</div><div class="line">      reconnect(ftp_server, client)</div><div class="line">    <span class="keyword">end</span></div><div class="line">    client</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">reconnect</span><span class="params">(ftp_server, client)</span></span></div><div class="line">    client.connect(ftp_server.address, ftp_server.port)</div><div class="line">    client.login(ftp_server.username, ftp_server.password)</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<p>这里假设传入一个 ftpserver 附带四个属性 分别是地址，端口，账号和密码；<br>用前三个属性简单的生成一个key测试一下</p>
-<p>首先生成一个 ftp_pool</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pry(main)&gt; ftp_pool = FtpPool.instance</div><div class="line">=&gt; <span class="comment">#&lt;FtpPool:0x007fba931af310 @connections=&#123;&#125;&gt;</span></div></pre></td></tr></table></figure>
-<p>然后调用get_connection 从连接池中获取一个连接，如果没有就新建一个</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">ftp_pool.get_connection(ftp_server)</div><div class="line">=&gt; <span class="comment">#&lt;Net::FTP:0x007fa1502147a8</span></div><div class="line"> @binary=<span class="literal">true</span>,</div><div class="line"> @debug_mode=<span class="literal">false</span>,</div><div class="line"> @last_response=<span class="string">"200 OK\n"</span>,</div><div class="line"> @last_response_code=<span class="string">"200"</span>,</div><div class="line"> @logged_in=<span class="literal">true</span>,</div><div class="line"> @mon_count=0,</div><div class="line"> @mon_mutex=<span class="comment">#&lt;Thread::Mutex:0x007fa150214708&gt;,</span></div><div class="line"> @mon_owner=nil,</div><div class="line"> @open_timeout=nil,</div><div class="line"> @passive=<span class="literal">true</span>,</div><div class="line"> @read_timeout=60,</div><div class="line"> @resume=<span class="literal">false</span>,</div><div class="line"> @sock=<span class="comment">#&lt;Net::FTP::BufferedSocket io=#&lt;TCPSocket:0x007fa1511cf918&gt;&gt;,</span></div><div class="line"> @welcome=<span class="string">"230 Logged on\n"</span>&gt;</div></pre></td></tr></table></figure>
-<p>这样我们就获得了一个 Net::FTP 的 client<br>可以使用然后我们用这个client 发送文件到ftp服务器，如果发送失败通过抓取异常，<br>如果异常是未连接或者未登录，就重新执行连接和登录名令后在发送文件即可。<br>这样一个简单的 ftp_pool 就可以运行了</p>
+        <h2 id="1-安装mongodb"><a href="#1-安装mongodb" class="headerlink" title="1.安装mongodb"></a>1.安装mongodb</h2><p>使用 <code>home brew</code> 安装</p>
+<p>如果brew安装或者更新较慢可以添加代理<br>查看本机代理软件监听的http端口<br>然后在<code>~/.zshrc</code>中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alias proxy=&apos;export http_proxy=http://127.0.0.1:1088 https_proxy=http://127.0.0.1:1088&apos;</div><div class="line">alias unset_proxy=&apos;unset http_proxy https_proxy&apos;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>命令行开启http代理<br>然后查看一下自己的ip是不是变成代理设置的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">proxy</div><div class="line">curl cip.cc</div></pre></td></tr></table></figure></p>
+<p>关闭代理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unset_proxy</div></pre></td></tr></table></figure></p>
+<p><code>home brew</code> 搜索可以安装的<code>mongodb</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">brew tap mongodb/brew</div><div class="line">brew search mongodb</div></pre></td></tr></table></figure>
+<p>这里我们选择<code>4.X</code>版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install mongodb-community@4.0</div></pre></td></tr></table></figure>
+<p>加入环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo &apos;export PATH=&quot;/usr/local/opt/mongodb-community@4.0/bin:$PATH&quot;&apos; &gt;&gt; ~/.zshrc</div></pre></td></tr></table></figure></p>
+<p>启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew services start mongodb/brew/mongodb-community@4.0</div></pre></td></tr></table></figure>
+<h3 id="2-安装可视化工具"><a href="#2-安装可视化工具" class="headerlink" title="2.安装可视化工具"></a>2.安装可视化工具</h3><p>安装<code>mongodb</code>可视化工具<code>Studio 3T</code> mac版 <a href="https://studio3t.com/download/" target="_blank" rel="external">点击下载</a></p>
+<h3 id="3-rails-配置"><a href="#3-rails-配置" class="headerlink" title="3.rails 配置"></a>3.rails 配置</h3><p>项目中使用<code>mongoid</code>+<code>mongo</code>来使用<code>mongodb</code>服务<br>由于<code>mongodb</code>不能使用ActiveRecord模型这里用<code>mongoid</code>代替</p>
+<p>和<code>mysql</code>一样在<code>config</code>文件夹添加一个配置<code>config/mongoid.yml</code></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="attr">development:</span></div><div class="line"><span class="attr">  clients:</span></div><div class="line"><span class="attr">    default:</span></div><div class="line"><span class="attr">      database:</span> <span class="string">fantuan</span></div><div class="line"><span class="attr">      hosts:</span> <span class="string">'mongodb://admin:12345678@localhost:27017/?authMechanism=SCRAM-SHA-1&amp;authSource=admin&amp;maxPoolSize=50&amp;waitQueueTimeoutMS=5000'</span></div><div class="line"><span class="attr">      options:</span></div><div class="line"></div><div class="line"><span class="attr">test:</span></div><div class="line"><span class="attr">  clients:</span></div><div class="line"><span class="attr">    default:</span></div><div class="line"><span class="attr">      database:</span> <span class="string">fantuan_test</span></div><div class="line"><span class="attr">      hosts:</span> <span class="string">'mongodb://admin:12345678@localhost:27017/?authMechanism=SCRAM-SHA-1&amp;authSource=admin&amp;maxPoolSize=50&amp;waitQueueTimeoutMS=5000'</span></div><div class="line"><span class="attr">      options:</span></div><div class="line"></div><div class="line"><span class="attr">production:</span></div><div class="line"><span class="attr">  clients:</span></div><div class="line"><span class="attr">    default:</span></div><div class="line"><span class="attr">      hosts:</span> &lt;%=<span class="ruby"> ENV[<span class="string">"MONGODB_PRIMARY_URL"</span>]</span>%&gt;</div><div class="line"><span class="attr">      database:</span> &lt;%=<span class="ruby"> ENV[<span class="string">"MONGODB_DB_NAME"</span>] <span class="params">||</span> <span class="string">"social"</span> </span>%&gt;</div><div class="line"><span class="attr">      options:</span></div></pre></td></tr></table></figure>
+<p>账号和密码可以使用<code>Studio3T</code>在<code>mongodb</code>中自行创建, 权限可以是<code>root</code>，账户名和密码可以同上或者自行创建。</p>
 
       
     </div>
@@ -405,7 +410,11 @@
           
             <a href="/tags/ruby/" rel="tag"># ruby</a>
           
-            <a href="/tags/FTP/" rel="tag"># FTP</a>
+            <a href="/tags/rails/" rel="tag"># rails</a>
+          
+            <a href="/tags/mongodb/" rel="tag"># mongodb</a>
+          
+            <a href="/tags/mac/" rel="tag"># mac</a>
           
         </div>
       
@@ -418,8 +427,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/26/rails在线视频播放/" rel="next" title="rails在线视频播放">
-                <i class="fa fa-chevron-left"></i> rails在线视频播放
+              <a href="/2021/01/13/mac主机使用2K屏幕UI字体过小问题/" rel="next" title="mac主机使用2K屏幕UI字体过小问题">
+                <i class="fa fa-chevron-left"></i> mac主机使用2K屏幕UI字体过小问题
               </a>
             
           </div>
@@ -427,10 +436,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/21/SQL分类统计/" rel="prev" title="SQL分类统计">
-                SQL分类统计 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -555,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#需求背景："><span class="nav-number">1.</span> <span class="nav-text">需求背景：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#项目中使用Net-FTP上传文件到服务器，有时候会出现一次性上传几十到几百不等的文件，每次上传一个文件都要-执行："><span class="nav-number">1.0.1.</span> <span class="nav-text">项目中使用Net::FTP上传文件到服务器，有时候会出现一次性上传几十到几百不等的文件，每次上传一个文件都要 执行：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目标："><span class="nav-number">2.</span> <span class="nav-text">目标：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#希望能像ftp软件类似-filezilla一样，当同时上传10个文件时，只登陆一次，上传完毕后在下线（或者被服务器踢掉）"><span class="nav-number">2.0.1.</span> <span class="nav-text">希望能像ftp软件类似 filezilla一样，当同时上传10个文件时，只登陆一次，上传完毕后在下线（或者被服务器踢掉）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#想法："><span class="nav-number">3.</span> <span class="nav-text">想法：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装mongodb"><span class="nav-number">1.</span> <span class="nav-text">1.安装mongodb</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装可视化工具"><span class="nav-number">1.1.</span> <span class="nav-text">2.安装可视化工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-rails-配置"><span class="nav-number">1.2.</span> <span class="nav-text">3.rails 配置</span></a></li></ol></li></ol></div>
             
 
           </div>

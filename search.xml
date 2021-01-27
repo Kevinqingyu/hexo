@@ -3,6 +3,44 @@
   
     
     <entry>
+      <title><![CDATA[mac安装mongodb + rails配置]]></title>
+      <url>/2021/01/27/mac%E5%AE%89%E8%A3%85mongodb-rails%E9%85%8D%E7%BD%AE/</url>
+      <content type="html"><![CDATA[<h2 id="1-安装mongodb"><a href="#1-安装mongodb" class="headerlink" title="1.安装mongodb"></a>1.安装mongodb</h2><p>使用 <code>home brew</code> 安装</p>
+<p>如果brew安装或者更新较慢可以添加代理<br>查看本机代理软件监听的http端口<br>然后在<code>~/.zshrc</code>中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alias proxy=&apos;export http_proxy=http://127.0.0.1:1088 https_proxy=http://127.0.0.1:1088&apos;</div><div class="line">alias unset_proxy=&apos;unset http_proxy https_proxy&apos;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>命令行开启http代理<br>然后查看一下自己的ip是不是变成代理设置的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">proxy</div><div class="line">curl cip.cc</div></pre></td></tr></table></figure></p>
+<p>关闭代理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unset_proxy</div></pre></td></tr></table></figure></p>
+<p><code>home brew</code> 搜索可以安装的<code>mongodb</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">brew tap mongodb/brew</div><div class="line">brew search mongodb</div></pre></td></tr></table></figure>
+<p>这里我们选择<code>4.X</code>版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install mongodb-community@4.0</div></pre></td></tr></table></figure>
+<p>加入环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo &apos;export PATH=&quot;/usr/local/opt/mongodb-community@4.0/bin:$PATH&quot;&apos; &gt;&gt; ~/.zshrc</div></pre></td></tr></table></figure></p>
+<p>启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew services start mongodb/brew/mongodb-community@4.0</div></pre></td></tr></table></figure>
+<h3 id="2-安装可视化工具"><a href="#2-安装可视化工具" class="headerlink" title="2.安装可视化工具"></a>2.安装可视化工具</h3><p>安装<code>mongodb</code>可视化工具<code>Studio 3T</code> mac版 <a href="https://studio3t.com/download/" target="_blank" rel="external">点击下载</a></p>
+<h3 id="3-rails-配置"><a href="#3-rails-配置" class="headerlink" title="3.rails 配置"></a>3.rails 配置</h3><p>项目中使用<code>mongoid</code>+<code>mongo</code>来使用<code>mongodb</code>服务<br>由于<code>mongodb</code>不能使用ActiveRecord模型这里用<code>mongoid</code>代替</p>
+<p>和<code>mysql</code>一样在<code>config</code>文件夹添加一个配置<code>config/mongoid.yml</code></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="attr">development:</span></div><div class="line"><span class="attr">  clients:</span></div><div class="line"><span class="attr">    default:</span></div><div class="line"><span class="attr">      database:</span> <span class="string">fantuan</span></div><div class="line"><span class="attr">      hosts:</span> <span class="string">'mongodb://admin:12345678@localhost:27017/?authMechanism=SCRAM-SHA-1&amp;authSource=admin&amp;maxPoolSize=50&amp;waitQueueTimeoutMS=5000'</span></div><div class="line"><span class="attr">      options:</span></div><div class="line"></div><div class="line"><span class="attr">test:</span></div><div class="line"><span class="attr">  clients:</span></div><div class="line"><span class="attr">    default:</span></div><div class="line"><span class="attr">      database:</span> <span class="string">fantuan_test</span></div><div class="line"><span class="attr">      hosts:</span> <span class="string">'mongodb://admin:12345678@localhost:27017/?authMechanism=SCRAM-SHA-1&amp;authSource=admin&amp;maxPoolSize=50&amp;waitQueueTimeoutMS=5000'</span></div><div class="line"><span class="attr">      options:</span></div><div class="line"></div><div class="line"><span class="attr">production:</span></div><div class="line"><span class="attr">  clients:</span></div><div class="line"><span class="attr">    default:</span></div><div class="line"><span class="attr">      hosts:</span> &lt;%=<span class="ruby"> ENV[<span class="string">"MONGODB_PRIMARY_URL"</span>]</span>%&gt;</div><div class="line"><span class="attr">      database:</span> &lt;%=<span class="ruby"> ENV[<span class="string">"MONGODB_DB_NAME"</span>] <span class="params">||</span> <span class="string">"social"</span> </span>%&gt;</div><div class="line"><span class="attr">      options:</span></div></pre></td></tr></table></figure>
+<p>账号和密码可以使用<code>Studio3T</code>在<code>mongodb</code>中自行创建, 权限可以是<code>root</code>，账户名和密码可以同上或者自行创建。</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> ruby </tag>
+            
+            <tag> rails </tag>
+            
+            <tag> mongodb </tag>
+            
+            <tag> mac </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[mac主机使用2K屏幕UI字体过小问题]]></title>
       <url>/2021/01/13/mac%E4%B8%BB%E6%9C%BA%E4%BD%BF%E7%94%A82K%E5%B1%8F%E5%B9%95UI%E5%AD%97%E4%BD%93%E8%BF%87%E5%B0%8F%E9%97%AE%E9%A2%98/</url>
       <content type="html"><![CDATA[<h3 id="macmini-黑苹果-使用2k屏幕字体太小的问题"><a href="#macmini-黑苹果-使用2k屏幕字体太小的问题" class="headerlink" title="macmini, 黑苹果 使用2k屏幕字体太小的问题"></a>macmini, 黑苹果 使用2k屏幕字体太小的问题</h3><p><a href="https://github.com/xzhih/one-key-hidpi/blob/master/README-zh.md" target="_blank" rel="external">点击这里查看方案</a></p>
@@ -36,7 +74,7 @@
 <p>3.重新安装低版本openssl</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm pkg install openssl</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm reinstall ruby-2.1.10 -C --with-openssl-dir=$HOME/.rvm/usr 5.rvm use ruby-2.1.10</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm reinstall ruby-2.1.10 -C --with-openssl-dir=$HOME/.rvm/usr5.rvm use ruby-2.1.10</div></pre></td></tr></table></figure>
 <blockquote>
 <p>4.重新创建gemset</p>
 </blockquote>
@@ -102,9 +140,9 @@
         
         <tags>
             
-            <tag> rails </tag>
-            
             <tag> css </tag>
+            
+            <tag> rails </tag>
             
             <tag> Asset Pipeline </tag>
             
@@ -666,11 +704,11 @@
         
         <tags>
             
-            <tag> SQL </tag>
-            
             <tag> ruby </tag>
             
             <tag> rails </tag>
+            
+            <tag> SQL </tag>
             
         </tags>
         
